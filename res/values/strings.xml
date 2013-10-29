@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ydle</string>
+
+    <!-- Menu -->
+    <string name="action_settings">Configuration</string>
+
+    <!-- Room Activites -->
+    <string name="title_room_list">Pièces</string>
+    <string name="title_room_detail">Pièce</string>
+
+    <!-- Main activity -->
+    <string name="menu_room">Pièces</string>
+    <string name="menu_events">Evenements</string>
+    <string name="menu_cmd">Commandes</string>
+    <string name="menu_statut">Statut</string>
+    <string name="menu_sarah">S.A.R.A.H</string>
+    <string name="menu_yana">Yana</string>
+
+    <!-- base Préferences -->
+    <string name="pref_server_cat">Serveur Ydle</string>
+    <string name="pref_server_title">Gérer</string>
+    <string name="pref_server_desc">Serveur ydle</string>
+    <string name="pref_extra_cat">Extra</string>
+    <string name="pref_extra_plug_cat">Plugins App</string>
+    <string name="pref_extra_plug_title">Plugins</string>
+    <string name="pref_extra_yana_title">Application Yana</string>
+    <string name="pref_extra_yana_desc">Activer la reconnaissance vocale Yana</string>
+    <string name="pref_extra_sarah_title">Application Sarah</string>
+    <string name="pref_extra_sarah_desc">Activer la reconnaissance vocale Sarah</string>
+    <string name="pref_about_cat">A Propos</string>
+    <string name="pref_news_desc">Voir les changements de l\'application</string>
+    <string name="pref_news_title">Nouveautés</string>
+    <string name="pref_about_desc">Ydle</string>
+    <string name="pref_about_title">A Propos</string>
+
+    <!-- serveur Préferences -->
+    <string name="ipAdress">192.168.0.13</string>
+    <string name="title_host_list">Serveurs</string>
+    <string name="title_host_detail">Serveur Détails</string>
+    <string name="pref_server_name_title">Nom du serveur Ydle</string>
+    <string name="pref_server_ip_title">Adresse du serveur ydle (interne)</string>
+    <string name="pref_server_port_title">Port du serveur ydle</string>
+    <string name="pref_server_login_title">Login ydle</string>
+    <string name="pref_server_name_desc">Entrez le nom du serveur</string>
+    <string name="pref_server_ip_desc">Entrez l\'adresse du serveur ydle (sans http://)</string>
+    <string name="pref_server_port_desc">Port du serveur</string>
+    <string name="pref_server_login_desc">Entrez votre login</string>
+    <string name="action_edit">Modifier</string>
+    <string name="action_add">Ajouter</string>
+    <string name="action_delete">Supprimer</string>
+
+    <!-- About Activity -->
+    <string name="title_about">A Propos Ydle!</string>
+    <string name="version">version :</string>
+    <string name="about_link">Site : ydle.fr</string>
+    <string name="about_contact">Auteur : Guernion Sylvain</string>
+    <string name="ydle_site">http://www.ydle.fr</string>
+    <string name="title_activity_room_paged">RoomPagedActivity</string>
+    <string name="hello_world">Hello world!</string>
+
+    <!-- Tasks -->
+    <string name="recherche">Recherche en cours</string>
+    <string name="recherche_server">Consultation des données</string>
+    <string name="init_data">initialisation des données</string>
+    <string name="chargement">Chargement</string>
+    
+    <!-- Wizard -->
+    <string name="next">Suivant</string>
+    <string name="cancel">Annuler</string>
+    <string name="ok">Ok</string>
+    
+    <string name="wizard_m_title">Configuration Ydle</string>
+    <string name="wizard_m_msg">Il est nécessaire de configurer l\'application</string>
+   
+    
+    <!--  Taost Messages -->
+    <string name="exit_msg">Etes vous sur de quitter ?</string>
+    <string name="exit">Quitter</string>
+    
+    <string name="yana_install_title">Install Yana</string>
+    <string name="yana_install_msg">Yana est néccessaire à l\'application, voulez-vous l\'installer ?</string>
+    <string name="yana_install_error">Erreur de chargement de l\'app Yana</string>
+    
+    <string name="sarah_install_title">Install S.A.R.A.H</string>
+    <string name="sarah_install_msg">S.A.R.A.H est néccessaire à l\'application, voulez-vous l\'installer ?</string>
+    <string name="sarah_install_error">Erreur de chargement de l\'app S.A.R.A.H</string>
+  
+    
+
+</resources>

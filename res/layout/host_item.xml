@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="5dip" >
+
+    <LinearLayout
+        android:id="@+id/host_itemv"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:background="@drawable/list_item_background"
+        android:orientation="vertical"
+        android:paddingLeft="10dp" >
+
+        <TextView
+            android:id="@+id/host_name"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="Titre" />
+
+        <TextView
+            android:id="@+id/host_ip"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="left"
+            android:text="Description" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/etat"
+        android:layout_width="16px"
+        android:layout_height="16px"
+        android:src="@drawable/voyant_vert" />
+
+    <Button
+        android:id="@+id/host_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="M" />
+
+    <Button
+        android:id="@+id/host_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="X" />
+
+</LinearLayout>

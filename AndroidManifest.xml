@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.ydle"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="18" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ydle"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="org.ydle.activity.YdleActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.ydle.activity.MainActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="org.ydle.activity.wizard.WizardActivity"
+            android:label="@string/app_name" >
+        </activity>
+         <activity
+            android:name="org.ydle.activity.settings.ExtraActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="org.ydle.activity.SettingsActivity"
+            android:label="@string/action_settings"
+            android:parentActivityName="org.ydle.activity.MainActivity" >
+        </activity>
+        <activity
+            android:name="org.ydle.activity.RoomListActivity"
+            android:label="@string/title_room_list"
+            android:parentActivityName="org.ydle.activity.MainActivity" >
+        </activity>
+        <activity
+            android:name="org.ydle.activity.RoomDetailActivity"
+            android:label="@string/title_room_detail"
+            android:parentActivityName="org.ydle.activity.RoomListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.ydle.activity.RoomListActivity" />
+        </activity>
+        <activity
+            android:name="org.ydle.activity.AboutActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="org.ydle.activity.settings.HostListActivity"
+            android:label="@string/title_host_list"
+            android:parentActivityName="org.ydle.activity.SettingsActivity" >
+        </activity>
+        <activity
+            android:name="org.ydle.activity.settings.HostDetailActivity"
+            android:label="@string/title_host_detail"
+            android:parentActivityName="org.ydle.activity.settings.HostListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.ydle.activity.HostListActivity" />
+        </activity>
+        <activity
+            android:name="org.ydle.activity.RoomPagedActivity"
+            android:label="@string/title_room_detail"
+            android:parentActivityName="org.ydle.activity.RoomListActivity" >
+        </activity>
+        <activity
+            android:name="org.ydle.activity.historique.GraphHistoryActivity"
+            android:label="@string/app_name" >
+        </activity>
+    </application>
+
+</manifest>
