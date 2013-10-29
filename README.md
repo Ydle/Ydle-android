@@ -12,6 +12,6 @@ Screenshoot
 ============
 
 <img src="https://raw.github.com/sguernion/Ydle-android/master/screenshots/Screenshot_Accueil.png" width="200">
-<img src="https://raw.github.com/sguernion/Ydle-android/master/screenshots/Screenshot_Pi�ces.png" width="200">
-<img src="https://raw.github.com/sguernion/Ydle-android/master/screenshots/Screenshot_Pi�ce.png" width="200">
+<img src="https://raw.github.com/sguernion/Ydle-android/master/screenshots/Screenshot_Pièces.png" width="200">
+<img src="https://raw.github.com/sguernion/Ydle-android/master/screenshots/Screenshot_Pièce.png" width="200">
 <img src="https://raw.github.com/sguernion/Ydle-android/master/screenshots/Screenshot_Configuration.png" width="200">
