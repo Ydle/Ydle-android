@@ -8,23 +8,30 @@ import org.ydle.model.configuration.ServeurInfo;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.PreferenceFragment;
+import android.util.Log;
+import android.widget.Toast;
 
 /**
  * A fragment representing a single Host detail screen. This fragment is either
  * contained in a {@link HostListActivity} in two-pane mode (on tablets) or a
  * {@link HostDetailActivity} on handsets.
  */
-public class HostDetailFragment extends PreferenceFragment {
+public class HostDetailFragment extends PreferenceFragment implements
+		FramgmentValidator {
 	/**
 	 * The fragment argument representing the item ID that this fragment
 	 * represents.
 	 */
 	public static final String ARG_ITEM_ID = "item_id";
 
+	private static final String TAG = "Ydle.HostDetailFragment";
+
 	/**
 	 * The dummy content this fragment is presenting.
 	 */
 	private ServeurInfo mItem;
+
+	private String error="";
 
 	/**
 	 * Mandatory empty constructor for the fragment manager to instantiate the
@@ -44,7 +51,7 @@ public class HostDetailFragment extends PreferenceFragment {
 			mItem = getArguments().getParcelable(ARG_ITEM_ID);
 
 			EditTextPreference ip = ((EditTextPreference) findPreference("pref_ip"));
-			
+
 			EditTextPreference nom = ((EditTextPreference) findPreference("pref_nom"));
 
 			EditTextPreference port = ((EditTextPreference) findPreference("pref_port"));
@@ -59,5 +66,25 @@ public class HostDetailFragment extends PreferenceFragment {
 			}
 		}
 	}
+
+	@Override
+	public boolean isValide() {
+		Log.d(TAG, "validate serveur info");
+		error="";
+		EditTextPreference identifiant = ((EditTextPreference) findPreference("pref_identifiant"));
+
+		if (identifiant.getText() == null || identifiant.getText().isEmpty()) {
+			error="Identifiant non Valide";
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String getError() {
+		return error;
+	}
+	
+	
 
 }

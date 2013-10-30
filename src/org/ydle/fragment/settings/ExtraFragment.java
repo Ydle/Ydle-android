@@ -5,7 +5,7 @@ import org.ydle.R;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 
-public class ExtraFragment extends PreferenceFragment{
+public class ExtraFragment extends PreferenceFragment implements FramgmentValidator{
 
 
 	public static final String ARG_ITEM_ID = "item_id";
@@ -24,6 +24,16 @@ public class ExtraFragment extends PreferenceFragment{
 		if (getArguments() != null && getArguments().containsKey(ARG_ITEM_ID)) {
 			//TODO
 		}
+	}
+
+	@Override
+	public boolean isValide() {
+		return true;
+	}
+
+	@Override
+	public String getError() {
+		return "";
 	}
 
 }
