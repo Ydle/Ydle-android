@@ -19,9 +19,6 @@ public class AboutActivity extends BaseActivity {
 	@InjectView(R.id.version)
 	TextView aboutVersion;
 
-	@InjectView(R.id.aboutTitle)
-	TextView aboutTitle;
-
 	@InjectView(R.id.link)
 	TextView link;
 

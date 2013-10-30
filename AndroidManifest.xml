@@ -58,7 +58,7 @@
         </activity>
         <activity
             android:name="org.ydle.activity.AboutActivity"
-            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
+             android:label="@string/title_about" >
         </activity>
         <activity
             android:name="org.ydle.activity.settings.HostListActivity"

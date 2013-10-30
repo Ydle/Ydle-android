@@ -52,13 +52,15 @@
     <string name="action_delete">Supprimer</string>
 
     <!-- About Activity -->
-    <string name="title_about">A Propos Ydle!</string>
+    <string name="title_about">A Propos de</string>
     <string name="version">version :</string>
     <string name="about_link">Site : ydle.fr</string>
     <string name="about_contact">Auteur : Guernion Sylvain</string>
     <string name="ydle_site">http://www.ydle.fr</string>
     <string name="title_activity_room_paged">RoomPagedActivity</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="description_ydle">Devenez le MacGyver de la domotique, et réalisez votre domotique maison, sans vous ruiner, et avec les moyens du bord.
+Assemblez par étape tout un réseau domotique complet pour créer votre propre logement 2.0</string>
+    <string name="app_mobile">Application Android</string>
 
     <!-- Tasks -->
     <string name="recherche">Recherche en cours</string>
@@ -70,6 +72,9 @@
     <string name="next">Suivant</string>
     <string name="cancel">Annuler</string>
     <string name="ok">Ok</string>
+    <string name="previous">Précédent</string>
+    <string name="terminer">Terminer</string>
+    
     
     <string name="wizard_m_title">Configuration Ydle</string>
     <string name="wizard_m_msg">Il est nécessaire de configurer l\'application</string>
