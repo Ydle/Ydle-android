@@ -5,13 +5,35 @@ import org.ydle.model.configuration.ServeurInfo;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
 
 public class ActivityUtils {
 	
+	
+	 public boolean isNetworkAvailable(Activity activity) 
+	 {
+	     ConnectivityManager cm = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
+	     NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+
+	     if (networkInfo != null && networkInfo.isConnected())
+	     {
+	         return true;
+	     }
+	     return false;
+	 }
+	 
+	 public static boolean iswifiEnable(Activity activity){
+		 WifiManager wifi = (WifiManager)activity.getSystemService(Context.WIFI_SERVICE);
+		 return wifi.isWifiEnabled();
+	 }
+
 	
 	public static Configuration getConf(SharedPreferences prefs) {
 		Configuration conf = new Configuration();

@@ -49,7 +49,7 @@ public class SettingsActivity extends RoboPreferenceActivity {
 				(Parcelable) ActivityUtils.getConf(prefs).serveur);
 		startActivity(hosts, detailIntent);
 		// startActivity(hosts, HostListActivity.class);
-		
+
 		extra = (Preference) findPreference("pref_extra_ydle");
 		Intent extraIntent = new Intent(this, ExtraActivity.class);
 		startActivity(extra, extraIntent);
@@ -58,46 +58,53 @@ public class SettingsActivity extends RoboPreferenceActivity {
 		startActivity(aPropo, AboutActivity.class);
 
 		news = (Preference) findPreference("aNews");
-		news.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-			@Override
-			public boolean onPreferenceClick(Preference arg0) {
-				AlertDialog.Builder builder = new AlertDialog.Builder(
-						SettingsActivity.this);
-				builder.setMessage(" En cours de developement")
-						.setTitle("Nouveautés").setCancelable(false);
-				builder.setPositiveButton("OK",
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog, int id) {
+		if (news != null) {
+			news.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+				@Override
+				public boolean onPreferenceClick(Preference arg0) {
+					AlertDialog.Builder builder = new AlertDialog.Builder(
+							SettingsActivity.this);
+					builder.setMessage(" En cours de developement")
+							.setTitle("Nouveautés").setCancelable(false);
+					builder.setPositiveButton("OK",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int id) {
 
-							}
-						});
-				builder.create().show();
-				return true;
-			}
-		});
+								}
+							});
+					builder.create().show();
+					return true;
+				}
+			});
+		}
 	}
 
 	private void startActivity(final Preference pref,
 			final Class<? extends Activity> activity) {
-		pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-			@Override
-			public boolean onPreferenceClick(Preference arg0) {
-				startActivity(new Intent(SettingsActivity.this, activity));
-				finish();
-				return true;
-			}
-		});
+		if (pref != null) {
+			pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+				@Override
+				public boolean onPreferenceClick(Preference arg0) {
+					startActivity(new Intent(SettingsActivity.this, activity));
+					finish();
+					return true;
+				}
+			});
+		}
 	}
 
 	private void startActivity(final Preference pref, final Intent intent) {
-		pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-			@Override
-			public boolean onPreferenceClick(Preference arg0) {
-				startActivity(intent);
-				finish();
-				return true;
-			}
-		});
+		if (pref != null) {
+			pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+				@Override
+				public boolean onPreferenceClick(Preference arg0) {
+					startActivity(intent);
+					finish();
+					return true;
+				}
+			});
+		}
 	}
 
 	private void setupSimplePreferencesScreen() {

@@ -8,10 +8,12 @@
         android:minSdkVersion="14"
         android:targetSdkVersion="18" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
 
     <application
+        android:name="org.ydle.Ydle"
         android:allowBackup="true"
         android:icon="@drawable/ydle"
         android:label="@string/app_name"
