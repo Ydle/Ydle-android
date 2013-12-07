@@ -41,7 +41,9 @@ public class RoomListAdapter extends ArrayAdapter<Room> {
 
 		ImageView type = (ImageView) view.findViewById(R.id.type);
 
-		type.setImageResource(room.typeIcon.getDrawable());
+		if(room.typeIcon != null){
+			type.setImageResource(room.typeIcon.getDrawable());
+		}
 
 		if (!room.active) {
 			view.setActivated(false);

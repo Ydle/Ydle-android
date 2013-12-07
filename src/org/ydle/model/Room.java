@@ -44,6 +44,9 @@ public class Room implements Parcelable, Serializable {
 		this.typeIcon = TypeRoomIcon.fromDrawable(in.readInt());
 	}
 
+	public Room() {
+	}
+
 	@Override
 	public void writeToParcel(Parcel dest, int arg1) {
 		dest.writeString(this.id);

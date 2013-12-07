@@ -10,7 +10,7 @@ import android.os.Parcelable;
 
 public class ServeurInfo implements Parcelable, Serializable {
 
-	private static final String applicationName="Ydle/";
+	private static final String applicationName="app_dev.php/";
 	
 	public String nom;
 
@@ -67,6 +67,6 @@ public class ServeurInfo implements Parcelable, Serializable {
 	};
 
 	public String getUrl() {
-		return host+":"+port+"/"+applicationName+"api.php";
+		return host+":"+port+"/"+applicationName;
 	}
 }
