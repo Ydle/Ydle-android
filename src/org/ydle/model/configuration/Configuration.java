@@ -3,6 +3,8 @@ package org.ydle.model.configuration;
 
 public class Configuration {
 	
+	public boolean graph;
+	
 	public boolean firstStart;
 	
 	public boolean yanaApp;

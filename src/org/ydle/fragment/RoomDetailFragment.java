@@ -5,7 +5,10 @@ import org.ydle.activity.IntentConstantes;
 import org.ydle.adapter.SensorListAdapter;
 import org.ydle.model.Room;
 
+import com.google.inject.Inject;
+
 import roboguice.fragment.RoboFragment;
+import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +27,9 @@ public class RoomDetailFragment extends RoboFragment {
 	private Room item;
 
 	TextView room_detail;
+	
+	@Inject
+	protected SharedPreferences prefs;
 
 	public RoomDetailFragment() {
 	}
@@ -63,7 +69,7 @@ public class RoomDetailFragment extends RoboFragment {
 
 			Log.d(TAG, "capteurs : " + item.sensor.size());
 			capteurs.setAdapter(new SensorListAdapter(this.getActivity(),
-					item.sensor, item));
+					item.sensor, item,prefs));
 
 			getActivity().setTitle(item.name);
 		}

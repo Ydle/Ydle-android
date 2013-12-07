@@ -8,9 +8,11 @@ import org.ydle.activity.historique.GraphHistoryActivity;
 import org.ydle.model.Room;
 import org.ydle.model.Sensor;
 import org.ydle.model.SensorType;
+import org.ydle.utils.ActivityUtils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,11 +26,14 @@ public class SensorListAdapter extends ArrayAdapter<Sensor> {
 
 	Context activitiy;
 	private Room room;
+	private SharedPreferences prefs;
 
-	public SensorListAdapter(Context context, List<Sensor> objects, Room room) {
+	public SensorListAdapter(Context context, List<Sensor> objects, Room room,
+			SharedPreferences prefs) {
 		super(context, 0, objects);
 		this.activitiy = context;
 		this.room = room;
+		this.prefs = prefs;
 	}
 
 	@Override
@@ -49,7 +54,6 @@ public class SensorListAdapter extends ArrayAdapter<Sensor> {
 		valeur.setText(node.currentValeur.valeur + " " + node.unit);
 
 		ImageView type = (ImageView) view.findViewById(R.id.type);
-		
 
 		if (node.type == SensorType.TEMP.getValeur()) {
 			type.setImageResource(R.drawable.thermometer);
@@ -57,9 +61,11 @@ public class SensorListAdapter extends ArrayAdapter<Sensor> {
 
 				@Override
 				public void onClick(View v) {
-					Intent intent = new Intent(activitiy, GraphHistoryActivity.class);
-					intent.putExtra(IntentConstantes.ITEM,(Parcelable)node);
-					intent.putExtra(IntentConstantes.ITEM_ROOM,(Parcelable)room);
+					Intent intent = new Intent(activitiy,
+							GraphHistoryActivity.class);
+					intent.putExtra(IntentConstantes.ITEM, (Parcelable) node);
+					intent.putExtra(IntentConstantes.ITEM_ROOM,
+							(Parcelable) room);
 					activitiy.startActivity(intent);
 
 				}
@@ -68,25 +74,28 @@ public class SensorListAdapter extends ArrayAdapter<Sensor> {
 			type.setImageResource(R.drawable.light);
 		} else if (node.type == SensorType.HYDRO.getValeur()) {
 			type.setImageResource(R.drawable.goutte);
-			view.setOnClickListener(new OnClickListener() {
 
-				@Override
-				public void onClick(View v) {
-					Intent intent = new Intent(activitiy, GraphHistoryActivity.class);
-					intent.putExtra(IntentConstantes.ITEM,(Parcelable)node);
-					intent.putExtra(IntentConstantes.ITEM_ROOM,(Parcelable)room);
-					activitiy.startActivity(intent);
+			if (ActivityUtils.getConf(prefs).graph) {
+				view.setOnClickListener(new OnClickListener() {
 
-				}
-			});
+					@Override
+					public void onClick(View v) {
+						Intent intent = new Intent(activitiy,
+								GraphHistoryActivity.class);
+						intent.putExtra(IntentConstantes.ITEM,
+								(Parcelable) node);
+						intent.putExtra(IntentConstantes.ITEM_ROOM,
+								(Parcelable) room);
+						activitiy.startActivity(intent);
+
+					}
+				});
+			}
 		} else {
 			type.setImageResource(R.drawable.inconnue_rouge);
 		}
 
-		
-
 		return view;
 	}
 
-	
 }

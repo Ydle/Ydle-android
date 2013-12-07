@@ -97,7 +97,7 @@ public class RoomPagedActivity extends PagedActivity<Room> {
 					.findViewById(R.id.capteurs));
 
 			Log.d(TAG, "capteurs : " + item.sensor.size());
-			capteurs.setAdapter(new SensorListAdapter(this,item.sensor,item));
+			capteurs.setAdapter(new SensorListAdapter(this,item.sensor,item,prefs));
 			
 
 			// this.setTitle(item.name);

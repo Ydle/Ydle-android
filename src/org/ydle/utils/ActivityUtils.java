@@ -17,7 +17,7 @@ import android.net.wifi.WifiManager;
 public class ActivityUtils {
 	
 	
-	 public boolean isNetworkAvailable(Activity activity) 
+	 public static boolean isNetworkAvailable(Activity activity) 
 	 {
 	     ConnectivityManager cm = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
 	     NetworkInfo networkInfo = cm.getActiveNetworkInfo();

@@ -3,12 +3,6 @@ package org.ydle.utils;
 import java.net.URL;
 import java.net.URLConnection;
 
-import android.app.Activity;
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.wifi.WifiManager;
-
 public class ServerUtils {
 	
 	public static boolean isConnectedToServer(String url, int timeout) {
