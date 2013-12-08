@@ -17,6 +17,7 @@
     <string name="menu_statut">Statut</string>
     <string name="menu_sarah">S.A.R.A.H</string>
     <string name="menu_yana">Yana</string>
+    <string name="menu_scenarios">Scénarios</string>
 
     <!-- base Préferences -->
     <string name="pref_server_cat">Serveur Ydle</string>

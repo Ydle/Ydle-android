@@ -1,25 +1,37 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/action_day"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="Jour"/>
+        android:id="@+id/menu_refresh"
+        android:icon="@drawable/ic_action_refresh"
+        android:showAsAction="ifRoom"
+        android:title="refresh"/>
     <item
-        android:id="@+id/action_week"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="Semaine"/>
-    <item
-        android:id="@+id/action_month"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="Mois"/>
-    
-    <item
-        android:id="@+id/action_year"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="Année"/>
+        android:id="@+id/menu_cal"
+        android:icon="@android:drawable/ic_menu_my_calendar"
+        android:showAsAction="ifRoom"
+        android:title="calendar">
+        <menu>
+            <item
+                android:id="@+id/action_day"
+                android:orderInCategory="100"
+                android:showAsAction="never"
+                android:title="Jour"/>
+            <item
+                android:id="@+id/action_week"
+                android:orderInCategory="100"
+                android:showAsAction="never"
+                android:title="Semaine"/>
+            <item
+                android:id="@+id/action_month"
+                android:orderInCategory="100"
+                android:showAsAction="never"
+                android:title="Mois"/>
+            <item
+                android:id="@+id/action_year"
+                android:orderInCategory="100"
+                android:showAsAction="never"
+                android:title="Année"/>
+        </menu>
+    </item>
 
 </menu>

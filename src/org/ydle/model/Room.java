@@ -16,6 +16,7 @@ public class Room implements Parcelable, Serializable {
 	public String description;
 
 	public List<Sensor> sensor = new ArrayList<Sensor>();
+	private Integer sensorSize;
 
 	public Room(String id, String name, String description,TypeRoomIcon typeIcon) {
 		this.id = id;
@@ -70,5 +71,13 @@ public class Room implements Parcelable, Serializable {
 			return new Room[size];
 		}
 	};
+	
+	public int getSensorSize(){
+		return sensorSize == null?sensor.size():sensorSize;
+	}
+
+	public void setSensorSize(int size) {
+		this.sensorSize = size;
+	}
 
 }

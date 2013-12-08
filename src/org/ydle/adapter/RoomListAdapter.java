@@ -37,7 +37,7 @@ public class RoomListAdapter extends ArrayAdapter<Room> {
 		name.setText(room.name);
 
 		TextView desc = (TextView) view.findViewById(R.id.desc);
-		desc.setText(room.sensor.size() + " Capteur(s)");
+		desc.setText(room.getSensorSize() + " Capteur(s)");
 
 		ImageView type = (ImageView) view.findViewById(R.id.type);
 

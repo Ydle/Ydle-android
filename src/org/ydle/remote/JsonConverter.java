@@ -19,9 +19,11 @@ public class JsonConverter {
 			room.id = getFacultatifString(item, "id");
 			room.active = getFacultatifBoolean(item, "active");
 			room.typeIcon = TypeRoomIcon.BATHROOM;
-			// TODO
-			room.sensor = new ArrayList<Sensor>();
-
+			if (item.optJSONArray("capteurs") != null) {
+				room.sensor = new ArrayList<Sensor>();
+			} else {
+				room.setSensorSize(getFacultatifInt(item, "capteurs"));
+			}
 		}
 
 		return room;

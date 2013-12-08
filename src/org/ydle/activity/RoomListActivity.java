@@ -14,6 +14,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
+import android.view.MenuItem;
 
 public class RoomListActivity extends BaseFragmentActivity implements
 		Callbacks<Room> {
@@ -27,7 +28,8 @@ public class RoomListActivity extends BaseFragmentActivity implements
 		setContentView(R.layout.activity_room_list);
 
 		if (findViewById(R.id.room_detail_container) != null) {
-			// Affiche du mode liste et détails des pièces pour les tablettes lorsque l'affichage en horizontal
+			// Affiche du mode liste et détails des pièces pour les tablettes
+			// lorsque l'affichage en horizontal
 			if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
 				mTwoPane = true;
 
@@ -70,5 +72,21 @@ public class RoomListActivity extends BaseFragmentActivity implements
 			detailIntent.putExtra(IntentConstantes.INDEX, index);
 			startActivity(detailIntent);
 		}
+	}
+
+	@Override
+	public boolean onMenuItemSelected(int featureId, MenuItem item) {
+
+		switch (item.getItemId()) {
+		case R.id.menu_refresh:
+			((RoomListFragment) getSupportFragmentManager().findFragmentById(
+					R.id.room_list)).refreshList();
+			break;
+
+		default:
+			break;
+		}
+
+		return super.onMenuItemSelected(featureId, item);
 	}
 }

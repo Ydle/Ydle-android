@@ -2,6 +2,7 @@ package org.ydle.activity;
 
 import org.ydle.R;
 import org.ydle.fragment.RoomDetailFragment;
+import org.ydle.fragment.RoomListFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -45,8 +46,14 @@ public class RoomDetailActivity extends BaseFragmentActivity {
 		case android.R.id.home:
 			NavUtils.navigateUpTo(this,
 					new Intent(this, RoomListActivity.class));
-			return true;
+			break;
+		case R.id.menu_refresh:
+			//TODO refresh details room
+			break;
+		default:
+			break;
 		}
 		return super.onOptionsItemSelected(item);
 	}
+
 }

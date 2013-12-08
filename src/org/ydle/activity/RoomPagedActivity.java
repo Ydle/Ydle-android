@@ -85,6 +85,10 @@ public class RoomPagedActivity extends PagedActivity<Room> {
 					.findViewById(R.id.capteur_title));
 			capteur_title.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 			
+			TextView scenario_title = ((TextView) convertView
+					.findViewById(R.id.scenario_title));
+			scenario_title.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+			
 			ImageView type = (ImageView) convertView.findViewById(R.id.type);
 
 			type.setImageResource(room.typeIcon.getDrawable());

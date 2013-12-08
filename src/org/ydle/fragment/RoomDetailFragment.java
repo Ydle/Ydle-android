@@ -59,6 +59,10 @@ public class RoomDetailFragment extends RoboFragment {
 			TextView capteur_title = ((TextView) rootView
 					.findViewById(R.id.capteur_title));
 			capteur_title.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+			
+			TextView scenario_title = ((TextView) rootView
+					.findViewById(R.id.scenario_title));
+			scenario_title.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 
 			ImageView type = (ImageView) rootView.findViewById(R.id.type);
 

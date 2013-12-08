@@ -73,6 +73,11 @@ public class RoomListFragment extends RoboListFragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		refreshList();
+
+	}
+	
+	public void refreshList(){
 		RoomsAsynkTask task = new RoomsAsynkTask(this.getActivity(), service) {
 			@Override
 			protected void onPostExecute(List<Room> result) {
@@ -84,7 +89,6 @@ public class RoomListFragment extends RoboListFragment {
 		};
 
 		task.execute((Void) null);
-
 	}
 
 	@Override

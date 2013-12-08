@@ -58,25 +58,37 @@ public abstract class PlotActivity<T> extends BaseActivity {
 		switch (item.getItemId()) {
 		case R.id.action_day:
 			echelle = TimeEchelle.DAY;
+			Log.d(TAG, "select echelle : " + echelle.getLabel());
+			plot.clear();
+			loadData();
 			break;
 		case R.id.action_week:
 			echelle = TimeEchelle.WEEK;
+			Log.d(TAG, "select echelle : " + echelle.getLabel());
+			plot.clear();
+			loadData();
 			break;
 		case R.id.action_month:
 			echelle = TimeEchelle.MONTH;
+			Log.d(TAG, "select echelle : " + echelle.getLabel());
+			plot.clear();
+			loadData();
 			break;
 		case R.id.action_year:
 			echelle = TimeEchelle.YEAR;
+			Log.d(TAG, "select echelle : " + echelle.getLabel());
+			plot.clear();
+			loadData();
+			break;
+		case R.id.menu_refresh:
+			Log.d(TAG, "select echelle : " + echelle.getLabel());
+			plot.clear();
+			loadData();
 			break;
 
 		default:
 			break;
 		}
-
-		Log.d(TAG, "select echelle : " + echelle.getLabel());
-		plot.clear();
-
-		loadData();
 		return super.onOptionsItemSelected(item);
 	}
 
