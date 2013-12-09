@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class MainActivity extends BaseActivity implements
@@ -33,12 +34,10 @@ public class MainActivity extends BaseActivity implements
 	Button btnEvents;
 	@InjectView(R.id.btn_status)
 	Button btnStatut;
-	@InjectView(R.id.btn_cmds)
-	Button btnCmd;
-
+	@InjectView(R.id.btn_yana)
+	Button btnYana;
 	@InjectView(R.id.btn_sarah)
 	Button btnSarah;
-	
 	@InjectView(R.id.btn_scenarios)
 	Button btnScenarios;
 
@@ -63,21 +62,29 @@ public class MainActivity extends BaseActivity implements
 			}
 		});
 
-		btnEvents.setActivated(false);
-		btnEvents.setAlpha(0.3f);
+		desactive(btnEvents);
+		// btnEvents.setOnClickListener(new View.OnClickListener() {
+		// @Override
+		// public void onClick(View view) {
+		// Intent main = new Intent(MainActivity.this, AlertActivity.class);
+		// startActivity(main);
+		// }
+		// });
 
-		btnStatut.setActivated(false);
-		btnStatut.setAlpha(0.3f);
-		
-		btnScenarios.setActivated(false);
-		btnScenarios.setAlpha(0.3f);
+		desactive(btnStatut);
+		desactive(btnScenarios);
 
-		btnSarah.setText(R.string.menu_sarah);
-
-		btnCmd.setText(R.string.menu_yana);
+		active(btnSarah, sarahClickListener);
+		active(btnYana, yanaClickListener);
 
 		onUpdate(conf);
 
+	}
+
+	private void desactive(Button btn) {
+		btn.setActivated(false);
+		btn.setAlpha(0.3f);
+		btn.setOnClickListener(null);
 	}
 
 	private void startWizard() {
@@ -120,25 +127,23 @@ public class MainActivity extends BaseActivity implements
 
 	public void onUpdate(Configuration conf) {
 		if (conf.yanaApp) {
-			btnCmd.setOnClickListener(yanaClickListener);
-			btnCmd.setActivated(true);
-			btnCmd.setAlpha(1f);
+			active(btnYana, yanaClickListener);
 		} else {
-			btnCmd.setActivated(false);
-			btnCmd.setAlpha(0.3f);
-			btnCmd.setOnClickListener(null);
+			desactive(btnYana);
 		}
 
 		if (conf.yanaApp) {
-			btnSarah.setOnClickListener(sarahClickListener);
-			btnSarah.setActivated(true);
-			btnSarah.setAlpha(1f);
+			active(btnSarah, sarahClickListener);
 		} else {
-			btnSarah.setActivated(false);
-			btnSarah.setAlpha(0.3f);
-			btnSarah.setOnClickListener(null);
+			desactive(btnSarah);
 		}
 
+	}
+
+	private void active(Button btn, View.OnClickListener listener) {
+		btn.setActivated(true);
+		btn.setAlpha(1f);
+		btn.setOnClickListener(listener);
 	}
 
 	View.OnClickListener yanaClickListener = new View.OnClickListener() {
@@ -197,7 +202,7 @@ public class MainActivity extends BaseActivity implements
 		Configuration conf = ActivityUtils.getConf(sharedPreferences);
 		onUpdate(conf);
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		boolean result = super.onCreateOptionsMenu(menu);

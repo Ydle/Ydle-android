@@ -1,7 +1,6 @@
 package org.ydle;
 
 import org.acra.ACRA;
-import org.acra.annotation.ReportsCrashes;
 
 import android.app.Application;
 

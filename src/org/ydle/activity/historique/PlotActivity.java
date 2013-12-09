@@ -57,33 +57,19 @@ public abstract class PlotActivity<T> extends BaseActivity {
 
 		switch (item.getItemId()) {
 		case R.id.action_day:
-			echelle = TimeEchelle.DAY;
-			Log.d(TAG, "select echelle : " + echelle.getLabel());
-			plot.clear();
-			loadData();
+			onChangeEchelle(TimeEchelle.DAY);
 			break;
 		case R.id.action_week:
-			echelle = TimeEchelle.WEEK;
-			Log.d(TAG, "select echelle : " + echelle.getLabel());
-			plot.clear();
-			loadData();
+			onChangeEchelle(TimeEchelle.WEEK);
 			break;
 		case R.id.action_month:
-			echelle = TimeEchelle.MONTH;
-			Log.d(TAG, "select echelle : " + echelle.getLabel());
-			plot.clear();
-			loadData();
+			onChangeEchelle(TimeEchelle.MONTH);
 			break;
 		case R.id.action_year:
-			echelle = TimeEchelle.YEAR;
-			Log.d(TAG, "select echelle : " + echelle.getLabel());
-			plot.clear();
-			loadData();
+			onChangeEchelle(TimeEchelle.YEAR);
 			break;
 		case R.id.menu_refresh:
-			Log.d(TAG, "select echelle : " + echelle.getLabel());
-			plot.clear();
-			loadData();
+			refresh();
 			break;
 
 		default:
@@ -92,8 +78,22 @@ public abstract class PlotActivity<T> extends BaseActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	private void onChangeEchelle(TimeEchelle newEchelle) {
+
+		if (!newEchelle.equals(echelle)) {
+			echelle = newEchelle;
+			Log.d(TAG, "select echelle : " + echelle.getLabel());
+			refresh();
+		}
+	}
+
+	private void refresh() {
+		plot.clear();
+		loadData();
+	}
+
 	public abstract void initPlot(XYPlot plott, List<SensorData> result);
-	
+
 	public abstract void loadData();
 
 }

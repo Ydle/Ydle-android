@@ -7,6 +7,7 @@ import java.util.List;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+@SuppressWarnings("serial")
 public class Room implements Parcelable, Serializable {
 	public String id;
 	public String name;
@@ -35,6 +36,7 @@ public class Room implements Parcelable, Serializable {
 		return 0;
 	}
 
+	@SuppressWarnings("unchecked")
 	public Room(Parcel in) {
 		this.id = in.readString();
 		this.name = in.readString();

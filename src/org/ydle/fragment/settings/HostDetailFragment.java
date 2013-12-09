@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.PreferenceFragment;
 import android.util.Log;
-import android.widget.Toast;
 
 /**
  * A fragment representing a single Host detail screen. This fragment is either

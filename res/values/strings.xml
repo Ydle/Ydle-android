@@ -68,31 +68,26 @@ Assemblez par étape tout un réseau domotique complet pour créer votre propre 
     <string name="recherche_server">Consultation des données</string>
     <string name="init_data">initialisation des données</string>
     <string name="chargement">Chargement</string>
-    
+
     <!-- Wizard -->
     <string name="next">Suivant</string>
     <string name="cancel">Annuler</string>
     <string name="ok">Ok</string>
     <string name="previous">Précédent</string>
     <string name="terminer">Terminer</string>
-    
-    
     <string name="wizard_m_title">Configuration Ydle</string>
     <string name="wizard_m_msg">Il est nécessaire de configurer l\'application</string>
-   
-    
-    <!--  Taost Messages -->
+
+    <!-- Taost Messages -->
     <string name="exit_msg">Etes vous sur de quitter ?</string>
     <string name="exit">Quitter</string>
-    
     <string name="yana_install_title">Install Yana</string>
     <string name="yana_install_msg">Yana est néccessaire à l\'application, voulez-vous l\'installer ?</string>
     <string name="yana_install_error">Erreur de chargement de l\'app Yana</string>
-    
     <string name="sarah_install_title">Install S.A.R.A.H</string>
     <string name="sarah_install_msg">S.A.R.A.H est néccessaire à l\'application, voulez-vous l\'installer ?</string>
     <string name="sarah_install_error">Erreur de chargement de l\'app S.A.R.A.H</string>
-  
-    
+    <string name="title_activity_alert">AlertActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

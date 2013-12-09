@@ -2,7 +2,6 @@ package org.ydle.fragment;
 
 import java.util.List;
 
-import org.ydle.R;
 import org.ydle.adapter.RoomListAdapter;
 import org.ydle.model.Room;
 import org.ydle.remote.RoomsAsynkTask;
@@ -13,7 +12,6 @@ import roboguice.fragment.RoboListFragment;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.google.inject.Inject;

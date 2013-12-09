@@ -36,7 +36,7 @@
             android:name="org.ydle.activity.wizard.WizardActivity"
             android:label="@string/app_name" >
         </activity>
-         <activity
+        <activity
             android:name="org.ydle.activity.settings.ExtraActivity"
             android:label="@string/app_name" >
         </activity>
@@ -60,7 +60,7 @@
         </activity>
         <activity
             android:name="org.ydle.activity.AboutActivity"
-             android:label="@string/title_about" >
+            android:label="@string/title_about" >
         </activity>
         <activity
             android:name="org.ydle.activity.settings.HostListActivity"
@@ -83,6 +83,10 @@
         <activity
             android:name="org.ydle.activity.historique.GraphHistoryActivity"
             android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="org.ydle.activity.AlertActivity"
+            android:label="@string/title_activity_alert" >
         </activity>
     </application>
 

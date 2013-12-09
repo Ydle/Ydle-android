@@ -2,7 +2,6 @@ package org.ydle.activity;
 
 import org.ydle.R;
 import org.ydle.fragment.RoomDetailFragment;
-import org.ydle.fragment.RoomListFragment;
 
 import android.content.Intent;
 import android.os.Bundle;

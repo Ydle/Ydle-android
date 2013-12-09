@@ -54,9 +54,12 @@ public class SensorListAdapter extends ArrayAdapter<Sensor> {
 		valeur.setText(node.currentValeur.valeur + " " + node.unit);
 
 		ImageView type = (ImageView) view.findViewById(R.id.type);
+		SensorType sensorType = SensorType.fromCode(node.type);
 
-		if (node.type == SensorType.TEMP.getValeur()) {
-			type.setImageResource(R.drawable.thermometer);
+		type.setImageResource(sensorType.getDrawable());
+
+		if (sensorType.equals(SensorType.TEMP)) {
+
 			view.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -70,10 +73,9 @@ public class SensorListAdapter extends ArrayAdapter<Sensor> {
 
 				}
 			});
-		} else if (node.type == SensorType.LUM.getValeur()) {
-			type.setImageResource(R.drawable.light);
-		} else if (node.type == SensorType.HYDRO.getValeur()) {
-			type.setImageResource(R.drawable.goutte);
+		} else if (sensorType.equals(SensorType.LUM)) {
+
+		} else if (sensorType.equals(SensorType.HYDRO)) {
 
 			if (ActivityUtils.getConf(prefs).graph) {
 				view.setOnClickListener(new OnClickListener() {
@@ -91,8 +93,6 @@ public class SensorListAdapter extends ArrayAdapter<Sensor> {
 					}
 				});
 			}
-		} else {
-			type.setImageResource(R.drawable.inconnue_rouge);
 		}
 
 		return view;

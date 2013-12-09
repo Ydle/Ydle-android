@@ -6,6 +6,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class SensorData implements Parcelable {
+	
 	public String valeur;
 	public Date date;
 	

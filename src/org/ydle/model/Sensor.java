@@ -7,6 +7,7 @@ import java.util.List;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+@SuppressWarnings("serial")
 public class Sensor implements Parcelable, Serializable {
 
 	public String name;
@@ -16,13 +17,14 @@ public class Sensor implements Parcelable, Serializable {
 	public SensorData currentValeur;
 
 	public List<SensorData> datas = new ArrayList<SensorData>();
+	public boolean active;
+	public String description;
 
 	public Sensor(String name, String unit, SensorData valeur, SensorType type) {
 		this.name = name;
 		this.unit = unit;
 		this.currentValeur = valeur;
 		this.type = type.getValeur();
-
 	}
 
 	public Sensor(String name, String unit, SensorData data, SensorType type,
@@ -31,13 +33,19 @@ public class Sensor implements Parcelable, Serializable {
 		this.datas = datas;
 	}
 
+	@SuppressWarnings("unchecked")
 	public Sensor(Parcel in) {
 		this.name = in.readString();
 		this.unit = in.readString();
+		this.description = in.readString();
+		this.active = Boolean.getBoolean(in.readString());
 		this.currentValeur = in.readParcelable(SensorData.class
 				.getClassLoader());
 		this.type = in.readInt();
 		datas = in.readArrayList(SensorData.class.getClassLoader());
+	}
+
+	public Sensor() {
 	}
 
 	@Override
@@ -54,6 +62,8 @@ public class Sensor implements Parcelable, Serializable {
 	public void writeToParcel(Parcel dest, int flags) {
 		dest.writeString(this.name);
 		dest.writeString(this.unit);
+		dest.writeString(this.description);
+		dest.writeString(String.valueOf(this.active));
 		dest.writeParcelable(this.currentValeur, 0);
 		dest.writeInt(this.type);
 		dest.writeArray(this.datas.toArray());

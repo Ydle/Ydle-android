@@ -27,16 +27,16 @@
         android:text="@string/menu_statut" />
 
     <Button
-        android:id="@+id/btn_cmds"
+        android:id="@+id/btn_yana"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/icon_speech"
-        android:text="@string/menu_cmd" />
+        android:text="@string/menu_yana" />
 
     <Button
         android:id="@+id/btn_sarah"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/icon_speech"
-        android:text="@string/menu_cmd" />
+        android:text="@string/menu_sarah" />
     
      <Button
         android:id="@+id/btn_scenarios"

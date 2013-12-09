@@ -2,12 +2,10 @@ package org.ydle.model.configuration;
 
 import java.io.Serializable;
 
-import org.ydle.model.Room;
-import org.ydle.model.TypeRoom;
-
 import android.os.Parcel;
 import android.os.Parcelable;
 
+@SuppressWarnings("serial")
 public class ServeurInfo implements Parcelable, Serializable {
 
 	private static final String applicationName="app_dev.php/";
