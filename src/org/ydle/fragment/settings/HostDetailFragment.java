@@ -1,12 +1,14 @@
 package org.ydle.fragment.settings;
 
 import org.ydle.R;
+import org.ydle.activity.IntentConstantes;
 import org.ydle.activity.settings.HostDetailActivity;
 import org.ydle.activity.settings.HostListActivity;
 import org.ydle.model.configuration.ServeurInfo;
 
 import android.os.Bundle;
 import android.preference.EditTextPreference;
+import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.util.Log;
 
@@ -16,21 +18,19 @@ import android.util.Log;
  * {@link HostDetailActivity} on handsets.
  */
 public class HostDetailFragment extends PreferenceFragment implements
-		FramgmentValidator {
-	/**
-	 * The fragment argument representing the item ID that this fragment
-	 * represents.
-	 */
-	public static final String ARG_ITEM_ID = "item_id";
+		FramgmentValidator<ServeurInfo> {
 
 	private static final String TAG = "Ydle.HostDetailFragment";
 
-	/**
-	 * The dummy content this fragment is presenting.
-	 */
-	private ServeurInfo mItem;
+	private String error = "";
 
-	private String error="";
+	EditTextPreference ip;
+
+	EditTextPreference nom;
+
+	EditTextPreference port;
+
+	EditTextPreference identifiant;
 
 	/**
 	 * Mandatory empty constructor for the fragment manager to instantiate the
@@ -46,34 +46,40 @@ public class HostDetailFragment extends PreferenceFragment implements
 		// Load the preferences from an XML resource
 		addPreferencesFromResource(R.xml.pref_host);
 
-		if (getArguments() != null && getArguments().containsKey(ARG_ITEM_ID)) {
-			mItem = getArguments().getParcelable(ARG_ITEM_ID);
+		ip = ((EditTextPreference) findPreference("pref_ip"));
+		nom = ((EditTextPreference) findPreference("pref_nom"));
+		port = ((EditTextPreference) findPreference("pref_port"));
+		identifiant = ((EditTextPreference) findPreference("pref_identifiant"));
 
-			EditTextPreference ip = ((EditTextPreference) findPreference("pref_ip"));
-
-			EditTextPreference nom = ((EditTextPreference) findPreference("pref_nom"));
-
-			EditTextPreference port = ((EditTextPreference) findPreference("pref_port"));
-
-			EditTextPreference identifiant = ((EditTextPreference) findPreference("pref_identifiant"));
-
-			if (mItem != null) {
-				port.setText(String.valueOf(mItem.port));
-				ip.setText(mItem.host);
-				identifiant.setText(mItem.identifiant);
-				nom.setText(mItem.nom);
-			}
+		ServeurInfo mItem;
+		if (getArguments() != null
+				&& getArguments().containsKey(IntentConstantes.ITEM)) {
+			mItem = getArguments().getParcelable(IntentConstantes.ITEM);
+		} else {
+			mItem = getActivity().getIntent().getParcelableExtra(
+					IntentConstantes.ITEM);
 		}
+		
+		if(mItem == null){
+			mItem = new ServeurInfo();
+		}
+
+		if (mItem != null) {
+			port.setText(String.valueOf(mItem.port));
+			ip.setText(mItem.host);
+			identifiant.setText(mItem.identifiant);
+			nom.setText(mItem.nom);
+		}
+
 	}
 
 	@Override
 	public boolean isValide() {
 		Log.d(TAG, "validate serveur info");
-		error="";
-		EditTextPreference identifiant = ((EditTextPreference) findPreference("pref_identifiant"));
+		error = "";
 
 		if (identifiant.getText() == null || identifiant.getText().isEmpty()) {
-			error="Identifiant non Valide";
+			error = "Identifiant non Valide";
 			return false;
 		}
 		return true;
@@ -83,7 +89,16 @@ public class HostDetailFragment extends PreferenceFragment implements
 	public String getError() {
 		return error;
 	}
-	
-	
+
+	@Override
+	public ServeurInfo getData() {
+		ServeurInfo data = new ServeurInfo();
+		data.port = Integer.valueOf(port.getText());
+		data.identifiant = identifiant.getText();
+		data.host = ip.getText();
+		data.nom = nom.getText();
+
+		return data;
+	}
 
 }

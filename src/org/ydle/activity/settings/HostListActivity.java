@@ -5,45 +5,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.ydle.R;
+import org.ydle.activity.IntentConstantes;
+import org.ydle.activity.wizard.WizardActivity;
 import org.ydle.fragment.settings.HostDetailFragment;
 import org.ydle.fragment.settings.HostListFragment;
 import org.ydle.model.configuration.ServeurInfo;
 import org.ydle.utils.Callbacks;
 import org.ydle.utils.ObjectSerializer;
 
-import android.content.Context;
+import roboguice.activity.RoboFragmentActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-/**
- * An activity representing a list of Hosts. This activity has different
- * presentations for handset and tablet-size devices. On handsets, the activity
- * presents a list of items, which when touched, lead to a
- * {@link HostDetailActivity} representing item details. On tablets, the
- * activity presents the list of items and item details side-by-side using two
- * vertical panes.
- * <p>
- * The activity makes heavy use of fragments. The list of items is a
- * {@link HostListFragment} and the item details (if present) is a
- * {@link HostDetailFragment}.
- * <p>
- * This activity also implements the required {@link HostListFragment.Callbacks}
- * interface to listen for item selections.
- */
-public class HostListActivity extends FragmentActivity implements
+import com.google.inject.Inject;
+
+public class HostListActivity extends RoboFragmentActivity implements
 		Callbacks<ServeurInfo> {
 
-	private static final String SHARED_PREFS_FILE = "ydle_pref";
 	private static final String HOSTS = "host";
-	
+	private static final String TAG = "Ydle.HostListActivity";
+
 	ServeurInfo current;
+
+	@Inject
+	protected SharedPreferences prefs;
 
 	/**
 	 * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -78,22 +69,16 @@ public class HostListActivity extends FragmentActivity implements
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.host, menu);
+		menu.removeItem(R.id.menu_edit);
+		menu.removeItem(R.id.menu_delete);
 		return true;
 	}
 
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.action_add:
-			current = new ServeurInfo(null);
-			onEdit(current);
+			onEdit(null);
 			break;
-		case R.id.action_delete:
-			Toast.makeText(this, "suppression du host", Toast.LENGTH_LONG).show();
-			break;
-		case R.id.action_edit:
-			onEdit(current);
-			break;
-
 		default:
 			break;
 		}
@@ -105,42 +90,55 @@ public class HostListActivity extends FragmentActivity implements
 	 * the item with the given ID was selected.
 	 */
 	@Override
-	public void onItemSelected(ServeurInfo id,List<ServeurInfo> items) {
+	public void onItemSelected(ServeurInfo id, List<ServeurInfo> items) {
+		Log.d(TAG, "onItemSelected " + id);
 		current = id;
+		onEdit(current);
 	}
 
 	public void onEdit(ServeurInfo id) {
 		if (mTwoPane) {
 			Bundle arguments = new Bundle();
-			arguments.putParcelable(HostDetailFragment.ARG_ITEM_ID, id);
+			arguments.putParcelable(IntentConstantes.ITEM, id);
 			HostDetailFragment fragment = new HostDetailFragment();
 			fragment.setArguments(arguments);
 
 		} else {
 			// In single-pane mode, simply start the detail activity
 			// for the selected item ID.
-			Intent detailIntent = new Intent(this, HostDetailActivity.class);
-			detailIntent.putExtra(HostDetailFragment.ARG_ITEM_ID,
-					(Parcelable) id);
-			startActivity(detailIntent);
+			Intent intent = new Intent(this, WizardActivity.class);
+			intent.putExtra(IntentConstantes.ACTION, "host");
+			Log.d(TAG, "onEdit : " + id);
+			if (id != null) {
+				intent.putExtra(IntentConstantes.ITEM, (Parcelable) id);
+			}
+			startActivity(intent);
+			finish();
 		}
 	}
 
 	public void addHost(ServeurInfo s) {
 		List<ServeurInfo> currentTasks = null;
+		try {
+			currentTasks = (List) ObjectSerializer.deserialize(prefs
+					.getStringSet(HOSTS, null));
+		} catch (IOException e1) {
+		}
 		if (null == currentTasks) {
 			currentTasks = new ArrayList<ServeurInfo>();
 		}
 		currentTasks.add(s);
 
 		// save the task list to preference
-		SharedPreferences prefs = getSharedPreferences(SHARED_PREFS_FILE,
-				Context.MODE_PRIVATE);
 		Editor editor = prefs.edit();
 		try {
 			editor.putStringSet(HOSTS, ObjectSerializer.serialize(currentTasks));
 		} catch (IOException e) {
 		}
 		editor.commit();
+	}
+
+	public ServeurInfo getItemToDelete() {
+		return getIntent().getParcelableExtra(IntentConstantes.DELETED_ITEM);
 	}
 }

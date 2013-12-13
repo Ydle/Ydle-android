@@ -5,7 +5,7 @@ import org.ydle.R;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 
-public class ExtraFragment extends PreferenceFragment implements FramgmentValidator{
+public class ExtraFragment extends PreferenceFragment implements FramgmentValidator<Object>{
 
 
 	public static final String ARG_ITEM_ID = "item_id";
@@ -34,6 +34,11 @@ public class ExtraFragment extends PreferenceFragment implements FramgmentValida
 	@Override
 	public String getError() {
 		return "";
+	}
+
+	@Override
+	public Object getData() {
+		return null;
 	}
 
 }

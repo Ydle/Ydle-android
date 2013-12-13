@@ -8,13 +8,14 @@ import android.os.Parcelable;
 @SuppressWarnings("serial")
 public class ServeurInfo implements Parcelable, Serializable {
 
-	private static final String applicationName="app_dev.php/";
-	
+	private static final String applicationName = "app_dev.php/";
+
 	public String nom;
 
 	public String host;
 	public int port;
 	public String identifiant;
+	public boolean actif;
 
 	public ServeurInfo(String nom, String host) {
 		this.nom = nom;
@@ -64,7 +65,34 @@ public class ServeurInfo implements Parcelable, Serializable {
 		}
 	};
 
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		ServeurInfo other = (ServeurInfo) obj;
+
+		if (nom == null) {
+			if (other.nom != null) {
+				return false;
+			}
+		} else if (!nom.equals(other.nom)) {
+			return false;
+		}
+
+		return true;
+	}
+	
+	
+
 	public String getUrl() {
-		return host+":"+port+"/"+applicationName;
+		return host + ":" + port + "/" + applicationName;
 	}
 }

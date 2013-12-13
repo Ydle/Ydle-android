@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -41,6 +42,16 @@ public class ObjectSerializer {
 		Set<String> result = new HashSet<String>();
 		for(Serializable o : objs){
 			result.add(serialize(o));
+		}
+		return result;
+	}
+	
+	public static List deserialize(Set<String> objs)  throws IOException{
+		if (objs == null)
+			return null;
+		List<Object> result = new ArrayList<Object>();
+		for(String o : objs){
+			result.add(deserialize(o));
 		}
 		return result;
 	}

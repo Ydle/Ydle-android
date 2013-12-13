@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 public class RoomListAdapter extends ArrayAdapter<Room> {
 
-	Context activitiy;
+	private Context activitiy;
 
 	public RoomListAdapter(Context context, List<Room> objects) {
 		super(context, 0, objects);

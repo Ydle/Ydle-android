@@ -3,6 +3,7 @@ package org.ydle.activity;
 import org.ydle.R;
 import org.ydle.activity.settings.ExtraActivity;
 import org.ydle.activity.settings.HostDetailActivity;
+import org.ydle.activity.settings.HostListActivity;
 import org.ydle.fragment.settings.HostDetailFragment;
 import org.ydle.utils.ActivityUtils;
 
@@ -44,9 +45,10 @@ public class SettingsActivity extends RoboPreferenceActivity {
 		setupSimplePreferencesScreen();
 
 		hosts = (Preference) findPreference("servers");
-		Intent detailIntent = new Intent(this, HostDetailActivity.class);
-		detailIntent.putExtra(HostDetailFragment.ARG_ITEM_ID,
-				(Parcelable) ActivityUtils.getConf(prefs).serveur);
+	//	Intent detailIntent = new Intent(this, HostDetailActivity.class);
+		Intent detailIntent = new Intent(this, HostListActivity.class);
+		//detailIntent.putExtra(IntentConstantes.ITEM,
+		//		(Parcelable) ActivityUtils.getConf(prefs).serveur);
 		startActivity(hosts, detailIntent);
 		// startActivity(hosts, HostListActivity.class);
 

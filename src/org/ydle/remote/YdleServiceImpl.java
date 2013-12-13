@@ -38,7 +38,7 @@ public class YdleServiceImpl implements YdleService {
 	public List<Room> getRooms() {
 
 		String result = ServerUtils.get("ApplicationIdentity",
-				getConf().serveur.getUrl() + URL_ROOMS);
+				getConf().getServer().getUrl() + URL_ROOMS);
 		
 		ArrayList<Room> rooms = new ArrayList<Room>();
 		if (result != null) {

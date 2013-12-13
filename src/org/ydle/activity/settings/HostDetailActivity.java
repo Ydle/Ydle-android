@@ -3,12 +3,15 @@ package org.ydle.activity.settings;
 import org.ydle.R;
 import org.ydle.activity.IntentConstantes;
 import org.ydle.fragment.settings.HostDetailFragment;
+import org.ydle.model.configuration.ServeurInfo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.NavUtils;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 /**
  * An activity representing a single Host detail screen. This activity is only
@@ -30,8 +33,7 @@ public class HostDetailActivity extends FragmentActivity {
 
 		HostDetailFragment fragment = new HostDetailFragment();
 		Bundle arguments = new Bundle();
-		arguments.putParcelable(IntentConstantes.ITEM, getIntent()
-				.getParcelableExtra(IntentConstantes.ITEM));
+		arguments.putParcelable(IntentConstantes.ITEM, getItem());
 		fragment.setArguments(arguments);
 
 		getFragmentManager().beginTransaction()
@@ -39,13 +41,33 @@ public class HostDetailActivity extends FragmentActivity {
 
 	}
 
+	public ServeurInfo getItem() {
+		return getIntent().getParcelableExtra(IntentConstantes.ITEM);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.host, menu);
+		menu.removeItem(R.id.action_add);
+		menu.removeItem(R.id.menu_edit);
+		return true;
+	}
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case android.R.id.home:
-			NavUtils.navigateUpTo(this,
-					new Intent(this, HostListActivity.class));
-			return true;
+		case R.id.menu_delete:
+			Toast.makeText(this, "suppression du host", Toast.LENGTH_LONG)
+					.show();
+			Intent intent = new Intent(this, HostListActivity.class);
+			intent.putExtra(IntentConstantes.DELETED_ITEM, (Parcelable)getItem());
+
+			startActivity(intent);
+			finish();
+			break;
+		default:
+			break;
 		}
 		return super.onOptionsItemSelected(item);
 	}

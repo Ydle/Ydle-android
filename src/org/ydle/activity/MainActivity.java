@@ -89,6 +89,7 @@ public class MainActivity extends BaseActivity implements
 
 	private void startWizard() {
 		Intent intent = new Intent(MainActivity.this, WizardActivity.class);
+		intent.putExtra(IntentConstantes.ACTION, "wizard");
 		ActivityUtils.showFisrtStartdDialog(MainActivity.this,
 				getText(R.string.wizard_m_title),
 				getText(R.string.wizard_m_msg), getText(R.string.ok),

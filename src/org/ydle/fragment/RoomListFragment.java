@@ -2,6 +2,7 @@ package org.ydle.fragment;
 
 import java.util.List;
 
+import org.ydle.activity.BaseListFragment;
 import org.ydle.adapter.RoomListAdapter;
 import org.ydle.model.Room;
 import org.ydle.remote.RoomsAsynkTask;
@@ -25,7 +26,7 @@ import com.google.inject.Inject;
  * Activities containing this fragment MUST implement the {@link Callbacks}
  * interface.
  */
-public class RoomListFragment extends RoboListFragment {
+public class RoomListFragment extends BaseListFragment {
 
 	/**
 	 * The serialization (saved instance state) Bundle key representing the

@@ -27,6 +27,7 @@ public class DummyContent {
 
 	static {
 		// Add 3 sample items.
+		
 		addItem(new ServeurInfo("Ydle 1","192.168.0.11"));
 		addItem(new ServeurInfo("Ydle Dev","127.0.0.1"));
 		addItem(new ServeurInfo("Ydle test","192.168.0.13"));

@@ -1,24 +1,21 @@
 package org.ydle.fragment.wizard;
 
+import org.ydle.activity.BaseFragment;
 import org.ydle.fragment.settings.FramgmentValidator;
 import org.ydle.model.configuration.Configuration;
 import org.ydle.utils.ActivityUtils;
 import org.ydle.utils.ServerUtils;
 
-import roboguice.fragment.RoboFragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.inject.Inject;
 
-public class WizardStatusFragment extends RoboFragment implements
-		FramgmentValidator {
+public class WizardStatusFragment extends BaseFragment implements
+		FramgmentValidator<Object> {
 	
 	private boolean network;
 	
-	@Inject
-	protected SharedPreferences prefs;
-
 	public WizardStatusFragment() {
 	}
 
@@ -43,9 +40,7 @@ public class WizardStatusFragment extends RoboFragment implements
 
 		if(network){
 			
-			Configuration conf = ActivityUtils.getConf(prefs);
-			
-			String url=conf.serveur.getUrl();
+			String url= getConf().getServer().getUrl();
 			
 			if(ServerUtils.isConnectedToServer(url, 10)){
 				// TODO test la connexion au serveur Ydle
@@ -63,6 +58,12 @@ public class WizardStatusFragment extends RoboFragment implements
 	@Override
 	public String getError() {
 		return "";
+	}
+
+	@Override
+	public Object getData() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

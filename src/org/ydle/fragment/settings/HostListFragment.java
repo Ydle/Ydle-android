@@ -1,18 +1,22 @@
 package org.ydle.fragment.settings;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.ydle.R;
+import org.ydle.activity.BaseListFragment;
+import org.ydle.activity.settings.HostListActivity;
 import org.ydle.adapter.HostListAdapter;
 import org.ydle.dummy.DummyContent;
 import org.ydle.model.configuration.ServeurInfo;
 import org.ydle.utils.Callbacks;
+import org.ydle.utils.ObjectSerializer;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -27,7 +31,7 @@ import android.widget.ListView;
  * Activities containing this fragment MUST implement the {@link Callbacks}
  * interface.
  */
-public class HostListFragment extends ListFragment {
+public class HostListFragment extends BaseListFragment {
 
 	/**
 	 * The serialization (saved instance state) Bundle key representing the
@@ -48,13 +52,15 @@ public class HostListFragment extends ListFragment {
 	 */
 	private int mActivatedPosition = ListView.INVALID_POSITION;
 
+	private List<ServeurInfo> items;
+
 	/**
 	 * A dummy implementation of the {@link Callbacks} interface that does
 	 * nothing. Used only when this fragment is not attached to an activity.
 	 */
 	private static Callbacks<ServeurInfo> sDummyCallbacks = new Callbacks<ServeurInfo>() {
 		@Override
-		public void onItemSelected(ServeurInfo id,List<ServeurInfo> items) {
+		public void onItemSelected(ServeurInfo id, List<ServeurInfo> items) {
 		}
 	};
 
@@ -69,10 +75,31 @@ public class HostListFragment extends ListFragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		mCallbacks = (Callbacks<ServeurInfo>) getActivity();
+
+		
+		items = getConf().serversYdle;
+		
+
+		ServeurInfo serverTodelete = ((HostListActivity) getActivity())
+				.getItemToDelete();
+		if (serverTodelete != null) {
+			items.remove(serverTodelete);
+		}
+		
+		Editor editor = prefs.edit();
+		try {
+			editor.putStringSet("host", ObjectSerializer.serialize(items));
+		} catch (IOException e) {
+		}
+		editor.commit();
+
 		// TODO: replace with a real list adapter.
-		setListAdapter(new HostListAdapter(getActivity(), DummyContent.ITEMS));
+		setListAdapter(new HostListAdapter(getActivity(), this.items));
 
 	}
+	
+	
 
 	private void onClick(View view, int position) {
 		ServeurInfo serverInfo = DummyContent.ITEMS.get(position);
@@ -90,8 +117,7 @@ public class HostListFragment extends ListFragment {
 		Log.d(TAG, "selection : ");
 		// view.findViewById(id)
 
-		// loadPref( serverInfo);
-		mCallbacks.onItemSelected(serverInfo,DummyContent.ITEMS);
+		mCallbacks.onItemSelected(serverInfo, getConf().serversYdle);
 
 	}
 
@@ -161,13 +187,23 @@ public class HostListFragment extends ListFragment {
 		mActivatedPosition = position;
 	}
 
+	@Override
+	public void onListItemClick(ListView listView, View view, int position,
+			long id) {
+		super.onListItemClick(listView, view, position, id);
+		if (items.get(position) != null) {
+			mCallbacks.onItemSelected(items.get(position), items);
+		}
+	}
+
 	public void loadPref(ServeurInfo serverInfo) {
 		SharedPreferences mySharedPreferences = PreferenceManager
 				.getDefaultSharedPreferences(getActivity());
 
 		mySharedPreferences.edit().putString("pref_ip", serverInfo.host);
 		mySharedPreferences.edit().putInt("pref_port", serverInfo.port);
-		mySharedPreferences.edit().putString("pref_identifiant", serverInfo.identifiant);
+		mySharedPreferences.edit().putString("pref_identifiant",
+				serverInfo.identifiant);
 		mySharedPreferences.edit().commit();
 
 	}

@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context="org.ydle.fragment.RoomDetailFragment" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dip" >
+
+        <ImageView
+            android:id="@+id/add_host"
+            android:layout_width="110px"
+            android:layout_height="110px"
+            android:src="@drawable/play" />
+
+        <TextView
+            android:id="@+id/add_host_text"
+            style="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Nouveau serveur"
+            android:textIsSelectable="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/hosts_title"
+            style="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="1dp"
+            android:text="Serveurs"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        
+        <TextView
+            android:id="@+id/hosts_empty"
+            style="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Aucun Serveur"
+            android:textIsSelectable="true" />
+
+        <ListView
+            android:id="@+id/hosts"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+        </ListView>
+    </LinearLayout>
+    
+    
+</LinearLayout>
