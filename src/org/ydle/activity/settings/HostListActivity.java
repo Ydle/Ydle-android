@@ -71,6 +71,7 @@ public class HostListActivity extends RoboFragmentActivity implements
 		getMenuInflater().inflate(R.menu.host, menu);
 		menu.removeItem(R.id.menu_edit);
 		menu.removeItem(R.id.menu_delete);
+		menu.removeItem(R.id.menu_actif);
 		return true;
 	}
 

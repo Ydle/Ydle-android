@@ -3,11 +3,15 @@ package org.ydle.utils;
 import java.io.IOException;
 import java.util.List;
 
+import org.ydle.model.configuration.Configuration;
 import org.ydle.model.configuration.ServeurInfo;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 public class PreferenceUtils {
 
@@ -30,6 +34,59 @@ public class PreferenceUtils {
 		Log.d(TAG, "size" + servers.size());
 		servers.add(newServer);
 		Log.d(TAG, "size" + servers.size());
+
+		Editor editor = prefs.edit();
+		try {
+			editor.putStringSet("host", ObjectSerializer.serialize(servers));
+		} catch (IOException e) {
+		}
+		editor.commit();
+
+	}
+
+	public static void updateFirstStart(SharedPreferences prefs) {
+		Editor editor = prefs.edit().putBoolean("pref_firstStart", false);
+		editor.apply();
+		editor.commit();
+	}
+
+	public static void deleteServeur(ServeurInfo serverTodelete,
+			SharedPreferences prefs, Activity activity) {
+
+		Configuration conf = ActivityUtils.getConf(prefs);
+
+		if (serverTodelete != null) {
+			if (conf.serversYdle.size() == 1) {
+				Toast.makeText(activity, "Impossible de supprimer le serveur",
+						Toast.LENGTH_LONG).show();
+			} else {
+				Toast.makeText(activity, "suppression du host",
+						Toast.LENGTH_LONG).show();
+				conf.serversYdle.remove(serverTodelete);
+			}
+		}
+
+		Editor editor = prefs.edit();
+		try {
+			editor.putStringSet("host",
+					ObjectSerializer.serialize(conf.serversYdle));
+		} catch (IOException e) {
+		}
+		editor.commit();
+	}
+
+	public static void activeServer(ServeurInfo item, SharedPreferences prefs) {
+		Configuration conf = ActivityUtils.getConf(prefs);
+
+		List<ServeurInfo> servers = conf.serversYdle;
+
+		for (ServeurInfo server : servers) {
+			if (server.nom.equals(item.nom)) {
+				server.actif = true;
+			} else {
+				server.actif = false;
+			}
+		}
 
 		Editor editor = prefs.edit();
 		try {

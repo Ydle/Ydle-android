@@ -36,6 +36,7 @@ public class ServeurInfo implements Parcelable, Serializable {
 		if (in != null) {
 			this.nom = in.readString();
 			this.host = in.readString();
+			this.actif = Boolean.valueOf(in.readString());
 			this.port = in.readInt();
 			this.identifiant = in.readString();
 		}
@@ -48,6 +49,7 @@ public class ServeurInfo implements Parcelable, Serializable {
 	public void writeToParcel(Parcel dest, int arg1) {
 		dest.writeString(this.nom);
 		dest.writeString(this.host);
+		dest.writeString(String.valueOf(this.actif));
 		dest.writeInt(this.port);
 		dest.writeString(this.identifiant);
 
@@ -64,7 +66,6 @@ public class ServeurInfo implements Parcelable, Serializable {
 			return new ServeurInfo[size];
 		}
 	};
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -89,8 +90,6 @@ public class ServeurInfo implements Parcelable, Serializable {
 
 		return true;
 	}
-	
-	
 
 	public String getUrl() {
 		return host + ":" + port + "/" + applicationName;

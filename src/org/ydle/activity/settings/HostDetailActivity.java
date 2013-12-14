@@ -4,14 +4,18 @@ import org.ydle.R;
 import org.ydle.activity.IntentConstantes;
 import org.ydle.fragment.settings.HostDetailFragment;
 import org.ydle.model.configuration.ServeurInfo;
+import org.ydle.utils.PreferenceUtils;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+
+import com.google.inject.Inject;
 
 /**
  * An activity representing a single Host detail screen. This activity is only
@@ -22,6 +26,10 @@ import android.widget.Toast;
  * a {@link HostDetailFragment}.
  */
 public class HostDetailActivity extends FragmentActivity {
+
+	private static final String TAG = "Ydle.HostDetailActivity";
+	@Inject
+	protected SharedPreferences prefs;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +59,9 @@ public class HostDetailActivity extends FragmentActivity {
 		getMenuInflater().inflate(R.menu.host, menu);
 		menu.removeItem(R.id.action_add);
 		menu.removeItem(R.id.menu_edit);
+		if (getItem().actif) {
+			menu.removeItem(R.id.menu_actif);
+		}
 		return true;
 	}
 
@@ -58,14 +69,20 @@ public class HostDetailActivity extends FragmentActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.menu_delete:
-			Toast.makeText(this, "suppression du host", Toast.LENGTH_LONG)
-					.show();
 			Intent intent = new Intent(this, HostListActivity.class);
-			intent.putExtra(IntentConstantes.DELETED_ITEM, (Parcelable)getItem());
+			intent.putExtra(IntentConstantes.DELETED_ITEM,
+					(Parcelable) getItem());
 
 			startActivity(intent);
 			finish();
 			break;
+		case R.id.menu_actif:
+			PreferenceUtils.activeServer(getItem(), prefs);
+			Log.d(TAG, "active host" + getItem().nom);
+			startActivity(new Intent(this, HostListActivity.class));
+			finish();
+			break;
+
 		default:
 			break;
 		}

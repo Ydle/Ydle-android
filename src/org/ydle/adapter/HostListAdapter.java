@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class HostListAdapter extends ArrayAdapter<ServeurInfo> {
@@ -34,6 +35,14 @@ public class HostListAdapter extends ArrayAdapter<ServeurInfo> {
 
 		TextView host_ip = (TextView) view.findViewById(R.id.host_ip);
 		host_ip.setText(host.host);
+		
+		ImageView img =(ImageView) view.findViewById(R.id.etat);
+		
+		if(!host.actif){
+			img.setImageResource(R.drawable.voyant_rouge);
+		}else{
+			img.setImageResource(R.drawable.voyant_vert);
+		}
 
 		return view;
 	}

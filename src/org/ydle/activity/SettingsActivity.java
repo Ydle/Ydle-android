@@ -1,5 +1,6 @@
 package org.ydle.activity;
 
+import org.ydle.ChangeLog;
 import org.ydle.R;
 import org.ydle.activity.settings.ExtraActivity;
 import org.ydle.activity.settings.HostDetailActivity;
@@ -64,18 +65,9 @@ public class SettingsActivity extends RoboPreferenceActivity {
 			news.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
 				@Override
 				public boolean onPreferenceClick(Preference arg0) {
-					AlertDialog.Builder builder = new AlertDialog.Builder(
-							SettingsActivity.this);
-					builder.setMessage(" En cours de developement")
-							.setTitle("Nouveautés").setCancelable(false);
-					builder.setPositiveButton("OK",
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int id) {
-
-								}
-							});
-					builder.create().show();
+					ChangeLog cl = new ChangeLog(SettingsActivity.this);
+				    if (cl.firstRun())
+				        cl.getLogDialog().show();
 					return true;
 				}
 			});

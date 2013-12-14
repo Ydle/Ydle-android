@@ -24,15 +24,16 @@
 
             <TextView
                 android:id="@+id/host_name"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:text="Titre" />
-
+            
             <ImageView
                 android:id="@+id/etat"
                 android:layout_width="16px"
                 android:layout_height="16px"
                 android:src="@drawable/voyant_vert" />
+
         </LinearLayout>
 
         <TextView

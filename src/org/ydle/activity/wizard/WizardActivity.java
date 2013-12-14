@@ -92,9 +92,7 @@ public class WizardActivity extends BaseActivity {
 
 					if (action.equals("firstStart")) {
 						// sauvegarder en conf que l'on a passé le wizard
-						Editor editor = prefs.edit().putBoolean(
-								"pref_firstStart", false);
-						editor.apply();
+						PreferenceUtils.updateFirstStart(prefs);
 					} else if (action.equals("host")) {
 						Log.d(TAG, "enregistrement serveur");
 						ServeurInfo server = (ServeurInfo) framgementValidators
@@ -190,6 +188,14 @@ public class WizardActivity extends BaseActivity {
 			getMenuInflater().inflate(R.menu.host, menu);
 			menu.removeItem(R.id.menu_edit);
 			menu.removeItem(R.id.action_add);
+
+			ServeurInfo server = (ServeurInfo) framgementValidators.get(
+					mPager.getCurrentItem()).getData();
+			Log.d(TAG, "active state " + server.nom+" "+server.actif);
+			if (server.actif) {
+				menu.removeItem(R.id.menu_actif);
+			}
+
 		}
 		return true;
 	}
@@ -197,8 +203,7 @@ public class WizardActivity extends BaseActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.menu_delete:
-			Toast.makeText(this, "suppression du host", Toast.LENGTH_LONG)
-					.show();
+
 			ServeurInfo server = (ServeurInfo) framgementValidators.get(
 					mPager.getCurrentItem()).getData();
 
@@ -206,6 +211,14 @@ public class WizardActivity extends BaseActivity {
 			intent.putExtra(IntentConstantes.DELETED_ITEM, (Parcelable) server);
 
 			startActivity(intent);
+			finish();
+			break;
+		case R.id.menu_actif:
+			server = (ServeurInfo) framgementValidators.get(
+					mPager.getCurrentItem()).getData();
+			PreferenceUtils.activeServer(server, prefs);
+			Log.d(TAG, "active host " + server.nom);
+			startActivity(new Intent(this, HostListActivity.class));
 			finish();
 			break;
 		default:

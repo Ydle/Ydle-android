@@ -1,24 +1,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    
-    
-     <item
+    <item
         android:id="@+id/action_add"
-        android:orderInCategory="100"
         android:icon="@android:drawable/ic_menu_add"
+        android:orderInCategory="100"
         android:showAsAction="ifRoom"
         android:title="@string/action_add"/>
-     
-     <item
+    <item
         android:id="@+id/menu_edit"
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/action_edit"/>
-    
-     <item
+    <item
         android:id="@+id/menu_delete"
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/action_delete"/>
+    <item
+        android:id="@+id/menu_actif"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/action_active"/>
 
 </menu>

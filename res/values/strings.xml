@@ -5,6 +5,8 @@
 
     <!-- Menu -->
     <string name="action_settings">Configuration</string>
+    <string name="action_desactive">Désactiver</string>
+    <string name="action_active">Activer</string>
 
     <!-- Room Activites -->
     <string name="title_room_list">Pièces</string>
@@ -89,5 +91,10 @@ Assemblez par étape tout un réseau domotique complet pour créer votre propre 
     <string name="sarah_install_error">Erreur de chargement de l\'app S.A.R.A.H</string>
     <string name="title_activity_alert">AlertActivity</string>
     <string name="hello_world">Hello world!</string>
+    
+    <!--  ChangeLog -->
+    <string name="changelog_full_title">Change Log</string>
+    <string name="changelog_title">Nouveautés</string>
+    <string name="changelog_ok_button">OK</string>
 
 </resources>

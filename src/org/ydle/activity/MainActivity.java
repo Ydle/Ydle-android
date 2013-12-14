@@ -5,6 +5,7 @@ import org.ydle.activity.wizard.WizardActivity;
 import org.ydle.layout.DashboardLayout;
 import org.ydle.model.configuration.Configuration;
 import org.ydle.utils.ActivityUtils;
+import org.ydle.utils.PreferenceUtils;
 
 import roboguice.inject.InjectView;
 import android.app.AlertDialog;
@@ -17,7 +18,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class MainActivity extends BaseActivity implements
@@ -50,7 +50,11 @@ public class MainActivity extends BaseActivity implements
 		Configuration conf = getConf();
 
 		if (conf.firstStart) {
-			startWizard();
+			if (conf.serversYdle.size() == 0) {
+				startWizard();
+			} else {
+				PreferenceUtils.updateFirstStart(prefs);
+			}
 		}
 
 		btnRoom.setOnClickListener(new View.OnClickListener() {

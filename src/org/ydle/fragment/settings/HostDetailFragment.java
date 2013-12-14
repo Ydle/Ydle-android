@@ -8,7 +8,6 @@ import org.ydle.model.configuration.ServeurInfo;
 
 import android.os.Bundle;
 import android.preference.EditTextPreference;
-import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.util.Log;
 
@@ -31,6 +30,8 @@ public class HostDetailFragment extends PreferenceFragment implements
 	EditTextPreference port;
 
 	EditTextPreference identifiant;
+	
+	ServeurInfo mItem;
 
 	/**
 	 * Mandatory empty constructor for the fragment manager to instantiate the
@@ -51,7 +52,7 @@ public class HostDetailFragment extends PreferenceFragment implements
 		port = ((EditTextPreference) findPreference("pref_port"));
 		identifiant = ((EditTextPreference) findPreference("pref_identifiant"));
 
-		ServeurInfo mItem;
+		
 		if (getArguments() != null
 				&& getArguments().containsKey(IntentConstantes.ITEM)) {
 			mItem = getArguments().getParcelable(IntentConstantes.ITEM);
@@ -97,6 +98,7 @@ public class HostDetailFragment extends PreferenceFragment implements
 		data.identifiant = identifiant.getText();
 		data.host = ip.getText();
 		data.nom = nom.getText();
+		data.actif = mItem.actif;
 
 		return data;
 	}

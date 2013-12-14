@@ -11,6 +11,7 @@ import org.ydle.dummy.DummyContent;
 import org.ydle.model.configuration.ServeurInfo;
 import org.ydle.utils.Callbacks;
 import org.ydle.utils.ObjectSerializer;
+import org.ydle.utils.PreferenceUtils;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -21,6 +22,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 /**
  * A list fragment representing a list of Hosts. This fragment also supports
@@ -77,29 +79,16 @@ public class HostListFragment extends BaseListFragment {
 
 		mCallbacks = (Callbacks<ServeurInfo>) getActivity();
 
-		
-		items = getConf().serversYdle;
-		
-
 		ServeurInfo serverTodelete = ((HostListActivity) getActivity())
 				.getItemToDelete();
-		if (serverTodelete != null) {
-			items.remove(serverTodelete);
-		}
 		
-		Editor editor = prefs.edit();
-		try {
-			editor.putStringSet("host", ObjectSerializer.serialize(items));
-		} catch (IOException e) {
-		}
-		editor.commit();
+		PreferenceUtils.deleteServeur(serverTodelete,prefs,getActivity());
+		
+		items = getConf().serversYdle;
 
-		// TODO: replace with a real list adapter.
 		setListAdapter(new HostListAdapter(getActivity(), this.items));
 
 	}
-	
-	
 
 	private void onClick(View view, int position) {
 		ServeurInfo serverInfo = DummyContent.ITEMS.get(position);
