@@ -1,5 +1,6 @@
 package org.ydle.activity;
 
+import org.ydle.ChangeLog;
 import org.ydle.R;
 import org.ydle.activity.wizard.WizardActivity;
 import org.ydle.layout.DashboardLayout;
@@ -56,6 +57,10 @@ public class MainActivity extends BaseActivity implements
 				PreferenceUtils.updateFirstStart(prefs);
 			}
 		}
+		
+		ChangeLog cl = new ChangeLog(this);
+	    if (cl.firstRun())
+	        cl.getLogDialog().show();
 
 		btnRoom.setOnClickListener(new View.OnClickListener() {
 			@Override

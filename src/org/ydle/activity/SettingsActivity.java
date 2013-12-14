@@ -46,10 +46,10 @@ public class SettingsActivity extends RoboPreferenceActivity {
 		setupSimplePreferencesScreen();
 
 		hosts = (Preference) findPreference("servers");
-	//	Intent detailIntent = new Intent(this, HostDetailActivity.class);
+		// Intent detailIntent = new Intent(this, HostDetailActivity.class);
 		Intent detailIntent = new Intent(this, HostListActivity.class);
-		//detailIntent.putExtra(IntentConstantes.ITEM,
-		//		(Parcelable) ActivityUtils.getConf(prefs).serveur);
+		// detailIntent.putExtra(IntentConstantes.ITEM,
+		// (Parcelable) ActivityUtils.getConf(prefs).serveur);
 		startActivity(hosts, detailIntent);
 		// startActivity(hosts, HostListActivity.class);
 
@@ -66,8 +66,7 @@ public class SettingsActivity extends RoboPreferenceActivity {
 				@Override
 				public boolean onPreferenceClick(Preference arg0) {
 					ChangeLog cl = new ChangeLog(SettingsActivity.this);
-				    if (cl.firstRun())
-				        cl.getLogDialog().show();
+					cl.getFullLogDialog().show();
 					return true;
 				}
 			});

@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
@@ -72,6 +73,14 @@ public class AboutActivity extends BaseActivity {
 		}
 		;
 		return name;
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		boolean result = super.onCreateOptionsMenu(menu);
+		menu.removeItem(R.id.menu_refresh);
+		menu.removeItem(R.id.action_settings);
+		return result;
 	}
 
 }
