@@ -1,6 +1,5 @@
 package org.ydle.fragment.settings;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.ydle.R;
@@ -10,19 +9,16 @@ import org.ydle.adapter.HostListAdapter;
 import org.ydle.dummy.DummyContent;
 import org.ydle.model.configuration.ServeurInfo;
 import org.ydle.utils.Callbacks;
-import org.ydle.utils.ObjectSerializer;
 import org.ydle.utils.PreferenceUtils;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 /**
  * A list fragment representing a list of Hosts. This fragment also supports

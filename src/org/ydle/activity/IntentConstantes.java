@@ -8,4 +8,6 @@ public interface IntentConstantes {
     String DELETED_ITEM = "deleted_item";
 	String ITEM_ROOM = "itemRoom";
 	String ACTION = "action";
+	String ITEM_NEXT = "next";
+	String ITEMS_SIZE = "items_size";
 }

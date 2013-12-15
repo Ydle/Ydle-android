@@ -2,14 +2,10 @@ package org.ydle.fragment.wizard;
 
 import org.ydle.activity.BaseFragment;
 import org.ydle.fragment.settings.FramgmentValidator;
-import org.ydle.model.configuration.Configuration;
 import org.ydle.utils.ActivityUtils;
 import org.ydle.utils.ServerUtils;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import com.google.inject.Inject;
 
 public class WizardStatusFragment extends BaseFragment implements
 		FramgmentValidator<Object> {

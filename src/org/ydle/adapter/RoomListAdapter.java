@@ -15,11 +15,8 @@ import android.widget.TextView;
 
 public class RoomListAdapter extends ArrayAdapter<Room> {
 
-	private Context activitiy;
-
 	public RoomListAdapter(Context context, List<Room> objects) {
 		super(context, 0, objects);
-		this.activitiy = context;
 	}
 
 	@Override
@@ -41,7 +38,7 @@ public class RoomListAdapter extends ArrayAdapter<Room> {
 
 		ImageView type = (ImageView) view.findViewById(R.id.type);
 
-		if(room.typeIcon != null){
+		if (room.typeIcon != null) {
 			type.setImageResource(room.typeIcon.getDrawable());
 		}
 

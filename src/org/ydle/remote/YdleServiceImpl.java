@@ -32,17 +32,18 @@ public class YdleServiceImpl implements YdleService {
 	@Inject
 	protected SharedPreferences prefs;
 
-	private final String URL_ROOMS = "api/v1/rooms";
+	private static final String URL_ROOMS = "api/v1/rooms";
+	private static final String URL_ROOM = "api/v1/room/";
 
 	@Override
 	public List<Room> getRooms() {
 
-		String result = ServerUtils.get("ApplicationIdentity",
-				getConf().getServer().getUrl() + URL_ROOMS);
-		
+		String result = ServerUtils.get("ApplicationIdentity", getConf()
+				.getServer().getUrl() + URL_ROOMS);
+
 		ArrayList<Room> rooms = new ArrayList<Room>();
 		if (result != null) {
-			 Log.d(TAG, "rooms result : "+result);
+			Log.d(TAG, "rooms result : " + result);
 			try {
 				JSONObject json = new JSONObject(result);
 				JSONArray roomsArray = json.getJSONArray("rooms");
@@ -76,6 +77,41 @@ public class YdleServiceImpl implements YdleService {
 
 	public Configuration getConf() {
 		return ActivityUtils.getConf(prefs);
+	}
+
+	@Override
+	public Room getRoomDetails(String id) {
+
+		String result = ServerUtils.get("ApplicationIdentity", getConf()
+				.getServer().getUrl() + URL_ROOM + id);
+
+		Room room = null;
+		if (result != null) {
+			Log.d(TAG, "room detail result : " + result);
+			try {
+				JSONObject json = new JSONObject(result);
+				JSONArray roomsArray = json.getJSONArray("room");
+
+				for (int a = 0; a < roomsArray.length(); a++) {
+					JSONObject item = roomsArray.getJSONObject(a);
+					room = converter.convertRoom(item);
+				}
+				Log.d("UPDATE", "load room : " + room);
+				return room;
+			} catch (JSONException e) {
+				Log.e(TAG, "There was an error parsing the JSON", e);
+			}
+		}
+		return find(DummyYdleContent.ITEMS, id);
+	}
+
+	private Room find(List<Room> items, String id) {
+		for(Room room : items){
+			if(room.id.equals(id) ){
+				return room;
+			}
+		}
+		return null;
 	}
 
 }

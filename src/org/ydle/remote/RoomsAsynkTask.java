@@ -7,7 +7,7 @@ import org.ydle.model.Room;
 
 import android.app.Activity;
 
-public class RoomsAsynkTask extends AbstractTask<List<Room>> {
+public class RoomsAsynkTask extends AbstractTask<Void,List<Room>> {
 
 	private YdleService service;
 

@@ -9,7 +9,7 @@ import org.ydle.model.TimeEchelle;
 
 import android.app.Activity;
 
-public class SensorDataAsynkTask extends AbstractTask<List<SensorData>> {
+public class SensorDataAsynkTask extends AbstractTask<Void,List<SensorData>> {
 
 	private YdleService service;
 

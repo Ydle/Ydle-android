@@ -76,17 +76,17 @@
                 android:value="org.ydle.activity.HostListActivity" />
         </activity>
         <activity
-            android:name="org.ydle.activity.RoomPagedActivity"
-            android:label="@string/title_room_detail"
-            android:parentActivityName="org.ydle.activity.RoomListActivity" >
-        </activity>
-        <activity
             android:name="org.ydle.activity.historique.GraphHistoryActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
             android:name="org.ydle.activity.AlertActivity"
             android:label="@string/title_activity_alert" >
+        </activity>
+        <activity
+            android:name="org.ydle.activity.RoomSlidePagerActivity"
+            android:label="@string/app_name"
+            android:parentActivityName="org.ydle.activity.RoomListActivity" >
         </activity>
     </application>
 

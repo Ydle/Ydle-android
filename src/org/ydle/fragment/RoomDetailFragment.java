@@ -4,8 +4,8 @@ import org.ydle.R;
 import org.ydle.activity.IntentConstantes;
 import org.ydle.adapter.SensorListAdapter;
 import org.ydle.model.Room;
-
-import com.google.inject.Inject;
+import org.ydle.remote.RoomDetailsAsynkTask;
+import org.ydle.remote.YdleService;
 
 import roboguice.fragment.RoboFragment;
 import android.content.SharedPreferences;
@@ -19,37 +19,57 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class RoomDetailFragment extends RoboFragment {
+import com.google.inject.Inject;
 
+public class RoomDetailFragment extends RoboFragment {
 
 	private static final String TAG = "Ydle.RoomDetailFragment";
 
+	@Inject
+	private YdleService service;
+
 	private Room item;
 
+	private String itemId;
+
 	TextView room_detail;
-	
+
 	@Inject
 	protected SharedPreferences prefs;
 
-	public RoomDetailFragment() {
+	public void initItem(String items) {
+		itemId = items;
 	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		if (getArguments().containsKey(IntentConstantes.ITEM)) {
-			item = getArguments().getParcelable(IntentConstantes.ITEM);
+		if (getArguments() != null
+				&& getArguments().containsKey(IntentConstantes.ITEM)) {
+			itemId = getArguments().getString(IntentConstantes.ITEM);
+			refreshData();
 		}
+
 	}
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_room_detail,
-				container, false);
+	public void refreshData() {
+		RoomDetailsAsynkTask task = new RoomDetailsAsynkTask(
+				this.getActivity(), service) {
+			@Override
+			protected void onPostExecute(Room result) {
+				super.onPostExecute(result);
+				item = result;
+				initView();
+			}
+		};
 
-		// Show the dummy content as text in a TextView.
+		task.execute(itemId);
+	}
+
+	private void initView() {
+		View rootView = getView();
+
 		if (item != null) {
 
 			TextView room_detail = ((TextView) rootView
@@ -59,7 +79,7 @@ public class RoomDetailFragment extends RoboFragment {
 			TextView capteur_title = ((TextView) rootView
 					.findViewById(R.id.capteur_title));
 			capteur_title.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
-			
+
 			TextView scenario_title = ((TextView) rootView
 					.findViewById(R.id.scenario_title));
 			scenario_title.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
@@ -73,10 +93,19 @@ public class RoomDetailFragment extends RoboFragment {
 
 			Log.d(TAG, "capteurs : " + item.sensor.size());
 			capteurs.setAdapter(new SensorListAdapter(this.getActivity(),
-					item.sensor, item,prefs));
+					item.sensor, item, prefs));
 
-			getActivity().setTitle(item.name);
+			//getActivity().setTitle(item.name);
 		}
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View rootView = inflater.inflate(R.layout.fragment_room_detail,
+				container, false);
+
+		refreshData();
 
 		return rootView;
 	}

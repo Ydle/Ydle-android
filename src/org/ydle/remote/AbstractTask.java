@@ -7,7 +7,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 
-public abstract class AbstractTask<T> extends AsyncTask<Void, Void, T> {
+public abstract class AbstractTask<P,T> extends AsyncTask<P, Void, T> {
 
 	private ProgressDialog waitDialog;
 	Activity context;

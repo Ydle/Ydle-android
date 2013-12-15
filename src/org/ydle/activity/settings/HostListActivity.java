@@ -118,6 +118,7 @@ public class HostListActivity extends RoboFragmentActivity implements
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public void addHost(ServeurInfo s) {
 		List<ServeurInfo> currentTasks = null;
 		try {

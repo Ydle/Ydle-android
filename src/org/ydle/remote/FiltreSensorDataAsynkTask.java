@@ -13,7 +13,7 @@ import org.ydle.model.TimeEchelle;
 import android.app.Activity;
 import android.util.Log;
 
-public class FiltreSensorDataAsynkTask extends AbstractTask<List<SensorData>> {
+public class FiltreSensorDataAsynkTask extends AbstractTask<Void,List<SensorData>> {
 
 	private static final String TAG = "Ydle.FiltreSensorDataAsynkTask";
 	private List<SensorData> datas;

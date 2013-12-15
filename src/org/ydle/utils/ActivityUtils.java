@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.ydle.dummy.DummyContent;
 import org.ydle.model.configuration.Configuration;
-import org.ydle.model.configuration.ServeurInfo;
 
 import android.app.Activity;
 import android.app.AlertDialog;

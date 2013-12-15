@@ -9,7 +9,6 @@ import org.ydle.remote.RoomsAsynkTask;
 import org.ydle.remote.YdleService;
 import org.ydle.utils.Callbacks;
 
-import roboguice.fragment.RoboListFragment;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;

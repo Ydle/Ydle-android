@@ -11,6 +11,8 @@ public interface YdleService {
 
 	List<Room> getRooms();
 	
+	Room getRoomDetails(String id);
+	
 	List<SensorData> getData(Sensor sensor,TimeEchelle echelle);
 
 }

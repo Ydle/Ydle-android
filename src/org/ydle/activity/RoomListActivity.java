@@ -47,13 +47,13 @@ public class RoomListActivity extends BaseFragmentActivity implements
 	 * the item with the given ID was selected.
 	 */
 	@Override
-	public void onItemSelected(Room id, List<Room> items) {
+	public void onItemSelected(Room room, List<Room> items) {
 		if (mTwoPane) {
 			// In two-pane mode, show the detail view in this activity by
 			// adding or replacing the detail fragment using a
 			// fragment transaction.
 			Bundle arguments = new Bundle();
-			arguments.putParcelable(IntentConstantes.ITEM, id);
+			arguments.putString(IntentConstantes.ITEM, room.id);
 			RoomDetailFragment fragment = new RoomDetailFragment();
 			fragment.setArguments(arguments);
 			getSupportFragmentManager().beginTransaction()
@@ -62,14 +62,25 @@ public class RoomListActivity extends BaseFragmentActivity implements
 		} else {
 			// In single-pane mode, simply start the detail activity
 			// for the selected item ID.
-			Intent detailIntent = new Intent(this, RoomPagedActivity.class);
-			detailIntent.putExtra(IntentConstantes.ITEM, (Parcelable) id);
-			detailIntent.putExtra(IntentConstantes.ITEMS,
-					(ArrayList<Room>) items);
+			Intent detailIntent = new Intent(this, RoomSlidePagerActivity.class);
+			detailIntent.putExtra(IntentConstantes.ITEM, room.id);
+			detailIntent.putExtra(IntentConstantes.ITEMS_SIZE, items.size());
 
-			int index = items.indexOf(id);
+			String[] itemIds = new String[items.size()];
+			int i = 0;
+			for (Room roomItem : items) {
+				itemIds[i] = roomItem.id;
+				i++;
+			}
+			detailIntent.putExtra(IntentConstantes.ITEMS, itemIds);
+
+			int index = items.indexOf(room);
 			Log.d(TAG, "index : " + index);
 			detailIntent.putExtra(IntentConstantes.INDEX, index);
+			if (items.size() > index + 1) {
+				detailIntent.putExtra(IntentConstantes.ITEM_NEXT,
+						items.get(index + 1).id);
+			}
 			startActivity(detailIntent);
 		}
 	}
