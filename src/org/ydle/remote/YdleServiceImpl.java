@@ -13,6 +13,7 @@ import org.ydle.model.SensorData;
 import org.ydle.model.SensorType;
 import org.ydle.model.TimeEchelle;
 import org.ydle.model.configuration.Configuration;
+import org.ydle.model.configuration.ServeurInfo;
 import org.ydle.utils.PreferenceUtils;
 import org.ydle.utils.ServerUtils;
 
@@ -38,8 +39,8 @@ public class YdleServiceImpl implements YdleService {
 	@Override
 	public List<Room> getRooms() {
 
-		String result = ServerUtils.get("ApplicationIdentity", getConf()
-				.getServer().getUrl() + URL_ROOMS);
+		ServeurInfo server = getConf().getServer();
+		String result = ServerUtils.get("ApplicationIdentity", server.getUrl() + URL_ROOMS);
 
 		ArrayList<Room> rooms = new ArrayList<Room>();
 		if (result != null) {
@@ -60,19 +61,30 @@ public class YdleServiceImpl implements YdleService {
 				Log.e(TAG, "There was an error parsing the JSON", e);
 			}
 		}
-		return DummyYdleContent.ITEMS;
+
+		if (server.nom.equals("Demo")) {
+			return DummyYdleContent.ITEMS;
+		}
+		return null;
 	}
 
 	@Override
 	public List<SensorData> getData(Sensor sensor, TimeEchelle echelle) {
-		List<SensorData> result = new ArrayList<SensorData>();
-		Log.d(TAG, "getData -> " + sensor);
-		if (sensor.type == SensorType.TEMP.getValeur()) {
-			result.addAll(DummyYdleContent.getTempData(echelle));
+
+		if (getConf().getServer().nom.equals("Demo")) {
+
+			List<SensorData> result = new ArrayList<SensorData>();
+			Log.d(TAG, "getData -> " + sensor);
+			if (sensor.type == SensorType.TEMP.getValeur()) {
+				result.addAll(DummyYdleContent.getTempData(echelle));
+			}
+
+			Log.d(TAG, "getData -> " + result.size());
+			return result;
 		}
 
-		Log.d(TAG, "getData -> " + result.size());
-		return result;
+		return null;
+
 	}
 
 	public Configuration getConf() {
@@ -82,8 +94,9 @@ public class YdleServiceImpl implements YdleService {
 	@Override
 	public Room getRoomDetails(String id) {
 
-		String result = ServerUtils.get("ApplicationIdentity", getConf()
-				.getServer().getUrl() + URL_ROOM + id);
+		ServeurInfo server = getConf().getServer();
+
+		String result = ServerUtils.get("ApplicationIdentity", server.getUrl() + URL_ROOM + id);
 
 		Room room = null;
 		if (result != null) {
@@ -102,12 +115,15 @@ public class YdleServiceImpl implements YdleService {
 				Log.e(TAG, "There was an error parsing the JSON", e);
 			}
 		}
-		return find(DummyYdleContent.ITEMS, id);
+		if (server.nom.equals("Demo")) {
+			return find(DummyYdleContent.ITEMS, id);
+		}
+		return null;
 	}
 
 	private Room find(List<Room> items, String id) {
-		for(Room room : items){
-			if(room.id.equals(id) ){
+		for (Room room : items) {
+			if (room.id.equals(id)) {
 				return room;
 			}
 		}

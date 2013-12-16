@@ -96,6 +96,11 @@ public class RoomDetailFragment extends RoboFragment {
 					item.sensor, item, prefs));
 
 			//getActivity().setTitle(item.name);
+			
+			if(!item.active){
+				rootView.setActivated(false);
+				rootView.setAlpha(0.3f);
+			}
 		}
 	}
 

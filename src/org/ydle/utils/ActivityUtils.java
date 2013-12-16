@@ -1,17 +1,10 @@
 package org.ydle.utils;
 
-import java.io.IOException;
-import java.util.List;
-
-import org.ydle.dummy.DummyContent;
-import org.ydle.model.configuration.Configuration;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
