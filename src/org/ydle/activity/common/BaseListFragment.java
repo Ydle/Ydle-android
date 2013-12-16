@@ -1,7 +1,7 @@
-package org.ydle.activity;
+package org.ydle.activity.common;
 
 import org.ydle.model.configuration.Configuration;
-import org.ydle.utils.ActivityUtils;
+import org.ydle.utils.PreferenceUtils;
 
 import roboguice.fragment.RoboListFragment;
 import android.content.SharedPreferences;
@@ -15,7 +15,7 @@ public class BaseListFragment extends RoboListFragment {
 
 	
 	public Configuration getConf() {
-		return ActivityUtils.getConf(prefs);
+		return PreferenceUtils.getConf(prefs);
 	}
 
 }

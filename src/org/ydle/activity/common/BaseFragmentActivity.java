@@ -1,8 +1,9 @@
-package org.ydle.activity;
+package org.ydle.activity.common;
 
 import org.ydle.R;
+import org.ydle.activity.settings.SettingsActivity;
 import org.ydle.model.configuration.Configuration;
-import org.ydle.utils.ActivityUtils;
+import org.ydle.utils.PreferenceUtils;
 
 import roboguice.activity.RoboFragmentActivity;
 import android.content.Intent;
@@ -37,7 +38,7 @@ public class BaseFragmentActivity extends RoboFragmentActivity {
 	}
 
 	public Configuration getConf() {
-		return ActivityUtils.getConf(prefs);
+		return PreferenceUtils.getConf(prefs);
 	}
 
 }

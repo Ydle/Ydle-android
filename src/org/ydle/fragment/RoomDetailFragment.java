@@ -1,11 +1,11 @@
 package org.ydle.fragment;
 
+import org.ydle.IntentConstantes;
 import org.ydle.R;
-import org.ydle.activity.IntentConstantes;
 import org.ydle.adapter.SensorListAdapter;
 import org.ydle.model.Room;
-import org.ydle.remote.RoomDetailsAsynkTask;
 import org.ydle.remote.YdleService;
+import org.ydle.remote.tasks.RoomDetailsAsynkTask;
 
 import roboguice.fragment.RoboFragment;
 import android.content.SharedPreferences;

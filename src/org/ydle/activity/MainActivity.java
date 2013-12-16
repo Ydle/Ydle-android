@@ -1,7 +1,9 @@
 package org.ydle.activity;
 
 import org.ydle.ChangeLog;
+import org.ydle.IntentConstantes;
 import org.ydle.R;
+import org.ydle.activity.common.BaseActivity;
 import org.ydle.activity.wizard.WizardActivity;
 import org.ydle.layout.DashboardLayout;
 import org.ydle.model.configuration.Configuration;
@@ -57,10 +59,10 @@ public class MainActivity extends BaseActivity implements
 				PreferenceUtils.updateFirstStart(prefs);
 			}
 		}
-		
+
 		ChangeLog cl = new ChangeLog(this);
-	    if (cl.firstRun())
-	        cl.getLogDialog().show();
+		if (cl.firstRun())
+			cl.getLogDialog().show();
 
 		btnRoom.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -82,9 +84,6 @@ public class MainActivity extends BaseActivity implements
 
 		desactive(btnStatut);
 		desactive(btnScenarios);
-
-		active(btnSarah, sarahClickListener);
-		active(btnYana, yanaClickListener);
 
 		onUpdate(conf);
 
@@ -142,7 +141,7 @@ public class MainActivity extends BaseActivity implements
 			desactive(btnYana);
 		}
 
-		if (conf.yanaApp) {
+		if (conf.sarahApp) {
 			active(btnSarah, sarahClickListener);
 		} else {
 			desactive(btnSarah);
@@ -209,8 +208,7 @@ public class MainActivity extends BaseActivity implements
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
 			String key) {
 		Log.d(TAG, "Main.onSharedPreferenceChanged : " + key);
-		Configuration conf = ActivityUtils.getConf(sharedPreferences);
-		onUpdate(conf);
+		onUpdate(getConf());
 	}
 
 	@Override

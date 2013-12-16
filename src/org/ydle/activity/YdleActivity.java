@@ -2,9 +2,7 @@ package org.ydle.activity;
 
 import org.ydle.R;
 import org.ydle.model.configuration.Configuration;
-import org.ydle.utils.ActivityUtils;
-
-import com.google.inject.Inject;
+import org.ydle.utils.PreferenceUtils;
 
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
@@ -14,6 +12,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.widget.TextView;
+
+import com.google.inject.Inject;
 
 
 public class YdleActivity extends RoboActivity {
@@ -57,7 +57,7 @@ public class YdleActivity extends RoboActivity {
 	}
 	
 	public Configuration getConf() {
-		return ActivityUtils.getConf(prefs);
+		return PreferenceUtils.getConf(prefs);
 	}
 
 }

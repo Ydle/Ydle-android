@@ -1,7 +1,7 @@
 package org.ydle.fragment.settings;
 
+import org.ydle.IntentConstantes;
 import org.ydle.R;
-import org.ydle.activity.IntentConstantes;
 import org.ydle.activity.settings.HostDetailActivity;
 import org.ydle.activity.settings.HostListActivity;
 import org.ydle.model.configuration.ServeurInfo;

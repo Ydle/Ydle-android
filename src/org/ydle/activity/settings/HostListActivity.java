@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.ydle.IntentConstantes;
 import org.ydle.R;
-import org.ydle.activity.IntentConstantes;
 import org.ydle.activity.wizard.WizardActivity;
 import org.ydle.fragment.settings.HostDetailFragment;
 import org.ydle.fragment.settings.HostListFragment;

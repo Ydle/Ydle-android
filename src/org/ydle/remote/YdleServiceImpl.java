@@ -13,7 +13,7 @@ import org.ydle.model.SensorData;
 import org.ydle.model.SensorType;
 import org.ydle.model.TimeEchelle;
 import org.ydle.model.configuration.Configuration;
-import org.ydle.utils.ActivityUtils;
+import org.ydle.utils.PreferenceUtils;
 import org.ydle.utils.ServerUtils;
 
 import android.content.SharedPreferences;
@@ -76,7 +76,7 @@ public class YdleServiceImpl implements YdleService {
 	}
 
 	public Configuration getConf() {
-		return ActivityUtils.getConf(prefs);
+		return PreferenceUtils.getConf(prefs);
 	}
 
 	@Override

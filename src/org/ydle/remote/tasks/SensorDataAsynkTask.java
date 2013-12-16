@@ -1,4 +1,4 @@
-package org.ydle.remote;
+package org.ydle.remote.tasks;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.List;
 import org.ydle.model.Sensor;
 import org.ydle.model.SensorData;
 import org.ydle.model.TimeEchelle;
+import org.ydle.remote.YdleService;
 
 import android.app.Activity;
 

@@ -3,6 +3,7 @@ package org.ydle.utils;
 import java.io.IOException;
 import java.util.List;
 
+import org.ydle.dummy.DummyContent;
 import org.ydle.model.configuration.Configuration;
 import org.ydle.model.configuration.ServeurInfo;
 
@@ -52,7 +53,7 @@ public class PreferenceUtils {
 	public static void deleteServeur(ServeurInfo serverTodelete,
 			SharedPreferences prefs, Activity activity) {
 
-		Configuration conf = ActivityUtils.getConf(prefs);
+		Configuration conf = getConf(prefs);
 
 		if (serverTodelete != null) {
 			if (conf.serversYdle.size() == 1) {
@@ -75,7 +76,7 @@ public class PreferenceUtils {
 	}
 
 	public static void activeServer(ServeurInfo item, SharedPreferences prefs) {
-		Configuration conf = ActivityUtils.getConf(prefs);
+		Configuration conf = getConf(prefs);
 
 		List<ServeurInfo> servers = conf.serversYdle;
 
@@ -94,5 +95,23 @@ public class PreferenceUtils {
 		}
 		editor.commit();
 
+	}
+	
+	public static Configuration getConf(SharedPreferences prefs) {
+		Configuration conf = new Configuration();
+		conf.firstStart = prefs.getBoolean("pref_firstStart", true);
+		conf.yanaApp = prefs.getBoolean("pref_yana", false);
+		conf.sarahApp = prefs.getBoolean("pref_sarah", false);
+
+		try {
+			conf.serversYdle = (List) ObjectSerializer.deserialize(prefs
+					.getStringSet("host", null));
+		} catch (IOException e1) {
+		}
+		if (null == conf.serversYdle) {
+			conf.serversYdle = DummyContent.ITEMS;
+		}
+
+		return conf;
 	}
 }

@@ -5,15 +5,15 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
 
+import org.ydle.IntentConstantes;
 import org.ydle.R;
-import org.ydle.activity.IntentConstantes;
 import org.ydle.model.Room;
 import org.ydle.model.Sensor;
 import org.ydle.model.SensorData;
 import org.ydle.model.SensorType;
-import org.ydle.remote.FiltreSensorDataAsynkTask;
-import org.ydle.remote.SensorDataAsynkTask;
 import org.ydle.remote.YdleService;
+import org.ydle.remote.tasks.FiltreSensorDataAsynkTask;
+import org.ydle.remote.tasks.SensorDataAsynkTask;
 
 import android.os.Bundle;
 import android.util.Log;

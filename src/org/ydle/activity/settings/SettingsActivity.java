@@ -1,25 +1,18 @@
-package org.ydle.activity;
+package org.ydle.activity.settings;
 
 import org.ydle.ChangeLog;
 import org.ydle.R;
-import org.ydle.activity.settings.ExtraActivity;
-import org.ydle.activity.settings.HostDetailActivity;
-import org.ydle.activity.settings.HostListActivity;
-import org.ydle.fragment.settings.HostDetailFragment;
-import org.ydle.utils.ActivityUtils;
+import org.ydle.activity.AboutActivity;
 
 import roboguice.activity.RoboPreferenceActivity;
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;

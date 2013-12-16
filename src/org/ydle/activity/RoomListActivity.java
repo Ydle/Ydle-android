@@ -3,7 +3,9 @@ package org.ydle.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.ydle.IntentConstantes;
 import org.ydle.R;
+import org.ydle.activity.common.BaseFragmentActivity;
 import org.ydle.fragment.RoomDetailFragment;
 import org.ydle.fragment.RoomListFragment;
 import org.ydle.model.Room;

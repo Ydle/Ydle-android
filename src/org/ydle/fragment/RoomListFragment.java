@@ -2,11 +2,11 @@ package org.ydle.fragment;
 
 import java.util.List;
 
-import org.ydle.activity.BaseListFragment;
+import org.ydle.activity.common.BaseListFragment;
 import org.ydle.adapter.RoomListAdapter;
 import org.ydle.model.Room;
-import org.ydle.remote.RoomsAsynkTask;
 import org.ydle.remote.YdleService;
+import org.ydle.remote.tasks.RoomsAsynkTask;
 import org.ydle.utils.Callbacks;
 
 import android.app.Activity;

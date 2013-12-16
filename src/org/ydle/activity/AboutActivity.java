@@ -1,6 +1,7 @@
 package org.ydle.activity;
 
 import org.ydle.R;
+import org.ydle.activity.common.BaseActivity;
 
 import roboguice.inject.InjectView;
 import android.content.Intent;

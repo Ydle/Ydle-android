@@ -36,33 +36,7 @@ public class ActivityUtils {
 		return wifi.isWifiEnabled();
 	}
 
-	public static Configuration getConf(SharedPreferences prefs) {
-		Configuration conf = new Configuration();
-		conf.firstStart = prefs.getBoolean("pref_firstStart", true);
-		conf.yanaApp = prefs.getBoolean("pref_yana", false);
-		conf.sarahApp = prefs.getBoolean("pref_sarah", false);
-
-		// conf.getServer() = new ServeurInfo();
-		// conf.serveur.host = prefs.getString("pref_ip", "192.168.0.1.13");
-		// try {
-		// conf.serveur.port = Integer.valueOf(prefs.getString("pref_port",
-		// "80"));
-		// } catch (NumberFormatException e) {
-		// conf.serveur.port = 80;
-		// }
-		// conf.serveur.nom = prefs.getString("pref_nom", "Ydle");
-
-		try {
-			conf.serversYdle = (List) ObjectSerializer.deserialize(prefs
-					.getStringSet("host", null));
-		} catch (IOException e1) {
-		}
-		if (null == conf.serversYdle) {
-			conf.serversYdle = DummyContent.ITEMS;
-		}
-
-		return conf;
-	}
+	
 
 	public static AlertDialog showDownloadDialog(final Activity activity,
 			CharSequence stringTitle, CharSequence stringMessage,

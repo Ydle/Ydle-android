@@ -2,13 +2,13 @@ package org.ydle.adapter;
 
 import java.util.List;
 
+import org.ydle.IntentConstantes;
 import org.ydle.R;
-import org.ydle.activity.IntentConstantes;
 import org.ydle.activity.historique.GraphHistoryActivity;
 import org.ydle.model.Room;
 import org.ydle.model.Sensor;
 import org.ydle.model.SensorType;
-import org.ydle.utils.ActivityUtils;
+import org.ydle.utils.PreferenceUtils;
 
 import android.content.Context;
 import android.content.Intent;
@@ -77,7 +77,7 @@ public class SensorListAdapter extends ArrayAdapter<Sensor> {
 
 		} else if (sensorType.equals(SensorType.HYDRO)) {
 
-			if (ActivityUtils.getConf(prefs).graph) {
+			if (PreferenceUtils.getConf(prefs).graph) {
 				view.setOnClickListener(new OnClickListener() {
 
 					@Override

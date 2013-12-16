@@ -1,6 +1,8 @@
 package org.ydle.activity;
 
+import org.ydle.IntentConstantes;
 import org.ydle.R;
+import org.ydle.activity.common.BaseFragmentActivity;
 import org.ydle.fragment.RoomDetailFragment;
 
 import roboguice.inject.InjectExtra;

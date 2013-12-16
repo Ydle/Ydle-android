@@ -1,8 +1,10 @@
-package org.ydle.activity;
+package org.ydle.activity.common;
 
 import org.ydle.R;
+import org.ydle.activity.settings.SettingsActivity;
 import org.ydle.model.configuration.Configuration;
 import org.ydle.utils.ActivityUtils;
+import org.ydle.utils.PreferenceUtils;
 
 import roboguice.activity.RoboActivity;
 import android.content.BroadcastReceiver;
@@ -67,6 +69,6 @@ public class BaseActivity extends RoboActivity {
 	}
 
 	public Configuration getConf() {
-		return ActivityUtils.getConf(prefs);
+		return PreferenceUtils.getConf(prefs);
 	}
 }

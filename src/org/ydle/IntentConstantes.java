@@ -1,4 +1,4 @@
-package org.ydle.activity;
+package org.ydle;
 
 public interface IntentConstantes {
 

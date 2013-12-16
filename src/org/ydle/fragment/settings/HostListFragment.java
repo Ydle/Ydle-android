@@ -3,7 +3,7 @@ package org.ydle.fragment.settings;
 import java.util.List;
 
 import org.ydle.R;
-import org.ydle.activity.BaseListFragment;
+import org.ydle.activity.common.BaseListFragment;
 import org.ydle.activity.settings.HostListActivity;
 import org.ydle.adapter.HostListAdapter;
 import org.ydle.dummy.DummyContent;
@@ -69,6 +69,7 @@ public class HostListFragment extends BaseListFragment {
 	public HostListFragment() {
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -179,17 +180,5 @@ public class HostListFragment extends BaseListFragment {
 		if (items.get(position) != null) {
 			mCallbacks.onItemSelected(items.get(position), items);
 		}
-	}
-
-	public void loadPref(ServeurInfo serverInfo) {
-		SharedPreferences mySharedPreferences = PreferenceManager
-				.getDefaultSharedPreferences(getActivity());
-
-		mySharedPreferences.edit().putString("pref_ip", serverInfo.host);
-		mySharedPreferences.edit().putInt("pref_port", serverInfo.port);
-		mySharedPreferences.edit().putString("pref_identifiant",
-				serverInfo.identifiant);
-		mySharedPreferences.edit().commit();
-
 	}
 }

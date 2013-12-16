@@ -1,4 +1,4 @@
-package org.ydle.remote;
+package org.ydle.remote.tasks;
 
 import org.ydle.R;
 

@@ -1,6 +1,6 @@
 package org.ydle.fragment.wizard;
 
-import org.ydle.activity.BaseFragment;
+import org.ydle.activity.common.BaseFragment;
 import org.ydle.fragment.settings.FramgmentValidator;
 import org.ydle.utils.ActivityUtils;
 import org.ydle.utils.ServerUtils;

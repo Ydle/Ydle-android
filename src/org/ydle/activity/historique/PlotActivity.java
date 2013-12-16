@@ -2,9 +2,9 @@ package org.ydle.activity.historique;
 
 import java.util.List;
 
+import org.ydle.IntentConstantes;
 import org.ydle.R;
-import org.ydle.activity.BaseActivity;
-import org.ydle.activity.IntentConstantes;
+import org.ydle.activity.common.BaseActivity;
 import org.ydle.model.SensorData;
 import org.ydle.model.TimeEchelle;
 

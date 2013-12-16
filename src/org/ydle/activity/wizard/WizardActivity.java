@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+import org.ydle.IntentConstantes;
 import org.ydle.R;
-import org.ydle.activity.BaseFragmentActivity;
-import org.ydle.activity.IntentConstantes;
+import org.ydle.activity.common.BaseFragmentActivity;
 import org.ydle.activity.settings.HostListActivity;
 import org.ydle.fragment.settings.ExtraFragment;
 import org.ydle.fragment.settings.FramgmentValidator;

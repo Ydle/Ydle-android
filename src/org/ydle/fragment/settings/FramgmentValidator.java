@@ -1,9 +1,9 @@
 package org.ydle.fragment.settings;
 
-
 public interface FramgmentValidator<T> {
-	boolean isValide();
 	
+	boolean isValide();
+
 	String getError();
 
 	T getData();

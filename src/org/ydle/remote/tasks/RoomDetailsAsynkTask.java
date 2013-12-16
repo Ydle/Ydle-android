@@ -1,6 +1,7 @@
-package org.ydle.remote;
+package org.ydle.remote.tasks;
 
 import org.ydle.model.Room;
+import org.ydle.remote.YdleService;
 
 import android.app.Activity;
 
