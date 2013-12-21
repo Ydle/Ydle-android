@@ -109,7 +109,7 @@ public class RoomDetailFragment extends BaseFragment {
 
 			Log.d(TAG, "capteurs : " + item.sensor.size());
 			capteurs.setAdapter(new SensorListAdapter(this.getActivity(),
-					item.sensor, item, prefs));
+					item.sensor, item));
 
 			// getActivity().setTitle(item.name);
 

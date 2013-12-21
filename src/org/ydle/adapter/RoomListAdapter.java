@@ -5,6 +5,10 @@ import java.util.List;
 import org.ydle.R;
 import org.ydle.model.Room;
 
+import roboguice.RoboGuice;
+
+import com.google.inject.Inject;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +19,12 @@ import android.widget.TextView;
 
 public class RoomListAdapter extends ArrayAdapter<Room> {
 
+	@Inject
+	LayoutInflater layoutInflater;
+	
 	public RoomListAdapter(Context context, List<Room> objects) {
 		super(context, 0, objects);
+		RoboGuice.getInjector(context).injectMembers(this);
 	}
 
 	@Override
@@ -25,9 +33,7 @@ public class RoomListAdapter extends ArrayAdapter<Room> {
 		final Room room = getItem(position);
 
 		if (view == null) {
-			LayoutInflater vi = (LayoutInflater) getContext().getSystemService(
-					Context.LAYOUT_INFLATER_SERVICE);
-			view = vi.inflate(R.layout.item, null);
+			view = layoutInflater.inflate(R.layout.item, null);
 		}
 
 		TextView name = (TextView) view.findViewById(R.id.name);

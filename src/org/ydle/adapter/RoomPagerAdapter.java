@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import org.ydle.R;
 import org.ydle.fragment.RoomDetailFragment;
 
+import com.google.inject.Inject;
+
+import roboguice.RoboGuice;
+
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
@@ -18,9 +22,14 @@ public class RoomPagerAdapter extends PagerAdapter {
 	private static final String TAG = "Ydle.RoomPagerAdapter";
 	private int size;
 	ArrayList<Fragment> fragments = new ArrayList<Fragment>();
+	
+	@Inject
+	LayoutInflater layoutInflater;
 
-	public RoomPagerAdapter() {
+	public RoomPagerAdapter(Context context) {
 		fragments.add(new RoomDetailFragment());
+		RoboGuice.getInjector(context).injectMembers(this);
+		
 	}
 
 	@Override
@@ -29,10 +38,8 @@ public class RoomPagerAdapter extends PagerAdapter {
 	}
 
 	public Object instantiateItem(View collection, int position) {
-		LayoutInflater inflater = (LayoutInflater) collection.getContext()
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		Log.d(TAG, "instantiateItem : " + position);
-		View currentView = inflater
+		View currentView = layoutInflater
 				.inflate(R.layout.fragment_room_detail, null);
 		// getItem(position);
 		((ViewPager) collection).addView(currentView, 0);

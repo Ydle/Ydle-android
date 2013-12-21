@@ -28,7 +28,6 @@ public class FiltreSensorDataAsynkTask extends AbstractTask<Void,List<SensorData
 
 	@Override
 	protected List<SensorData> doInBackground(Void... params) {
-
 		return filtreData(datas, echelle);
 	}
 

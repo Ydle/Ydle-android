@@ -10,6 +10,7 @@ public class YdleModule extends AbstractModule {
 	@Override
 	protected void configure() {
 		bind(YdleService.class).to(YdleServiceImpl.class);
+		
 	}
 
 }

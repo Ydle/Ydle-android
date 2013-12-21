@@ -5,6 +5,8 @@ import java.util.List;
 import org.ydle.R;
 import org.ydle.model.configuration.ServeurInfo;
 
+import com.google.inject.Inject;
+
 import roboguice.RoboGuice;
 
 import android.content.Context;
@@ -17,10 +19,11 @@ import android.widget.TextView;
 
 public class HostListAdapter extends ArrayAdapter<ServeurInfo> {
 
-	
-	
+	@Inject
+	LayoutInflater layoutInflater;
+
 	public HostListAdapter(Context context, List<ServeurInfo> objects) {
-		super(context,0, objects);
+		super(context, 0, objects);
 		RoboGuice.getInjector(context).injectMembers(this);
 	}
 
@@ -30,9 +33,7 @@ public class HostListAdapter extends ArrayAdapter<ServeurInfo> {
 		ServeurInfo host = getItem(position);
 
 		if (view == null) {
-			LayoutInflater vi = (LayoutInflater) getContext().getSystemService(
-					Context.LAYOUT_INFLATER_SERVICE);
-			view = vi.inflate(R.layout.host_item, null);
+			view = layoutInflater.inflate(R.layout.host_item, null);
 		}
 
 		TextView host_name = (TextView) view.findViewById(R.id.host_name);
@@ -40,12 +41,12 @@ public class HostListAdapter extends ArrayAdapter<ServeurInfo> {
 
 		TextView host_ip = (TextView) view.findViewById(R.id.host_ip);
 		host_ip.setText(host.host);
-		
-		ImageView img =(ImageView) view.findViewById(R.id.etat);
-		
-		if(!host.actif){
+
+		ImageView img = (ImageView) view.findViewById(R.id.etat);
+
+		if (!host.actif) {
 			img.setImageResource(R.drawable.voyant_rouge);
-		}else{
+		} else {
 			img.setImageResource(R.drawable.voyant_vert);
 		}
 

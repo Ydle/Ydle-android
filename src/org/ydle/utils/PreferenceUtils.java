@@ -16,6 +16,8 @@ import android.widget.Toast;
 public class PreferenceUtils {
 
 	private static final String TAG = "Ydle.PreferenceUtils";
+	
+	
 
 	public static void updateServeur(ServeurInfo newServer,
 			ServeurInfo editServeur, SharedPreferences prefs) {

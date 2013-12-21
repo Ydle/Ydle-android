@@ -3,7 +3,6 @@ package org.ydle.activity.common;
 import org.ydle.R;
 import org.ydle.activity.settings.SettingsActivity;
 import org.ydle.model.configuration.Configuration;
-import org.ydle.utils.ActivityUtils;
 import org.ydle.utils.PreferenceUtils;
 
 import roboguice.activity.RoboActivity;
@@ -52,7 +51,7 @@ public class BaseActivity extends RoboActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
-		
+
 		return true;
 	}
 

@@ -10,6 +10,10 @@ import org.ydle.model.Sensor;
 import org.ydle.model.SensorType;
 import org.ydle.utils.PreferenceUtils;
 
+import com.google.inject.Inject;
+
+import roboguice.RoboGuice;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -25,13 +29,17 @@ import android.widget.TextView;
 public class SensorListAdapter extends ArrayAdapter<Sensor> {
 
 	private Room room;
-	private SharedPreferences prefs;
+	
+	@Inject
+	SharedPreferences prefs;
+	
+	@Inject
+	LayoutInflater layoutInflater;
 
-	public SensorListAdapter(Context context, List<Sensor> objects, Room room,
-			SharedPreferences prefs) {
+	public SensorListAdapter(Context context, List<Sensor> objects, Room room) {
 		super(context, 0, objects);
 		this.room = room;
-		this.prefs = prefs;
+		RoboGuice.getInjector(context).injectMembers(this);
 	}
 
 	@Override
@@ -40,9 +48,7 @@ public class SensorListAdapter extends ArrayAdapter<Sensor> {
 		final Sensor node = getItem(position);
 
 		if (view == null) {
-			LayoutInflater vi = (LayoutInflater) getContext().getSystemService(
-					Context.LAYOUT_INFLATER_SERVICE);
-			view = vi.inflate(R.layout.sensor_item, null);
+			view = layoutInflater.inflate(R.layout.sensor_item, null);
 		}
 
 		TextView name = (TextView) view.findViewById(R.id.name);
