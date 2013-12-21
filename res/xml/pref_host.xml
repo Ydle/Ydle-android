@@ -25,6 +25,11 @@
         android:key="pref_identifiant"
         android:summary="@string/pref_server_login_desc"
         android:title="@string/pref_server_login_title" />
+    <EditTextPreference
+        android:inputType="text"
+        android:key="pref_path"
+        android:summary="@string/pref_server_path_desc"
+        android:title="@string/pref_server_path_title" />
 
    
 

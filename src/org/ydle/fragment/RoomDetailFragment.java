@@ -64,7 +64,7 @@ public class RoomDetailFragment extends RoboFragment {
 			}
 		};
 
-		task.execute(itemId);
+		task.execute(itemId,item== null?"":item.name);
 	}
 
 	private void initView() {

@@ -31,6 +31,11 @@ public class PreferenceUtils {
 		if (editServeur != null) {
 			servers.remove(editServeur);
 		}
+		
+		if(servers.size() == 0){
+			newServer.actif = true;
+		}
+		
 		Log.d(TAG, "size" + servers.size());
 		servers.add(newServer);
 		Log.d(TAG, "size" + servers.size());
@@ -102,6 +107,8 @@ public class PreferenceUtils {
 		conf.firstStart = prefs.getBoolean("pref_firstStart", true);
 		conf.yanaApp = prefs.getBoolean("pref_yana", false);
 		conf.sarahApp = prefs.getBoolean("pref_sarah", false);
+		conf.avance = prefs.getBoolean("pref_avance", false);
+		conf.graph = prefs.getBoolean("pref_graph", false);
 
 		try {
 			conf.serversYdle = (List) ObjectSerializer.deserialize(prefs

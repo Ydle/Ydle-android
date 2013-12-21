@@ -12,6 +12,8 @@ public class Configuration {
 	
 	public boolean yanaApp;
 	
+	public boolean avance;
+	
 	public List<ServeurInfo> serversYdle = new ArrayList<ServeurInfo>();
 
 	public boolean sarahApp;

@@ -63,7 +63,7 @@ public class YdleServiceImpl implements YdleService {
 			}
 		}
 
-		if (server.nom.equals("Demo")) {
+		if (server.nom != null && server.nom.equals("Demo")) {
 			return DummyYdleContent.ITEMS;
 		}
 		return null;
@@ -72,7 +72,7 @@ public class YdleServiceImpl implements YdleService {
 	@Override
 	public List<SensorData> getData(Sensor sensor, TimeEchelle echelle) {
 
-		if (getConf().getServer().nom.equals("Demo")) {
+		if (getConf().getServer().nom != null && getConf().getServer().nom.equals("Demo")) {
 
 			List<SensorData> result = new ArrayList<SensorData>();
 			Log.d(TAG, "getData -> " + sensor);
@@ -115,7 +115,7 @@ public class YdleServiceImpl implements YdleService {
 				Log.e(TAG, "There was an error parsing the JSON", e);
 			}
 		}
-		if (server.nom.equals("Demo")) {
+		if (server.nom != null && server.nom.equals("Demo")) {
 			return find(DummyYdleContent.ITEMS, id);
 		}
 		return null;

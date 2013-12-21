@@ -78,6 +78,7 @@ public class WizardActivity extends BaseFragmentActivity {
 
 			@Override
 			public void onClick(View v) {
+
 				// si la page courante n'est pas valide on reste sur la page
 				if (framgementValidators.get(mPager.getCurrentItem())
 						.isValide()) {
@@ -91,6 +92,7 @@ public class WizardActivity extends BaseFragmentActivity {
 						// sauvegarder en conf que l'on a passé le wizard
 						PreferenceUtils.updateFirstStart(prefs);
 					} else if (action.equals("host")) {
+
 						Log.d(TAG, "enregistrement serveur");
 						ServeurInfo server = (ServeurInfo) framgementValidators
 								.get(mPager.getCurrentItem()).getData();
@@ -109,8 +111,9 @@ public class WizardActivity extends BaseFragmentActivity {
 								HostListActivity.class);
 						startActivity(intent);
 
+						finish();
+
 					}
-					finish();
 				}
 			}
 		});
@@ -133,12 +136,15 @@ public class WizardActivity extends BaseFragmentActivity {
 		@Override
 		public void onPageScrolled(int position, float positionOffset,
 				int positionOffsetPixels) {
-			FramgmentValidator<?> validator = framgementValidators.get(position);
-			// si la page courante n'est pas valide on reste sur la page
-			if (!validator.isValide()) {
-				Toast.makeText(WizardActivity.this, validator.getError(),
-						Toast.LENGTH_SHORT).show();
-				mPager.setCurrentItem(position);
+			FramgmentValidator<?> validator = framgementValidators
+					.get(position);
+			if (fragments.size() > 1){
+				// si la page courante n'est pas valide on reste sur la page
+				if (!validator.isValide()) {
+					Toast.makeText(WizardActivity.this, validator.getError(),
+							Toast.LENGTH_SHORT).show();
+					mPager.setCurrentItem(position);
+				}
 			}
 		}
 
@@ -188,7 +194,7 @@ public class WizardActivity extends BaseFragmentActivity {
 
 			ServeurInfo server = (ServeurInfo) framgementValidators.get(
 					mPager.getCurrentItem()).getData();
-			Log.d(TAG, "active state " + server.nom+" "+server.actif);
+			Log.d(TAG, "active state " + server.nom + " " + server.actif);
 			if (server.actif) {
 				menu.removeItem(R.id.menu_actif);
 			}

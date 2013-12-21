@@ -10,6 +10,14 @@
         <Preference
             android:key="pref_extra_ydle"
             android:title="@string/pref_extra_plug_title" />
+        <CheckBoxPreference
+            android:key="pref_avance"
+            android:summary="@string/pref_extra_avance_desc"
+            android:title="@string/pref_extra_avance_title" />
+        <CheckBoxPreference
+            android:key="pref_graph"
+            android:summary="@string/pref_extra_graph_desc"
+            android:title="@string/pref_extra_graph_title" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_about_cat" >
         <Preference

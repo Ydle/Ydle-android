@@ -58,19 +58,22 @@ public class SensorListAdapter extends ArrayAdapter<Sensor> {
 
 		if (sensorType.equals(SensorType.TEMP)) {
 
-			view.setOnClickListener(new OnClickListener() {
+			if (PreferenceUtils.getConf(prefs).graph) {
+				view.setOnClickListener(new OnClickListener() {
 
-				@Override
-				public void onClick(View v) {
-					Intent intent = new Intent(getContext(),
-							GraphHistoryActivity.class);
-					intent.putExtra(IntentConstantes.ITEM, (Parcelable) node);
-					intent.putExtra(IntentConstantes.ITEM_ROOM,
-							(Parcelable) room);
-					getContext().startActivity(intent);
+					@Override
+					public void onClick(View v) {
+						Intent intent = new Intent(getContext(),
+								GraphHistoryActivity.class);
+						intent.putExtra(IntentConstantes.ITEM,
+								(Parcelable) node);
+						intent.putExtra(IntentConstantes.ITEM_ROOM,
+								(Parcelable) room);
+						getContext().startActivity(intent);
 
-				}
-			});
+					}
+				});
+			}
 		} else if (sensorType.equals(SensorType.LUM)) {
 
 		} else if (sensorType.equals(SensorType.HYDRO)) {

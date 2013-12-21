@@ -35,8 +35,8 @@ public abstract class AbstractTask<P,T> extends AsyncTask<P, Void, T> {
 				context.finish();
 			}
 		});
-		waitDialog.setTitle(context.getString(dialogueTitle));
-		waitDialog.setMessage(context.getString(dialogueMsg));
+		waitDialog.setTitle(getDialogTitle());
+		waitDialog.setMessage(getDialogMsg());
 		waitDialog.show();
 	}
 
@@ -53,6 +53,14 @@ public abstract class AbstractTask<P,T> extends AsyncTask<P, Void, T> {
 
 	public void setDialogueMsg(int dialogueMsg) {
 		this.dialogueMsg = dialogueMsg;
+	}
+	
+	public String getDialogTitle(){
+		return context.getString(dialogueTitle);
+	}
+	
+	public String getDialogMsg(){
+		return context.getString(dialogueMsg);
 	}
 
 }

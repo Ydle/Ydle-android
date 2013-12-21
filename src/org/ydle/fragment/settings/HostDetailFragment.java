@@ -5,11 +5,15 @@ import org.ydle.R;
 import org.ydle.activity.settings.HostDetailActivity;
 import org.ydle.activity.settings.HostListActivity;
 import org.ydle.model.configuration.ServeurInfo;
+import org.ydle.utils.PreferenceUtils;
+
+import com.google.inject.internal.BytecodeGen.Visibility;
 
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.PreferenceFragment;
 import android.util.Log;
+import android.view.View;
 
 /**
  * A fragment representing a single Host detail screen. This fragment is either
@@ -30,7 +34,9 @@ public class HostDetailFragment extends PreferenceFragment implements
 	EditTextPreference port;
 
 	EditTextPreference identifiant;
-	
+
+	EditTextPreference path;
+
 	ServeurInfo mItem;
 
 	/**
@@ -47,12 +53,17 @@ public class HostDetailFragment extends PreferenceFragment implements
 		// Load the preferences from an XML resource
 		addPreferencesFromResource(R.xml.pref_host);
 
+		boolean modeAvance = PreferenceUtils.getConf(getPreferenceManager()
+				.getSharedPreferences()).avance;
+
 		ip = ((EditTextPreference) findPreference("pref_ip"));
 		nom = ((EditTextPreference) findPreference("pref_nom"));
 		port = ((EditTextPreference) findPreference("pref_port"));
 		identifiant = ((EditTextPreference) findPreference("pref_identifiant"));
+		path = ((EditTextPreference) findPreference("pref_path"));
 
-		
+		path.setEnabled(modeAvance);
+
 		if (getArguments() != null
 				&& getArguments().containsKey(IntentConstantes.ITEM)) {
 			mItem = getArguments().getParcelable(IntentConstantes.ITEM);
@@ -60,8 +71,8 @@ public class HostDetailFragment extends PreferenceFragment implements
 			mItem = getActivity().getIntent().getParcelableExtra(
 					IntentConstantes.ITEM);
 		}
-		
-		if(mItem == null){
+
+		if (mItem == null) {
 			mItem = new ServeurInfo();
 		}
 
@@ -70,6 +81,15 @@ public class HostDetailFragment extends PreferenceFragment implements
 			ip.setText(mItem.host);
 			identifiant.setText(mItem.identifiant);
 			nom.setText(mItem.nom);
+			path.setText(mItem.applicationName);
+		} else {
+
+			if (modeAvance) {
+				path.setText("app_dev.php/");
+			} else {
+				path.setText("");
+			}
+
 		}
 
 	}
@@ -98,6 +118,7 @@ public class HostDetailFragment extends PreferenceFragment implements
 		data.identifiant = identifiant.getText();
 		data.host = ip.getText();
 		data.nom = nom.getText();
+		data.applicationName = path.getText();
 		data.actif = mItem.actif;
 
 		return data;

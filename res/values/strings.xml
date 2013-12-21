@@ -30,6 +30,10 @@
     <string name="pref_extra_plug_title">Plugins</string>
     <string name="pref_extra_yana_title">Application Yana</string>
     <string name="pref_extra_yana_desc">Activer la reconnaissance vocale Yana</string>
+    <string name="pref_extra_graph_title">Graphique</string>
+    <string name="pref_extra_graph_desc">Activer les graphique des données de capteurs (BETA)</string>
+    <string name="pref_extra_avance_title">Mode Avancé</string>
+    <string name="pref_extra_avance_desc">Activer le mode avancé (DEV)</string>
     <string name="pref_extra_sarah_title">Application Sarah</string>
     <string name="pref_extra_sarah_desc">Activer la reconnaissance vocale Sarah</string>
     <string name="pref_about_cat">A Propos</string>
@@ -45,11 +49,13 @@
     <string name="pref_server_name_title">Nom du serveur Ydle</string>
     <string name="pref_server_ip_title">Adresse du serveur ydle (interne)</string>
     <string name="pref_server_port_title">Port du serveur ydle</string>
-    <string name="pref_server_login_title">Login ydle</string>
+    <string name="pref_server_login_title">Api key Ydle</string>
     <string name="pref_server_name_desc">Entrez le nom du serveur</string>
     <string name="pref_server_ip_desc">Entrez l\'adresse du serveur ydle (sans http://)</string>
     <string name="pref_server_port_desc">Port du serveur</string>
-    <string name="pref_server_login_desc">Entrez votre login</string>
+    <string name="pref_server_login_desc">Entrez votre clé</string>
+    <string name="pref_server_path_desc">Path de l\'application</string>
+    <string name="pref_server_path_title">Path</string>
     <string name="action_edit">Modifier</string>
     <string name="action_add">Ajouter</string>
     <string name="action_delete">Supprimer</string>

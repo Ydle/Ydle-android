@@ -8,7 +8,7 @@ import android.os.Parcelable;
 @SuppressWarnings("serial")
 public class ServeurInfo implements Parcelable, Serializable {
 
-	private static final String applicationName = "app_dev.php/";
+	public String applicationName = "app_dev.php/";
 
 	public String nom;
 
