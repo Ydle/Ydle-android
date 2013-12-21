@@ -6,6 +6,7 @@ import org.ydle.activity.common.BaseFragmentActivity;
 import org.ydle.fragment.RoomDetailFragment;
 
 import roboguice.inject.InjectExtra;
+import roboguice.inject.InjectView;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,6 +14,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 
 public class RoomSlidePagerActivity extends BaseFragmentActivity {
@@ -23,7 +25,8 @@ public class RoomSlidePagerActivity extends BaseFragmentActivity {
 	 * The pager widget, which handles animation and allows swiping horizontally
 	 * to access previous and next wizard steps.
 	 */
-	private ViewPager mPager;
+	@InjectView(R.id.pager)
+	ViewPager mPager;
 
 	/**
 	 * The pager adapter, which provides the pages to the view pager widget.
@@ -47,7 +50,6 @@ public class RoomSlidePagerActivity extends BaseFragmentActivity {
 		setContentView(R.layout.room_slide);
 
 		// Instantiate a ViewPager and a PagerAdapter.
-		mPager = (ViewPager) findViewById(R.id.pager);
 		mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
 		mPager.setAdapter(mPagerAdapter);
 		mPager.setCurrentItem(index);
@@ -97,5 +99,12 @@ public class RoomSlidePagerActivity extends BaseFragmentActivity {
 		}
 
 		return super.onMenuItemSelected(featureId, item);
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		boolean result = super.onCreateOptionsMenu(menu);
+		menu.removeItem(R.id.action_add);
+		return result;
 	}
 }

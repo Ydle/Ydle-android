@@ -5,6 +5,7 @@ import org.ydle.R;
 import org.ydle.activity.AboutActivity;
 
 import roboguice.activity.RoboPreferenceActivity;
+import roboguice.inject.InjectPreference;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -24,9 +25,13 @@ public class SettingsActivity extends RoboPreferenceActivity {
 
 	private static final boolean ALWAYS_SIMPLE_PREFS = false;
 
+	@InjectPreference("aPropos")
 	public Preference aPropo;
+	@InjectPreference("servers")
 	public Preference hosts;
+	@InjectPreference("pref_extra_ydle")
 	public Preference extra;
+	@InjectPreference("aNews")
 	public Preference news;
 
 	@Inject
@@ -38,7 +43,7 @@ public class SettingsActivity extends RoboPreferenceActivity {
 
 		setupSimplePreferencesScreen();
 
-		hosts = (Preference) findPreference("servers");
+		
 		// Intent detailIntent = new Intent(this, HostDetailActivity.class);
 		Intent detailIntent = new Intent(this, HostListActivity.class);
 		// detailIntent.putExtra(IntentConstantes.ITEM,
@@ -46,14 +51,13 @@ public class SettingsActivity extends RoboPreferenceActivity {
 		startActivity(hosts, detailIntent);
 		// startActivity(hosts, HostListActivity.class);
 
-		extra = (Preference) findPreference("pref_extra_ydle");
+		
 		Intent extraIntent = new Intent(this, ExtraActivity.class);
 		startActivity(extra, extraIntent);
 
-		aPropo = (Preference) findPreference("aPropos");
+		
 		startActivity(aPropo, AboutActivity.class);
 
-		news = (Preference) findPreference("aNews");
 		if (news != null) {
 			news.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
 				@Override

@@ -2,12 +2,13 @@ package org.ydle.fragment;
 
 import org.ydle.IntentConstantes;
 import org.ydle.R;
+import org.ydle.activity.common.BaseFragment;
 import org.ydle.adapter.SensorListAdapter;
 import org.ydle.model.Room;
 import org.ydle.remote.YdleService;
 import org.ydle.remote.tasks.RoomDetailsAsynkTask;
 
-import roboguice.fragment.RoboFragment;
+import roboguice.inject.InjectView;
 import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -21,7 +22,7 @@ import android.widget.TextView;
 
 import com.google.inject.Inject;
 
-public class RoomDetailFragment extends RoboFragment {
+public class RoomDetailFragment extends BaseFragment {
 
 	private static final String TAG = "Ydle.RoomDetailFragment";
 
@@ -32,7 +33,22 @@ public class RoomDetailFragment extends RoboFragment {
 
 	private String itemId;
 
+	@InjectView(R.id.room_detail)
 	TextView room_detail;
+	@InjectView(R.id.type)
+	ImageView type;
+	@InjectView(R.id.scenario_title)
+	TextView scenario_title;
+	@InjectView(R.id.scenarios_empty)
+	TextView scenarios_empty;
+	@InjectView(R.id.scenarios)
+	ListView scenarios;
+	@InjectView(R.id.capteur_title)
+	TextView capteur_title;
+	@InjectView(R.id.capteurs_empty)
+	TextView capteurs_empty;
+	@InjectView(R.id.capteurs)
+	ListView capteurs;
 
 	@Inject
 	protected SharedPreferences prefs;
@@ -54,8 +70,7 @@ public class RoomDetailFragment extends RoboFragment {
 	}
 
 	public void refreshData() {
-		RoomDetailsAsynkTask task = new RoomDetailsAsynkTask(
-				this.getActivity(), service) {
+		RoomDetailsAsynkTask task = new RoomDetailsAsynkTask(this.getActivity()) {
 			@Override
 			protected void onPostExecute(Room result) {
 				super.onPostExecute(result);
@@ -68,38 +83,29 @@ public class RoomDetailFragment extends RoboFragment {
 	}
 
 	private void initView() {
-		View rootView = getView();
 
 		if (item != null) {
 
-			TextView room_detail = ((TextView) rootView
-					.findViewById(R.id.room_detail));
 			if (item.description != null && !item.description.isEmpty()) {
 				room_detail.setText(item.description);
 			} else {
 				room_detail.setText(item.name);
 			}
 
-			TextView capteur_title = ((TextView) rootView
-					.findViewById(R.id.capteur_title));
 			capteur_title.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 
-			TextView scenario_title = ((TextView) rootView
-					.findViewById(R.id.scenario_title));
-			scenario_title.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
-
-			ImageView type = (ImageView) rootView.findViewById(R.id.type);
+			if (getConf().avance) {
+				scenario_title.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+			} else {
+				scenario_title.setVisibility(View.GONE);
+				scenarios_empty.setVisibility(View.GONE);
+			}
 
 			type.setImageResource(item.typeIcon.getDrawable());
 
-			TextView capteurs_empty = ((TextView) rootView
-					.findViewById(R.id.capteurs_empty));
 			if (!item.sensor.isEmpty()) {
 				capteurs_empty.setVisibility(View.GONE);
 			}
-
-			ListView capteurs = ((ListView) rootView
-					.findViewById(R.id.capteurs));
 
 			Log.d(TAG, "capteurs : " + item.sensor.size());
 			capteurs.setAdapter(new SensorListAdapter(this.getActivity(),
@@ -108,8 +114,8 @@ public class RoomDetailFragment extends RoboFragment {
 			// getActivity().setTitle(item.name);
 
 			if (!item.active) {
-				rootView.setActivated(false);
-				rootView.setAlpha(0.3f);
+				getView().setActivated(false);
+				getView().setAlpha(0.3f);
 			}
 		}
 	}

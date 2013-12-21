@@ -1,6 +1,5 @@
 package org.ydle.activity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.ydle.IntentConstantes;
@@ -11,11 +10,13 @@ import org.ydle.fragment.RoomListFragment;
 import org.ydle.model.Room;
 import org.ydle.utils.Callbacks;
 
+import roboguice.inject.InjectFragment;
+
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 
 public class RoomListActivity extends BaseFragmentActivity implements
@@ -23,6 +24,9 @@ public class RoomListActivity extends BaseFragmentActivity implements
 
 	private static final String TAG = "Ydle.RoomListActivity";
 	private boolean mTwoPane;
+
+	@InjectFragment(R.id.room_list)
+	RoomListFragment roomListFragment;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +41,7 @@ public class RoomListActivity extends BaseFragmentActivity implements
 
 				// In two-pane mode, list items should be given the
 				// 'activated' state when touched.
-				((RoomListFragment) getSupportFragmentManager()
-						.findFragmentById(R.id.room_list))
-						.setActivateOnItemClick(true);
+				roomListFragment.setActivateOnItemClick(true);
 			}
 		}
 	}
@@ -92,8 +94,10 @@ public class RoomListActivity extends BaseFragmentActivity implements
 
 		switch (item.getItemId()) {
 		case R.id.menu_refresh:
-			((RoomListFragment) getSupportFragmentManager().findFragmentById(
-					R.id.room_list)).refreshList();
+			roomListFragment.refreshList();
+			break;
+		case R.id.action_add:
+
 			break;
 
 		default:
@@ -101,5 +105,15 @@ public class RoomListActivity extends BaseFragmentActivity implements
 		}
 
 		return super.onMenuItemSelected(featureId, item);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		boolean result = super.onCreateOptionsMenu(menu);
+
+		if (!getConf().avance) {
+			menu.removeItem(R.id.action_add);
+		}
+		return result;
 	}
 }

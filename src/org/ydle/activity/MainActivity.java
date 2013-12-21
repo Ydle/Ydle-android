@@ -73,7 +73,7 @@ public class MainActivity extends BaseActivity implements
 			}
 		});
 
-		desactive(btnEvents);
+		
 		// btnEvents.setOnClickListener(new View.OnClickListener() {
 		// @Override
 		// public void onClick(View view) {
@@ -81,15 +81,25 @@ public class MainActivity extends BaseActivity implements
 		// startActivity(main);
 		// }
 		// });
-
-		desactive(btnStatut);
-		desactive(btnScenarios);
-
+		if (!getConf().avance) {
+			hidde(btnStatut);
+			hidde(btnScenarios);
+			hidde(btnEvents);
+		} else {
+			desactive(btnStatut);
+			desactive(btnScenarios);
+			desactive(btnEvents);
+		}
 		onUpdate(conf);
 
 	}
 
+	private void hidde(Button btn) {
+		btn.setVisibility(View.GONE);
+	}
+
 	private void desactive(Button btn) {
+		btn.setVisibility(View.VISIBLE);
 		btn.setActivated(false);
 		btn.setAlpha(0.3f);
 		btn.setOnClickListener(null);
@@ -150,6 +160,7 @@ public class MainActivity extends BaseActivity implements
 	}
 
 	private void active(Button btn, View.OnClickListener listener) {
+		btn.setVisibility(View.VISIBLE);
 		btn.setActivated(true);
 		btn.setAlpha(1f);
 		btn.setOnClickListener(listener);
@@ -215,6 +226,7 @@ public class MainActivity extends BaseActivity implements
 	public boolean onCreateOptionsMenu(Menu menu) {
 		boolean result = super.onCreateOptionsMenu(menu);
 		menu.removeItem(R.id.menu_refresh);
+		menu.removeItem(R.id.action_add);
 		return result;
 	}
 

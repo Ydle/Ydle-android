@@ -111,7 +111,7 @@ public class GraphHistoryActivity extends PlotActivity<Sensor> {
 
 	@Override
 	public void loadData() {
-		SensorDataAsynkTask task = new SensorDataAsynkTask(this, service, item,
+		SensorDataAsynkTask task = new SensorDataAsynkTask(this, item,
 				echelle) {
 			@Override
 			protected void onPostExecute(List<SensorData> result) {

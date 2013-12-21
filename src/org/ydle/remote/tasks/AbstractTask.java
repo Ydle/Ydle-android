@@ -2,6 +2,8 @@ package org.ydle.remote.tasks;
 
 import org.ydle.R;
 
+import roboguice.RoboGuice;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -17,6 +19,7 @@ public abstract class AbstractTask<P,T> extends AsyncTask<P, Void, T> {
 
 	public AbstractTask(Activity context) {
 		this.context = context;
+		RoboGuice.getInjector(context).injectMembers(this);
 	}
 
 	@Override

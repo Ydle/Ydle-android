@@ -7,6 +7,8 @@
     <string name="action_settings">Configuration</string>
     <string name="action_desactive">Désactiver</string>
     <string name="action_active">Activer</string>
+    <string name="action_refresh">Refresh</string>
+    
 
     <!-- Room Activites -->
     <string name="title_room_list">Pièces</string>

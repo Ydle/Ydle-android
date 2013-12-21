@@ -20,5 +20,7 @@ public class AlertActivity extends Activity {
 		getMenuInflater().inflate(R.menu.alert, menu);
 		return true;
 	}
+	
+	
 
 }

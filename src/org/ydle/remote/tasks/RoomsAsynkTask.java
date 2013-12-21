@@ -6,17 +6,19 @@ import java.util.List;
 import org.ydle.model.Room;
 import org.ydle.remote.YdleService;
 
+import com.google.inject.Inject;
+
 import android.app.Activity;
 
 public class RoomsAsynkTask extends AbstractTask<Void, List<Room>> {
 
-	private YdleService service;
+	@Inject
+	YdleService service;
 
 	public ArrayList<Room> items = new ArrayList<Room>();
 
-	public RoomsAsynkTask(Activity context, YdleService service) {
+	public RoomsAsynkTask(Activity context) {
 		super(context);
-		this.service = service;
 	}
 
 	@Override

@@ -20,10 +20,8 @@ public class AboutActivity extends BaseActivity {
 
 	@InjectView(R.id.version)
 	TextView aboutVersion;
-
 	@InjectView(R.id.link)
 	TextView link;
-
 	@InjectView(R.id.contact)
 	TextView contact;
 
@@ -81,7 +79,8 @@ public class AboutActivity extends BaseActivity {
 		boolean result = super.onCreateOptionsMenu(menu);
 		menu.removeItem(R.id.menu_refresh);
 		menu.removeItem(R.id.action_settings);
+		menu.removeItem(R.id.action_add);
 		return result;
 	}
-
+	
 }

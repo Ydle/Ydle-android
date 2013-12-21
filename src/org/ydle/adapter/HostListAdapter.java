@@ -5,6 +5,8 @@ import java.util.List;
 import org.ydle.R;
 import org.ydle.model.configuration.ServeurInfo;
 
+import roboguice.RoboGuice;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +17,11 @@ import android.widget.TextView;
 
 public class HostListAdapter extends ArrayAdapter<ServeurInfo> {
 
+	
+	
 	public HostListAdapter(Context context, List<ServeurInfo> objects) {
 		super(context,0, objects);
+		RoboGuice.getInjector(context).injectMembers(this);
 	}
 
 	@Override

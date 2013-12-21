@@ -1,7 +1,5 @@
 package org.ydle.activity.settings;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.ydle.IntentConstantes;
@@ -11,12 +9,11 @@ import org.ydle.fragment.settings.HostDetailFragment;
 import org.ydle.fragment.settings.HostListFragment;
 import org.ydle.model.configuration.ServeurInfo;
 import org.ydle.utils.Callbacks;
-import org.ydle.utils.ObjectSerializer;
 
 import roboguice.activity.RoboFragmentActivity;
+import roboguice.inject.InjectFragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
@@ -28,10 +25,12 @@ import com.google.inject.Inject;
 public class HostListActivity extends RoboFragmentActivity implements
 		Callbacks<ServeurInfo> {
 
-	private static final String HOSTS = "host";
 	private static final String TAG = "Ydle.HostListActivity";
 
 	ServeurInfo current;
+	
+	@InjectFragment(R.id.host_list)
+	HostListFragment hostListFragment;
 
 	@Inject
 	protected SharedPreferences prefs;
@@ -54,8 +53,6 @@ public class HostListActivity extends RoboFragmentActivity implements
 			// activity should be in two-pane mode.
 			mTwoPane = true;
 
-			HostListFragment hostListFragment = (HostListFragment) getSupportFragmentManager()
-					.findFragmentById(R.id.host_list);
 			// In two-pane mode, list items should be given the
 			// 'activated' state when touched.
 			hostListFragment.setActivateOnItemClick(true);
@@ -116,28 +113,6 @@ public class HostListActivity extends RoboFragmentActivity implements
 			startActivity(intent);
 			finish();
 		}
-	}
-
-	@SuppressWarnings("unchecked")
-	public void addHost(ServeurInfo s) {
-		List<ServeurInfo> currentTasks = null;
-		try {
-			currentTasks = (List) ObjectSerializer.deserialize(prefs
-					.getStringSet(HOSTS, null));
-		} catch (IOException e1) {
-		}
-		if (null == currentTasks) {
-			currentTasks = new ArrayList<ServeurInfo>();
-		}
-		currentTasks.add(s);
-
-		// save the task list to preference
-		Editor editor = prefs.edit();
-		try {
-			editor.putStringSet(HOSTS, ObjectSerializer.serialize(currentTasks));
-		} catch (IOException e) {
-		}
-		editor.commit();
 	}
 
 	public ServeurInfo getItemToDelete() {

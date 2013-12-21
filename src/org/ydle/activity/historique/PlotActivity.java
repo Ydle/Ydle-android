@@ -8,6 +8,8 @@ import org.ydle.activity.common.BaseActivity;
 import org.ydle.model.SensorData;
 import org.ydle.model.TimeEchelle;
 
+import roboguice.inject.InjectView;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -19,6 +21,7 @@ public abstract class PlotActivity<T> extends BaseActivity {
 
 	private static final String TAG = "Ydle.PlotActivity";
 
+	@InjectView(R.id.mySimpleXYPlot)
 	protected XYPlot plot;
 
 	protected TimeEchelle echelle = TimeEchelle.MONTH;
@@ -40,7 +43,7 @@ public abstract class PlotActivity<T> extends BaseActivity {
 
 		setContentView(R.layout.xy_plot);
 		// initialize our XYPlot reference:
-		plot = (XYPlot) findViewById(R.id.mySimpleXYPlot);
+
 		plot.setAlpha(0f);
 
 	}

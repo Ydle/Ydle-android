@@ -76,7 +76,7 @@ public class RoomListFragment extends BaseListFragment {
 	}
 	
 	public void refreshList(){
-		RoomsAsynkTask task = new RoomsAsynkTask(this.getActivity(), service) {
+		RoomsAsynkTask task = new RoomsAsynkTask(this.getActivity()) {
 			@Override
 			protected void onPostExecute(List<Room> result) {
 				super.onPostExecute(result);

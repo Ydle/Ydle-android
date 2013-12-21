@@ -7,13 +7,10 @@ import org.ydle.activity.settings.HostListActivity;
 import org.ydle.model.configuration.ServeurInfo;
 import org.ydle.utils.PreferenceUtils;
 
-import com.google.inject.internal.BytecodeGen.Visibility;
-
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.PreferenceFragment;
 import android.util.Log;
-import android.view.View;
 
 /**
  * A fragment representing a single Host detail screen. This fragment is either

@@ -3,19 +3,21 @@ package org.ydle.remote.tasks;
 import org.ydle.model.Room;
 import org.ydle.remote.YdleService;
 
+import com.google.inject.Inject;
+
 import android.app.Activity;
 
 public class RoomDetailsAsynkTask extends AbstractTask<String, Room> {
 
-	private YdleService service;
+	@Inject
+	YdleService service;
 
 	public Room items;
 
 	public String roomName = "";
 
-	public RoomDetailsAsynkTask(Activity context, YdleService service) {
+	public RoomDetailsAsynkTask(Activity context) {
 		super(context);
-		this.service = service;
 	}
 
 	@Override
