@@ -32,7 +32,7 @@ public abstract class AbstractTask<P,T> extends AsyncTask<P, Void, T> {
 				if (AbstractTask.this != null) {
 					AbstractTask.this.cancel(true);
 				}
-				context.finish();
+				//context.finish();
 			}
 		});
 		waitDialog.setTitle(getDialogTitle());

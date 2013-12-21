@@ -64,7 +64,7 @@ public class RoomDetailFragment extends RoboFragment {
 			}
 		};
 
-		task.execute(itemId,item== null?"":item.name);
+		task.execute(itemId, item == null ? "" : item.name);
 	}
 
 	private void initView() {
@@ -74,7 +74,11 @@ public class RoomDetailFragment extends RoboFragment {
 
 			TextView room_detail = ((TextView) rootView
 					.findViewById(R.id.room_detail));
-			room_detail.setText(item.description);
+			if (item.description != null && !item.description.isEmpty()) {
+				room_detail.setText(item.description);
+			} else {
+				room_detail.setText(item.name);
+			}
 
 			TextView capteur_title = ((TextView) rootView
 					.findViewById(R.id.capteur_title));
@@ -87,11 +91,11 @@ public class RoomDetailFragment extends RoboFragment {
 			ImageView type = (ImageView) rootView.findViewById(R.id.type);
 
 			type.setImageResource(item.typeIcon.getDrawable());
-			
+
 			TextView capteurs_empty = ((TextView) rootView
 					.findViewById(R.id.capteurs_empty));
-			if(!item.sensor.isEmpty()){
-				capteurs_empty.setVisibility(View.GONE);  
+			if (!item.sensor.isEmpty()) {
+				capteurs_empty.setVisibility(View.GONE);
 			}
 
 			ListView capteurs = ((ListView) rootView
@@ -101,9 +105,9 @@ public class RoomDetailFragment extends RoboFragment {
 			capteurs.setAdapter(new SensorListAdapter(this.getActivity(),
 					item.sensor, item, prefs));
 
-			//getActivity().setTitle(item.name);
-			
-			if(!item.active){
+			// getActivity().setTitle(item.name);
+
+			if (!item.active) {
 				rootView.setActivated(false);
 				rootView.setAlpha(0.3f);
 			}
