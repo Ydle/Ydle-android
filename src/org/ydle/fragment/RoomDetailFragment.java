@@ -87,6 +87,12 @@ public class RoomDetailFragment extends RoboFragment {
 			ImageView type = (ImageView) rootView.findViewById(R.id.type);
 
 			type.setImageResource(item.typeIcon.getDrawable());
+			
+			TextView capteurs_empty = ((TextView) rootView
+					.findViewById(R.id.capteurs_empty));
+			if(!item.sensor.isEmpty()){
+				capteurs_empty.setVisibility(View.GONE);  
+			}
 
 			ListView capteurs = ((ListView) rootView
 					.findViewById(R.id.capteurs));

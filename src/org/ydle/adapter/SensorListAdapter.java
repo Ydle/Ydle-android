@@ -24,14 +24,12 @@ import android.widget.TextView;
 
 public class SensorListAdapter extends ArrayAdapter<Sensor> {
 
-	Context activitiy;
 	private Room room;
 	private SharedPreferences prefs;
 
 	public SensorListAdapter(Context context, List<Sensor> objects, Room room,
 			SharedPreferences prefs) {
 		super(context, 0, objects);
-		this.activitiy = context;
 		this.room = room;
 		this.prefs = prefs;
 	}
@@ -64,12 +62,12 @@ public class SensorListAdapter extends ArrayAdapter<Sensor> {
 
 				@Override
 				public void onClick(View v) {
-					Intent intent = new Intent(activitiy,
+					Intent intent = new Intent(getContext(),
 							GraphHistoryActivity.class);
 					intent.putExtra(IntentConstantes.ITEM, (Parcelable) node);
 					intent.putExtra(IntentConstantes.ITEM_ROOM,
 							(Parcelable) room);
-					activitiy.startActivity(intent);
+					getContext().startActivity(intent);
 
 				}
 			});
@@ -82,13 +80,13 @@ public class SensorListAdapter extends ArrayAdapter<Sensor> {
 
 					@Override
 					public void onClick(View v) {
-						Intent intent = new Intent(activitiy,
+						Intent intent = new Intent(getContext(),
 								GraphHistoryActivity.class);
 						intent.putExtra(IntentConstantes.ITEM,
 								(Parcelable) node);
 						intent.putExtra(IntentConstantes.ITEM_ROOM,
 								(Parcelable) room);
-						activitiy.startActivity(intent);
+						getContext().startActivity(intent);
 
 					}
 				});

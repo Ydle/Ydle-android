@@ -40,7 +40,8 @@ public class YdleServiceImpl implements YdleService {
 	public List<Room> getRooms() {
 
 		ServeurInfo server = getConf().getServer();
-		String result = ServerUtils.get("ApplicationIdentity", server.getUrl() + URL_ROOMS);
+		String result = ServerUtils.get("ApplicationIdentity", server.getUrl()
+				+ URL_ROOMS);
 
 		ArrayList<Room> rooms = new ArrayList<Room>();
 		if (result != null) {
@@ -96,19 +97,18 @@ public class YdleServiceImpl implements YdleService {
 
 		ServeurInfo server = getConf().getServer();
 
-		String result = ServerUtils.get("ApplicationIdentity", server.getUrl() + URL_ROOM + id);
+		String result = ServerUtils.get("ApplicationIdentity", server.getUrl()
+				+ URL_ROOM + id);
 
 		Room room = null;
 		if (result != null) {
 			Log.d(TAG, "room detail result : " + result);
 			try {
 				JSONObject json = new JSONObject(result);
-				JSONArray roomsArray = json.getJSONArray("room");
+				JSONObject item = json.getJSONObject("room");
 
-				for (int a = 0; a < roomsArray.length(); a++) {
-					JSONObject item = roomsArray.getJSONObject(a);
-					room = converter.convertRoom(item);
-				}
+				room = converter.convertRoom(item);
+
 				Log.d("UPDATE", "load room : " + room);
 				return room;
 			} catch (JSONException e) {

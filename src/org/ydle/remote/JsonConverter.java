@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import org.ydle.model.Room;
 import org.ydle.model.Sensor;
 import org.ydle.model.SensorData;
+import org.ydle.model.SensorType;
 import org.ydle.model.TypeRoomIcon;
 
 public class JsonConverter {
@@ -21,7 +22,7 @@ public class JsonConverter {
 			room.name = getFacultatifString(item, "name");
 			room.id = getFacultatifString(item, "id");
 			room.active = getFacultatifBoolean(item, "active");
-			room.typeIcon = TypeRoomIcon.BATHROOM;
+			room.typeIcon = TypeRoomIcon.fromLabel(getFacultatifString(item, "type"));
 			if (item.optJSONArray("capteurs") != null) {
 				room.sensor = new ArrayList<Sensor>();
 				JSONArray capteurs = item.getJSONArray("capteurs");
@@ -45,11 +46,13 @@ public class JsonConverter {
 			sensor = new Sensor();
 			sensor.name = getFacultatifString(item, "name");
 			sensor.unit = getFacultatifString(item, "unit");
-			sensor.type = getFacultatifInt(item, "type");
+			sensor.type = SensorType.fromLabel(getFacultatifString(item, "name")).getValeur();
 			sensor.active = getFacultatifBoolean(item, "active");
 			sensor.description = getFacultatifString(item, "description");
-			sensor.currentValeur = new SensorData("", new Date());
+			sensor.currentValeur = new SensorData(getFacultatifString(item,
+					"current"), new Date());
 			sensor.datas = new ArrayList<SensorData>();
+			sensor.datas.add(sensor.currentValeur);
 		}
 		return sensor;
 	}
