@@ -12,6 +12,7 @@ import org.ydle.utils.PreferenceUtils;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.widget.ListView;
 
 /**
@@ -72,16 +73,16 @@ public class HostListFragment extends BaseListFragment {
 
 		ServeurInfo serverTodelete = ((HostListActivity) getActivity())
 				.getItemToDelete();
-		
-		PreferenceUtils.deleteServeur(serverTodelete,prefs,getActivity());
-		
+
+		PreferenceUtils.deleteServeur(serverTodelete, prefs, getActivity());
+
 		items = getConf().serversYdle;
 
 		setListAdapter(new HostListAdapter(getActivity(), this.items));
 
-	}
-
 	
+
+	}
 
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {

@@ -20,6 +20,7 @@ import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.inject.Inject;
 
@@ -51,7 +52,7 @@ public class HostListActivity extends RoboFragmentActivity implements
 		setContentView(R.layout.fragment_host_list);
 		// activity_host_twopane.xml
 		if (findViewById(R.id.host_detail_container) != null) {
-			
+
 			mTwoPane = true;
 			hostDetailsFragment = (HostDetailFragment) getFragmentManager()
 					.findFragmentById(R.id.host_detail_container);
@@ -101,22 +102,19 @@ public class HostListActivity extends RoboFragmentActivity implements
 			break;
 		case R.id.menu_delete:
 			if (current != null) {
-				Intent intent = new Intent(this, HostListActivity.class);
-				intent.putExtra(IntentConstantes.DELETED_ITEM,
-						(Parcelable) current);
+				PreferenceUtils.deleteServeur(current, prefs, this);
+				hostListFragment = new HostListFragment();
+				Bundle arguments = new Bundle();
+				arguments.putParcelable(IntentConstantes.DELETED_ITEM, current);
+				hostListFragment.setArguments(arguments);
 
-				startActivity(intent);
-				finish();
+				getSupportFragmentManager().beginTransaction()
+						.replace(R.id.host_list, hostListFragment).commit();
 			}
 			break;
 		case R.id.menu_actif:
 			if (current != null) {
-				PreferenceUtils.activeServer(current, prefs);
-				Log.d(TAG, "active host" + current.nom);
-				Intent intent = new Intent(this, HostListActivity.class);
-				intent.putExtra(IntentConstantes.ITEM, (Parcelable) current);
-				startActivity(intent);
-				finish();
+				onActive(current);
 			}
 			break;
 
@@ -124,6 +122,15 @@ public class HostListActivity extends RoboFragmentActivity implements
 			break;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	public void onActive(ServeurInfo server) {
+		PreferenceUtils.activeServer(server, prefs);
+		Log.d(TAG, "active host" + server.nom);
+		hostListFragment = new HostListFragment();
+
+		getSupportFragmentManager().beginTransaction()
+				.replace(R.id.host_list, hostListFragment).commit();
 	}
 
 	/**
@@ -174,19 +181,22 @@ public class HostListActivity extends RoboFragmentActivity implements
 					.findFragmentById(R.id.host_detail_container);
 
 			if (hostDetailsFragment != null && hostDetailsFragment.isInit()) {
-				ServeurInfo server = hostDetailsFragment.getData();
 
-				//if (!current.equals(server)) {
+				if (hostDetailsFragment.isValide()) {
+					ServeurInfo server = hostDetailsFragment.getData();
 
 					Log.d(TAG, "ITEM " + current + " new serveur " + server);
 					PreferenceUtils.updateServeur(server, current, prefs);
-					Intent intent = new Intent(this, HostListActivity.class);
-					intent.putExtra(IntentConstantes.ITEM, (Parcelable) server);
 
-					startActivity(intent);
+					hostListFragment = new HostListFragment();
 
-					finish();
-				//}
+					getSupportFragmentManager().beginTransaction()
+							.replace(R.id.host_list, hostListFragment).commit();
+
+				} else {
+					Toast.makeText(this, hostDetailsFragment.getError(),
+							Toast.LENGTH_SHORT).show();
+				}
 			}
 		}
 	}

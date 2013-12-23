@@ -3,19 +3,20 @@ package org.ydle.adapter;
 import java.util.List;
 
 import org.ydle.R;
+import org.ydle.activity.settings.HostListActivity;
 import org.ydle.model.configuration.ServeurInfo;
 
-import com.google.inject.Inject;
-
 import roboguice.RoboGuice;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.inject.Inject;
 
 public class HostListAdapter extends ArrayAdapter<ServeurInfo> {
 
@@ -28,7 +29,7 @@ public class HostListAdapter extends ArrayAdapter<ServeurInfo> {
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(final int position, View convertView, ViewGroup parent) {
 		View view = convertView;
 		ServeurInfo host = getItem(position);
 
@@ -49,8 +50,18 @@ public class HostListAdapter extends ArrayAdapter<ServeurInfo> {
 		} else {
 			img.setImageResource(R.drawable.voyant_vert);
 		}
+		
+		
+//		view.setOnLongClickListener(new OnLongClickListener() {
+//
+//			@Override
+//			public boolean onLongClick(View v) {
+//				((HostListActivity) getContext()).onActive(getItem(position));
+//				return true;
+//			}
+//		});
+		
 
 		return view;
 	}
-
 }
