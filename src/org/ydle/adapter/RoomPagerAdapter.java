@@ -40,7 +40,7 @@ public class RoomPagerAdapter extends PagerAdapter {
 	public Object instantiateItem(View collection, int position) {
 		Log.d(TAG, "instantiateItem : " + position);
 		View currentView = layoutInflater
-				.inflate(R.layout.fragment_room_detail, null);
+				.inflate(R.layout.layout_room_detail, null);
 		// getItem(position);
 		((ViewPager) collection).addView(currentView, 0);
 		return currentView;

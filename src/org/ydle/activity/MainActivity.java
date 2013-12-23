@@ -48,7 +48,6 @@ public class MainActivity extends BaseActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		prefs.registerOnSharedPreferenceChangeListener(this);
 
 		Configuration conf = getConf();
 
@@ -61,8 +60,10 @@ public class MainActivity extends BaseActivity implements
 		}
 
 		ChangeLog cl = new ChangeLog(this);
-		if (cl.firstRun())
+		if (cl.firstRun()) {
+			ActivityUtils.createNotification(this, "Nouvelle version");
 			cl.getLogDialog().show();
+		}
 
 		btnRoom.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -73,7 +74,6 @@ public class MainActivity extends BaseActivity implements
 			}
 		});
 
-		
 		// btnEvents.setOnClickListener(new View.OnClickListener() {
 		// @Override
 		// public void onClick(View view) {
@@ -92,6 +92,19 @@ public class MainActivity extends BaseActivity implements
 		}
 		onUpdate(conf);
 
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		prefs.registerOnSharedPreferenceChangeListener(this);
+
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		prefs.unregisterOnSharedPreferenceChangeListener(this);
 	}
 
 	private void hidde(Button btn) {

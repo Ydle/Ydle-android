@@ -98,9 +98,9 @@ public class SettingsActivity extends RoboPreferenceActivity {
 	}
 
 	private void setupSimplePreferencesScreen() {
-		if (!isSimplePreferences(this)) {
-			return;
-		}
+		//if (!isSimplePreferences(this)) {
+		//	return;
+		//}
 		// Add 'general' preferences.
 		addPreferencesFromResource(R.xml.pref_general);
 	}

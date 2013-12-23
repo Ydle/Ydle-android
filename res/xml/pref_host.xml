@@ -2,7 +2,7 @@
 
     <EditTextPreference
         android:defaultValue="Ydle"
-        android:inputType="text"
+        android:inputType="textNoSuggestions"
         android:key="pref_nom"
         android:summary="@string/pref_server_name_desc"
         android:title="@string/pref_server_name_title" />
@@ -15,18 +15,18 @@
     </EditTextPreference>
     <EditTextPreference
         android:defaultValue="80"
-        android:inputType="textWebEditText"
+        android:inputType="textNoSuggestions"
         android:key="pref_port"
         android:summary="@string/pref_server_port_desc"
         android:title="@string/pref_server_port_title" >
     </EditTextPreference>
     <EditTextPreference
-        android:inputType="text"
+        android:inputType="textNoSuggestions"
         android:key="pref_identifiant"
         android:summary="@string/pref_server_login_desc"
         android:title="@string/pref_server_login_title" />
     <EditTextPreference
-        android:inputType="text"
+        android:inputType="textNoSuggestions"
         android:key="pref_path"
         android:summary="@string/pref_server_path_desc"
         android:title="@string/pref_server_path_title" />

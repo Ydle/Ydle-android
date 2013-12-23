@@ -8,6 +8,7 @@ import org.ydle.activity.common.BaseFragmentActivity;
 import org.ydle.fragment.RoomDetailFragment;
 import org.ydle.fragment.RoomListFragment;
 import org.ydle.model.Room;
+import org.ydle.utils.ActivityUtils;
 import org.ydle.utils.Callbacks;
 
 import roboguice.inject.InjectFragment;
@@ -36,13 +37,15 @@ public class RoomListActivity extends BaseFragmentActivity implements
 		if (findViewById(R.id.room_detail_container) != null) {
 			// Affiche du mode liste et détails des pièces pour les tablettes
 			// lorsque l'affichage en horizontal
-			if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+			Log.d(TAG, "onCreate : " + getRequestedOrientation());
+			//if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+			//		|| getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE) {
 				mTwoPane = true;
-
+				Log.d(TAG, "mTwoPane : " + mTwoPane);
 				// In two-pane mode, list items should be given the
 				// 'activated' state when touched.
 				roomListFragment.setActivateOnItemClick(true);
-			}
+		//	}
 		}
 	}
 
@@ -97,7 +100,7 @@ public class RoomListActivity extends BaseFragmentActivity implements
 			roomListFragment.refreshList();
 			break;
 		case R.id.action_add:
-
+			ActivityUtils.createNotification(this, "Non disponible");
 			break;
 
 		default:

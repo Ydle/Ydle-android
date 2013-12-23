@@ -1,10 +1,18 @@
 package org.ydle.utils;
 
+import org.ydle.R;
+import org.ydle.activity.MainActivity;
+
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -21,6 +29,29 @@ public class ActivityUtils {
 			return true;
 		}
 		return false;
+	}
+	
+	
+	public static final int NOTIFICATION_ID = 42;
+	public static void createNotification(Context context, String message) {
+		final NotificationManager mNotification = (NotificationManager) context
+				.getSystemService(context.NOTIFICATION_SERVICE);
+
+		final Intent launchNotifiactionIntent = new Intent(context,
+				MainActivity.class);
+		final PendingIntent pendingIntent = PendingIntent.getActivity(context,
+				0, launchNotifiactionIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+		Bitmap bm = BitmapFactory.decodeResource(context.getResources(),
+				R.drawable.ydle);
+
+		Notification notification = new Notification.Builder(context)
+				.setContentIntent(pendingIntent).setContentTitle("Ydle")
+				.setLargeIcon(bm).setContentText(message)
+				.setWhen(System.currentTimeMillis()).setAutoCancel(true)
+				.setSmallIcon(R.drawable.goutte).getNotification();
+
+		mNotification.notify(NOTIFICATION_ID, notification);
 	}
 
 	public static boolean iswifiEnable(Activity activity) {

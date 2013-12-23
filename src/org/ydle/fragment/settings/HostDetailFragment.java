@@ -36,6 +36,8 @@ public class HostDetailFragment extends PreferenceFragment implements
 
 	ServeurInfo mItem;
 
+	private boolean init;
+
 	/**
 	 * Mandatory empty constructor for the fragment manager to instantiate the
 	 * fragment (e.g. upon screen orientation changes).
@@ -88,6 +90,9 @@ public class HostDetailFragment extends PreferenceFragment implements
 			}
 
 		}
+		
+		
+		init = true;
 
 	}
 
@@ -119,6 +124,10 @@ public class HostDetailFragment extends PreferenceFragment implements
 		data.actif = mItem.actif;
 
 		return data;
+	}
+
+	public boolean isInit() {
+		return init;
 	}
 
 }

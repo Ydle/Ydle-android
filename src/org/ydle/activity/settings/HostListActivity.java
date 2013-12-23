@@ -9,6 +9,7 @@ import org.ydle.fragment.settings.HostDetailFragment;
 import org.ydle.fragment.settings.HostListFragment;
 import org.ydle.model.configuration.ServeurInfo;
 import org.ydle.utils.Callbacks;
+import org.ydle.utils.PreferenceUtils;
 
 import roboguice.activity.RoboFragmentActivity;
 import roboguice.inject.InjectFragment;
@@ -23,14 +24,17 @@ import android.view.MenuItem;
 import com.google.inject.Inject;
 
 public class HostListActivity extends RoboFragmentActivity implements
-		Callbacks<ServeurInfo> {
+		Callbacks<ServeurInfo>,
+		SharedPreferences.OnSharedPreferenceChangeListener {
 
 	private static final String TAG = "Ydle.HostListActivity";
 
 	ServeurInfo current;
-	
+
 	@InjectFragment(R.id.host_list)
 	HostListFragment hostListFragment;
+
+	private HostDetailFragment hostDetailsFragment;
 
 	@Inject
 	protected SharedPreferences prefs;
@@ -44,14 +48,13 @@ public class HostListActivity extends RoboFragmentActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_host_list);
-
+		setContentView(R.layout.fragment_host_list);
+		// activity_host_twopane.xml
 		if (findViewById(R.id.host_detail_container) != null) {
-			// The detail container view will be present only in the
-			// large-screen layouts (res/values-large and
-			// res/values-sw600dp). If this view is present, then the
-			// activity should be in two-pane mode.
+			
 			mTwoPane = true;
+			hostDetailsFragment = (HostDetailFragment) getFragmentManager()
+					.findFragmentById(R.id.host_detail_container);
 
 			// In two-pane mode, list items should be given the
 			// 'activated' state when touched.
@@ -63,12 +66,31 @@ public class HostListActivity extends RoboFragmentActivity implements
 	}
 
 	@Override
+	protected void onResume() {
+		super.onResume();
+		if (mTwoPane) {
+			prefs.registerOnSharedPreferenceChangeListener(this);
+		}
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		if (mTwoPane) {
+			prefs.unregisterOnSharedPreferenceChangeListener(this);
+		}
+	}
+
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.host, menu);
+		if (!mTwoPane) {
+
+			menu.removeItem(R.id.menu_delete);
+			menu.removeItem(R.id.menu_actif);
+		}
 		menu.removeItem(R.id.menu_edit);
-		menu.removeItem(R.id.menu_delete);
-		menu.removeItem(R.id.menu_actif);
 		return true;
 	}
 
@@ -77,6 +99,27 @@ public class HostListActivity extends RoboFragmentActivity implements
 		case R.id.action_add:
 			onEdit(null);
 			break;
+		case R.id.menu_delete:
+			if (current != null) {
+				Intent intent = new Intent(this, HostListActivity.class);
+				intent.putExtra(IntentConstantes.DELETED_ITEM,
+						(Parcelable) current);
+
+				startActivity(intent);
+				finish();
+			}
+			break;
+		case R.id.menu_actif:
+			if (current != null) {
+				PreferenceUtils.activeServer(current, prefs);
+				Log.d(TAG, "active host" + current.nom);
+				Intent intent = new Intent(this, HostListActivity.class);
+				intent.putExtra(IntentConstantes.ITEM, (Parcelable) current);
+				startActivity(intent);
+				finish();
+			}
+			break;
+
 		default:
 			break;
 		}
@@ -100,6 +143,8 @@ public class HostListActivity extends RoboFragmentActivity implements
 			arguments.putParcelable(IntentConstantes.ITEM, id);
 			HostDetailFragment fragment = new HostDetailFragment();
 			fragment.setArguments(arguments);
+			getFragmentManager().beginTransaction()
+					.replace(R.id.host_detail_container, fragment).commit();
 
 		} else {
 			// In single-pane mode, simply start the detail activity
@@ -117,5 +162,32 @@ public class HostListActivity extends RoboFragmentActivity implements
 
 	public ServeurInfo getItemToDelete() {
 		return getIntent().getParcelableExtra(IntentConstantes.DELETED_ITEM);
+	}
+
+	@Override
+	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
+			String key) {
+		Log.d(TAG, "HostListActivity.onSharedPreferenceChanged : " + key);
+		if (mTwoPane) {
+
+			hostDetailsFragment = (HostDetailFragment) getFragmentManager()
+					.findFragmentById(R.id.host_detail_container);
+
+			if (hostDetailsFragment != null && hostDetailsFragment.isInit()) {
+				ServeurInfo server = hostDetailsFragment.getData();
+
+				//if (!current.equals(server)) {
+
+					Log.d(TAG, "ITEM " + current + " new serveur " + server);
+					PreferenceUtils.updateServeur(server, current, prefs);
+					Intent intent = new Intent(this, HostListActivity.class);
+					intent.putExtra(IntentConstantes.ITEM, (Parcelable) server);
+
+					startActivity(intent);
+
+					finish();
+				//}
+			}
+		}
 	}
 }

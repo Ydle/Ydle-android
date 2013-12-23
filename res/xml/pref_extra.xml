@@ -4,9 +4,11 @@
         <CheckBoxPreference
             android:key="pref_yana"
             android:summary="@string/pref_extra_yana_desc"
+            android:inputType="textNoSuggestions"
             android:title="@string/pref_extra_yana_title" />
         <CheckBoxPreference
             android:key="pref_sarah"
+            android:inputType="textNoSuggestions"
             android:summary="@string/pref_extra_sarah_desc"
             android:title="@string/pref_extra_sarah_title" />
     </PreferenceCategory>

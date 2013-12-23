@@ -2,20 +2,16 @@ package org.ydle.fragment.settings;
 
 import java.util.List;
 
-import org.ydle.R;
 import org.ydle.activity.common.BaseListFragment;
 import org.ydle.activity.settings.HostListActivity;
 import org.ydle.adapter.HostListAdapter;
-import org.ydle.dummy.DummyContent;
 import org.ydle.model.configuration.ServeurInfo;
 import org.ydle.utils.Callbacks;
 import org.ydle.utils.PreferenceUtils;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 /**
@@ -85,25 +81,7 @@ public class HostListFragment extends BaseListFragment {
 
 	}
 
-	private void onClick(View view, int position) {
-		ServeurInfo serverInfo = DummyContent.ITEMS.get(position);
-		Log.d(TAG, "position : " + position);
-		if (previous != null) {
-			Log.d(TAG, "previous : " + previous.getId());
-			((ImageView) previous.findViewById(R.id.etat))
-					.setBackgroundResource(R.drawable.voyant_rouge);
-			previous.setSelected(false);
-		}
-		view.setSelected(true);
-		previous = view;
-		((ImageView) previous.findViewById(R.id.etat))
-				.setBackgroundResource(R.drawable.voyant_vert);
-		Log.d(TAG, "selection : ");
-		// view.findViewById(id)
-
-		mCallbacks.onItemSelected(serverInfo, getConf().serversYdle);
-
-	}
+	
 
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
