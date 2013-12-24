@@ -111,7 +111,7 @@ public class PreferenceUtils {
 		conf.sarahApp = prefs.getBoolean("pref_sarah", false);
 		conf.avance = prefs.getBoolean("pref_avance", false);
 		conf.graph = prefs.getBoolean("pref_graph", false);
-		conf.cacheActive = prefs.getBoolean("pref_cache", false);
+		conf.cacheActive = prefs.getBoolean("pref_cache", true);
 
 		
 		
