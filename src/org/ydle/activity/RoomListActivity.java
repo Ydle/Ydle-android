@@ -12,9 +12,7 @@ import org.ydle.utils.ActivityUtils;
 import org.ydle.utils.Callbacks;
 
 import roboguice.inject.InjectFragment;
-
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -32,7 +30,7 @@ public class RoomListActivity extends BaseFragmentActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_room_list);
+		setContentView(R.layout.fragment_room_list);
 
 		if (findViewById(R.id.room_detail_container) != null) {
 			// Affiche du mode liste et détails des pièces pour les tablettes

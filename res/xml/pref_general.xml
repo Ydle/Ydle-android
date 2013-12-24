@@ -15,6 +15,10 @@
             android:summary="@string/pref_extra_avance_desc"
             android:title="@string/pref_extra_avance_title" />
         <CheckBoxPreference
+            android:key="pref_cache"
+            android:summary="@string/pref_extra_cache_desc"
+            android:title="@string/pref_extra_cache_title" />
+        <CheckBoxPreference
             android:key="pref_graph"
             android:summary="@string/pref_extra_graph_desc"
             android:title="@string/pref_extra_graph_title" />

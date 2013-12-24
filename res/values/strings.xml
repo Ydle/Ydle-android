@@ -43,6 +43,8 @@
     <string name="pref_extra_avance_desc">Activer le mode avancé (DEV)</string>
     <string name="pref_extra_sarah_title">Application Sarah</string>
     <string name="pref_extra_sarah_desc">Activer la reconnaissance vocale Sarah</string>
+    <string name="pref_extra_cache_title">Activer le cache</string>
+    <string name="pref_extra_cache_desc">Activer le cache durant la session</string>
     <string name="pref_about_cat">A Propos</string>
     <string name="pref_news_desc">Voir les changements de l\'application</string>
     <string name="pref_news_title">Nouveautés</string>

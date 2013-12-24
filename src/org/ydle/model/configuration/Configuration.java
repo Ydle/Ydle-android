@@ -14,6 +14,8 @@ public class Configuration {
 	
 	public boolean avance;
 	
+	public boolean cacheActive;
+	
 	public List<ServeurInfo> serversYdle = new ArrayList<ServeurInfo>();
 
 	public boolean sarahApp;
