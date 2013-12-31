@@ -5,6 +5,7 @@ import java.util.List;
 import org.ydle.IntentConstantes;
 import org.ydle.R;
 import org.ydle.activity.common.BaseFragmentActivity;
+import org.ydle.activity.settings.SettingsActivity;
 import org.ydle.fragment.RoomDetailFragment;
 import org.ydle.fragment.RoomListFragment;
 import org.ydle.model.Room;
@@ -33,7 +34,7 @@ public class RoomListActivity extends BaseFragmentActivity implements
 		setContentView(R.layout.fragment_room_list);
 
 		if (findViewById(R.id.room_detail_container) != null) {
-			// Affiche du mode liste et détails des pièces pour les tablettes
+			// Affiche du mode liste et dï¿½tails des piï¿½ces pour les tablettes
 			// lorsque l'affichage en horizontal
 			Log.d(TAG, "onCreate : " + getRequestedOrientation());
 			//if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
@@ -47,10 +48,7 @@ public class RoomListActivity extends BaseFragmentActivity implements
 		}
 	}
 
-	/**
-	 * Callback method from {@link RoomListFragment.Callbacks} indicating that
-	 * the item with the given ID was selected.
-	 */
+
 	@Override
 	public void onItemSelected(Room room, List<Room> items) {
 		if (mTwoPane) {
@@ -98,7 +96,8 @@ public class RoomListActivity extends BaseFragmentActivity implements
 			roomListFragment.refreshList();
 			break;
 		case R.id.action_add:
-			ActivityUtils.createNotification(this, "Non disponible");
+			//ActivityUtils.createNotification(this, "Non disponible");
+            startActivityForResult(new Intent(this, RoomEditActivity.class), 1);
 			break;
 
 		default:

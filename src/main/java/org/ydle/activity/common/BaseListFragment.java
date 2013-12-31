@@ -8,7 +8,7 @@ import android.content.SharedPreferences;
 
 import com.google.inject.Inject;
 
-public class BaseListFragment extends RoboListFragment {
+public abstract class BaseListFragment extends RoboListFragment {
 
 	@Inject
 	protected SharedPreferences prefs;

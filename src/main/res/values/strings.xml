@@ -95,7 +95,7 @@ Assemblez par étape tout un réseau domotique complet pour créer votre propre 
     <string name="wizard_m_title">Configuration Ydle</string>
     <string name="wizard_m_msg">Il est nécessaire de configurer l\'application</string>
 
-    <!-- Taost Messages -->
+    <!-- Toast Messages -->
     <string name="exit_msg">Etes vous sur de quitter ?</string>
     <string name="exit">Quitter</string>
     <string name="yana_install_title">Install Yana</string>
@@ -107,11 +107,17 @@ Assemblez par étape tout un réseau domotique complet pour créer votre propre 
     <string name="title_activity_alert">AlertActivity</string>
     <string name="hello_world">Hello world!</string>
 
+    <!-- Strings related to room form -->
+    <string name="prompt_name">Nom</string>
+    <string name="prompt_description">Description</string>
+    <string name="room_progress">Enregistrement&#8230;</string>
+    <string name="error_invalid_name">This name is invalid</string>
+    <string name="error_field_required">This field is required</string>
+
     <!-- ChangeLog -->
     <string name="changelog_full_title">Change Log</string>
     <string name="changelog_title">Nouveautés</string>
     <string name="changelog_ok_button">OK</string>
-    <string name="title_itemaaaa_list">Items</string>
-    <string name="title_itemaaaa_detail">ItemAAAA Detail</string>
+
 
 </resources>

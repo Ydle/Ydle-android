@@ -13,7 +13,7 @@ import android.view.MenuItem;
 
 import com.google.inject.Inject;
 
-public class BaseFragmentActivity extends RoboFragmentActivity {
+public abstract class BaseFragmentActivity extends RoboFragmentActivity {
 
 	@Inject
 	protected SharedPreferences prefs;

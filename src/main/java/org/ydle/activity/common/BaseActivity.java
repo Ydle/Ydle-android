@@ -17,7 +17,7 @@ import android.view.MenuItem;
 
 import com.google.inject.Inject;
 
-public class BaseActivity extends RoboActivity {
+public abstract class BaseActivity extends RoboActivity {
 
 	public static final String ACTION_LOGOUT = "org.ydle.LOGOUT";
 
