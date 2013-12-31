@@ -43,12 +43,12 @@
         <activity
             android:name="org.ydle.activity.settings.SettingsActivity"
             android:label="@string/action_settings"
-            android:parentActivityName="org.ydle.activity.MainActivity" >
+            >
         </activity>
         <activity
             android:name="org.ydle.activity.RoomListActivity"
             android:label="@string/title_room_list"
-            android:parentActivityName="org.ydle.activity.MainActivity" >
+            >
         </activity>
         <activity
             android:name="org.ydle.activity.AboutActivity"
@@ -57,12 +57,12 @@
         <activity
             android:name="org.ydle.activity.settings.HostListActivity"
             android:label="@string/title_host_list"
-            android:parentActivityName="org.ydle.activity.settings.SettingsActivity" >
+            >
         </activity>
         <activity
             android:name="org.ydle.activity.settings.HostDetailActivity"
             android:label="@string/title_host_detail"
-            android:parentActivityName="org.ydle.activity.settings.HostListActivity" >
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.ydle.activity.HostListActivity" />
@@ -78,7 +78,7 @@
         <activity
             android:name="org.ydle.activity.RoomSlidePagerActivity"
             android:label="@string/app_name"
-            android:parentActivityName="org.ydle.activity.RoomListActivity" >
+            >
         </activity>
     </application>
 
