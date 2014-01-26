@@ -1,15 +1,17 @@
 package org.ydle.activity.settings;
 
 import org.ydle.R;
+import org.ydle.activity.common.BaseFragmentActivity;
 import org.ydle.fragment.settings.ExtraFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
+import android.view.Menu;
 import android.view.MenuItem;
 
-public class ExtraActivity extends FragmentActivity{
+public class ExtraActivity extends BaseFragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,15 @@ public class ExtraActivity extends FragmentActivity{
 				.replace(android.R.id.content, fragment).commit();
 
 	}
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        boolean result = super.onCreateOptionsMenu(menu);
+        menu.removeItem(R.id.menu_refresh);
+        menu.removeItem(R.id.action_settings);
+        menu.removeItem(R.id.action_add);
+        return result;
+    }
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

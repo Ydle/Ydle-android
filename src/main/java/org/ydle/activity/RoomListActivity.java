@@ -32,7 +32,7 @@ public class RoomListActivity extends BaseFragmentActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fragment_room_list);
-
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 		if (findViewById(R.id.room_detail_container) != null) {
 			// Affiche du mode liste et d�tails des pi�ces pour les tablettes
 			// lorsque l'affichage en horizontal

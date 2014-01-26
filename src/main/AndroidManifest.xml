@@ -42,13 +42,25 @@
             android:label="@string/action_settings"></activity>
         <activity
             android:name="org.ydle.activity.RoomListActivity"
-            android:label="@string/title_room_list"></activity>
+            android:label="@string/title_room_list">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.ydle.activity.MainActivity" />
+            </activity>
         <activity
             android:name="org.ydle.activity.AboutActivity"
-            android:label="@string/title_about"></activity>
+            android:label="@string/title_about">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.ydle.activity.settings.SettingsActivity" />
+            </activity>
         <activity
             android:name="org.ydle.activity.settings.HostListActivity"
-            android:label="@string/title_host_list"></activity>
+            android:label="@string/title_host_list">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.ydle.activity.settings.SettingsActivity" />
+            </activity>
         <activity
             android:name="org.ydle.activity.settings.HostDetailActivity"
             android:label="@string/title_host_detail">

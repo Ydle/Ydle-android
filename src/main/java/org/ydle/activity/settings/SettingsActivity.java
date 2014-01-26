@@ -52,8 +52,8 @@ public class SettingsActivity extends RoboPreferenceActivity {
 		// startActivity(hosts, HostListActivity.class);
 
 		
-		Intent extraIntent = new Intent(this, ExtraActivity.class);
-		startActivity(extra, extraIntent);
+
+		startActivity(extra, ExtraActivity.class);
 
 		
 		startActivity(aPropo, AboutActivity.class);

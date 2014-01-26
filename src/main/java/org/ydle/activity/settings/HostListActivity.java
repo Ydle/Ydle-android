@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.ydle.IntentConstantes;
 import org.ydle.R;
+import org.ydle.activity.common.BaseFragmentActivity;
 import org.ydle.activity.wizard.WizardActivity;
 import org.ydle.fragment.settings.HostDetailFragment;
 import org.ydle.fragment.settings.HostListFragment;
@@ -24,7 +25,7 @@ import android.widget.Toast;
 
 import com.google.inject.Inject;
 
-public class HostListActivity extends RoboFragmentActivity implements
+public class HostListActivity extends BaseFragmentActivity implements
 		Callbacks<ServeurInfo>,
 		SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -50,6 +51,7 @@ public class HostListActivity extends RoboFragmentActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fragment_host_list);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 		// activity_host_twopane.xml
 		if (findViewById(R.id.host_detail_container) != null) {
 
@@ -133,10 +135,7 @@ public class HostListActivity extends RoboFragmentActivity implements
 				.replace(R.id.host_list, hostListFragment).commit();
 	}
 
-	/**
-	 * Callback method from {@link HostListFragment.Callbacks} indicating that
-	 * the item with the given ID was selected.
-	 */
+
 	@Override
 	public void onItemSelected(ServeurInfo id, List<ServeurInfo> items) {
 		Log.d(TAG, "onItemSelected " + id);

@@ -2,6 +2,7 @@ package org.ydle.activity;
 
 import org.ydle.R;
 import org.ydle.activity.common.BaseActivity;
+import org.ydle.activity.settings.HostListActivity;
 
 import roboguice.inject.InjectView;
 import android.content.Intent;
@@ -9,8 +10,10 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -29,7 +32,7 @@ public class AboutActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_about);
-
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 		aboutVersion.setText(getText(R.string.version) + getVersionNumber());
 	}
 
@@ -82,5 +85,7 @@ public class AboutActivity extends BaseActivity {
 		menu.removeItem(R.id.action_add);
 		return result;
 	}
-	
+
+
+
 }

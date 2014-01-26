@@ -2,6 +2,7 @@ package org.ydle.activity.settings;
 
 import org.ydle.IntentConstantes;
 import org.ydle.R;
+import org.ydle.activity.common.BaseFragmentActivity;
 import org.ydle.fragment.settings.HostDetailFragment;
 import org.ydle.model.configuration.ServeurInfo;
 import org.ydle.utils.PreferenceUtils;
@@ -18,7 +19,7 @@ import android.view.MenuItem;
 import com.google.inject.Inject;
 
 
-public class HostDetailActivity extends RoboFragmentActivity {
+public class HostDetailActivity extends BaseFragmentActivity {
 
 	private static final String TAG = "Ydle.HostDetailActivity";
 	@Inject
