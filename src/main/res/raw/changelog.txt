@@ -23,7 +23,7 @@
 $ 0.1.0
   % Version 0.1.0
   _ (beta, not working)
-  # Mise en place des écrans
+  # Mise en place des Ã©crans
   # Mise en place de la configuration de l'application
   # Communication avec le serveur (encours)
 $ END_OF_CHANGE_LOG

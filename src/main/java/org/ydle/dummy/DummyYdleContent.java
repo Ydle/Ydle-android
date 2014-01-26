@@ -28,26 +28,26 @@ public class DummyYdleContent {
 		SensorData data = new SensorData("21", new Date());
 
 		// Add 3 sample items.
-		Room room = new Room("1", "Séjour", "Pièce de vie", TypeRoomIcon.SALON);
-		room.sensor.add(new Sensor("Temperature", "°C", data, SensorType.TEMP));
+		Room room = new Room("1", "SÃ©jour", "PiÃ¨ce de vie", TypeRoomIcon.SALON);
+		room.sensor.add(new Sensor("Temperature", "Â°C", data, SensorType.TEMP));
 		data = new SensorData("49", new Date());
 		room.sensor.add(new Sensor("Hygrometrie", "%", data, SensorType.HYDRO));
 		addItem(room);
 		room = new Room("2", "Chambre 1", "Suite parentale",
 				TypeRoomIcon.BEDROOM);
 		data = new SensorData("19", new Date());
-		room.sensor.add(new Sensor("Temperature", "°C", data, SensorType.TEMP));
+		room.sensor.add(new Sensor("Temperature", "Â°C", data, SensorType.TEMP));
 		data = new SensorData("45", new Date());
 		room.sensor.add(new Sensor("Hygrometrie", "%", data, SensorType.HYDRO));
 		addItem(room);
 		room = new Room("3", "Chambre 2", "Chambre d'amis",
 				TypeRoomIcon.CHILDRENBEDROOM);
 		data = new SensorData("18", new Date());
-		room.sensor.add(new Sensor("Temperature", "°C", data, SensorType.TEMP));
+		room.sensor.add(new Sensor("Temperature", "Â°C", data, SensorType.TEMP));
 		data = new SensorData("51", new Date());
 		room.sensor.add(new Sensor("Hygrometrie", "%", data, SensorType.HYDRO));
 		data = new SensorData("On", new Date());
-		room.sensor.add(new Sensor("Lumière", "", data, SensorType.LUM));
+		room.sensor.add(new Sensor("LumiÃ¨re", "", data, SensorType.LUM));
 		addItem(room);
 
 		room = new Room("4", "Salle d'eau", "Salle d'eau",
