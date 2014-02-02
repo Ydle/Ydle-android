@@ -1,7 +1,7 @@
 package org.ydle.model;
 
 public enum TimeEchelle {
-	DAY("Jour",2,"HH"), WEEK("semaine",10,"dd"), MONTH("Mois",5,"dd"), YEAR("Année",1,"MM");
+	DAY("Jour",2,"HH"), WEEK("semaine",10,"dd"), MONTH("Mois",5,"dd"), YEAR("Annee",1,"MM");
 
 	private String label;
 	private int scale;

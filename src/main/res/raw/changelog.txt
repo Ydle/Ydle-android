@@ -27,5 +27,5 @@ $ 0.1.0
   # Mise en place de la configuration de l'application
   # Communication avec le serveur (encours)
 $ END_OF_CHANGE_LOG
-  </body>
+  </body>   
 </html>

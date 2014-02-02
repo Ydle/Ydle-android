@@ -89,7 +89,7 @@ public class WizardActivity extends BaseFragmentActivity {
 				if ((mPager.getCurrentItem() + 1) == fragments.size()) {
 
 					if (action.equals("firstStart")) {
-						// sauvegarder en conf que l'on a passé le wizard
+						// sauvegarder en conf que l'on a passÃ© le wizard
 						PreferenceUtils.updateFirstStart(prefs);
 					} else if (action.equals("host")) {
 
@@ -167,7 +167,7 @@ public class WizardActivity extends BaseFragmentActivity {
 	public class WizardAdapter extends FragmentStatePagerAdapter {
 		private final List<Fragment> fragments;
 
-		// On fournit à l'adapter la liste des fragments à afficher
+		// On fournit Ã  l'adapter la liste des fragments Ã  afficher
 		public WizardAdapter(FragmentManager fm, List<Fragment> fragments) {
 			super(fm);
 			this.fragments = fragments;

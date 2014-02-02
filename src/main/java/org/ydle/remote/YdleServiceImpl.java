@@ -33,8 +33,8 @@ public class YdleServiceImpl implements YdleService {
 	@Inject
 	protected SharedPreferences prefs;
 
-	private static final String URL_ROOMS = "api/v1/rooms";
-	private static final String URL_ROOM = "api/v1/room/";
+	private static final String URL_ROOMS = "api/rooms";
+	private static final String URL_ROOM = "api/room/";
 
 	@Override
 	public List<Room> getRooms() {

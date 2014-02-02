@@ -9,7 +9,7 @@ public enum TypeRoomIcon {
 			R.drawable.bathtub, "Salle de bain"), SHOWERROOM(R.drawable.sink2,
 			"Salle d'eau"), GARDEN(R.drawable.garden2, "Jardin"), STAIRS(
 			R.drawable.stairs, "Escalier"), SALON(R.drawable.sofa2, "Salon"), SEJOUR(
-			R.drawable.sofa2, "Séjour"), AUTRE(R.drawable.inconnue_rouge, "");
+			R.drawable.sofa2, "Sejour"), AUTRE(R.drawable.inconnue_rouge, "");
 
 	private int drawable;
 	private String label;

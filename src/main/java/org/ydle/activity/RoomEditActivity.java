@@ -28,7 +28,7 @@ public class RoomEditActivity extends BaseActivity {
 	// UI references.
 	@InjectView(R.id.room_name)
 	EditText mNameView;
-	@InjectView(R.id.room_description)
+	@InjectView(R.id.room_desc)
 	EditText mDescriptionView;
 	@InjectView(R.id.room_form)
 	View mRoomFormView;

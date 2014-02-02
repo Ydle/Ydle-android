@@ -39,7 +39,15 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Ajout d'une pièce"
+                android:id="@+id/textView" />
 
             <EditText
                 android:id="@+id/room_name"
@@ -51,12 +59,14 @@
                 android:singleLine="true" />
 
             <EditText
-                android:id="@+id/room_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/prompt_description"
-                android:inputType="textLongMessage"
-                android:maxLines="3" />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/room_desc"
+                android:layout_weight="6.53"
+                android:lines="5"
+                android:hint="@string/prompt_description" />
 
             <Button
                 android:id="@+id/room_add_button"
