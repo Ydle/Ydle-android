@@ -26,108 +26,123 @@ import com.google.inject.Singleton;
 @Singleton
 public class YdleServiceImpl implements YdleService {
 
-	private static final String TAG = "Ydle.YdleServiceImpl";
+    private static final String TAG = "Ydle.YdleServiceImpl";
 
-	@Inject
-	protected JsonConverter converter;
-	@Inject
-	protected SharedPreferences prefs;
+    @Inject
+    protected JsonConverter converter;
+    @Inject
+    protected SharedPreferences prefs;
 
-	private static final String URL_ROOMS = "api/rooms";
-	private static final String URL_ROOM = "api/room/";
+    private static final String URL_ROOMS = "api/rooms";
+    private static final String URL_ROOM = "api/room/";
 
-	@Override
-	public List<Room> getRooms() {
+    @Override
+    public List<Room> getRooms() {
 
-		ServeurInfo server = getConf().getServer();
-		String result = ServerUtils.get("ApplicationIdentity", server.getUrl()
-				+ URL_ROOMS);
+        ServeurInfo server = getConf().getServer();
+        String result = ServerUtils.get("ApplicationIdentity", server.getUrl()
+                + URL_ROOMS);
 
-		ArrayList<Room> rooms = new ArrayList<Room>();
-		if (result != null) {
-			Log.d(TAG, "rooms result : " + result);
-			try {
-				JSONObject json = new JSONObject(result);
-				JSONArray roomsArray = json.getJSONArray("rooms");
+        ArrayList<Room> rooms = new ArrayList<Room>();
+        if (result != null) {
+            Log.d(TAG, "rooms result : " + result);
+            try {
+                JSONObject json = new JSONObject(result);
 
-				Room room = null;
-				for (int a = 0; a < roomsArray.length(); a++) {
-					JSONObject item = roomsArray.getJSONObject(a);
-					room = converter.convertRoom(item);
-					rooms.add(room);
-				}
-				Log.d("UPDATE", "load rooms : " + rooms.size());
-				return rooms;
-			} catch (JSONException e) {
-				Log.e(TAG, "There was an error parsing the JSON", e);
-			}
-		}
+                int resultCode = json.getInt("code");
+                if (resultCode == 0) {
+                    JSONArray roomsArray = json.getJSONArray("result");
 
-		if (server.nom != null && server.nom.equals("Demo")) {
-			return DummyYdleContent.ITEMS;
-		}
-		return null;
-	}
+                    Room room = null;
+                    for (int a = 0; a < roomsArray.length(); a++) {
+                        JSONObject item = roomsArray.getJSONObject(a);
+                        room = converter.convertRoom(item);
+                        rooms.add(room);
+                    }
+                    Log.d("UPDATE", "load rooms : " + rooms.size());
+                } else {
+                    Log.e("UPDATE", "load rooms : " + json.getString("result"));
+                }
+                return rooms;
+            } catch (JSONException e) {
+                Log.e(TAG, "There was an error parsing the JSON", e);
+            }
+        }
 
-	@Override
-	public List<SensorData> getData(Sensor sensor, TimeEchelle echelle) {
+        if (server.nom != null && server.nom.equals("Demo")) {
+            return DummyYdleContent.ITEMS;
+        }
+        return null;
+    }
 
-		if (getConf().getServer().nom != null && getConf().getServer().nom.equals("Demo")) {
+    @Override
+    public List<SensorData> getData(Sensor sensor, TimeEchelle echelle) {
 
-			List<SensorData> result = new ArrayList<SensorData>();
-			Log.d(TAG, "getData -> " + sensor);
-			if (sensor.type == SensorType.TEMP.getValeur()) {
-				result.addAll(DummyYdleContent.getTempData(echelle));
-			}
+        if (getConf().getServer().nom != null && getConf().getServer().nom.equals("Demo")) {
 
-			Log.d(TAG, "getData -> " + result.size());
-			return result;
-		}
+            List<SensorData> result = new ArrayList<SensorData>();
+            Log.d(TAG, "getData -> " + sensor);
+            if (sensor.type == SensorType.TEMP.getValeur()) {
+                result.addAll(DummyYdleContent.getTempData(echelle));
+            }
 
-		return null;
+            Log.d(TAG, "getData -> " + result.size());
+            return result;
+        }
 
-	}
+        return null;
 
-	public Configuration getConf() {
-		return PreferenceUtils.getConf(prefs);
-	}
+    }
 
-	@Override
-	public Room getRoomDetails(String id) {
+    public Configuration getConf() {
+        return PreferenceUtils.getConf(prefs);
+    }
 
-		ServeurInfo server = getConf().getServer();
+    @Override
+    public Room getRoomDetails(String id) {
 
-		String result = ServerUtils.get("ApplicationIdentity", server.getUrl()
-				+ URL_ROOM + id);
+        ServeurInfo server = getConf().getServer();
 
-		Room room = null;
-		if (result != null) {
-			Log.d(TAG, "room detail result : " + result);
-			try {
-				JSONObject json = new JSONObject(result);
-				JSONObject item = json.getJSONObject("room");
+        String result = ServerUtils.get("ApplicationIdentity", server.getUrl()
+                + URL_ROOM + id);
 
-				room = converter.convertRoom(item);
+        Room room = null;
+        if (result != null) {
+            Log.d(TAG, "room detail result : " + result);
+            try {
+                JSONObject json = new JSONObject(result);
 
-				Log.d("UPDATE", "load room : " + room);
-				return room;
-			} catch (JSONException e) {
-				Log.e(TAG, "There was an error parsing the JSON", e);
-			}
-		}
-		if (server.nom != null && server.nom.equals("Demo")) {
-			return find(DummyYdleContent.ITEMS, id);
-		}
-		return null;
-	}
+                int resultCode = json.getInt("code");
+                if (resultCode == 0) {
+                    JSONObject item = json.getJSONObject("result");
 
-	private Room find(List<Room> items, String id) {
-		for (Room room : items) {
-			if (room.id.equals(id)) {
-				return room;
-			}
-		}
-		return null;
-	}
+                    room = converter.convertRoom(item);
+
+                    Log.d("UPDATE", "load room : " + room);
+
+                } else {
+                    Log.e("UPDATE", "load room : " + json.getString("result"));
+                }
+                return room;
+
+
+            } catch (JSONException e) {
+                Log.e(TAG, "There was an error parsing the JSON", e);
+            }
+        }
+        if (server.nom != null && server.nom.equals("Demo")) {
+            return find(DummyYdleContent.ITEMS, id);
+        }
+        return null;
+    }
+
+    private Room find(List<Room> items, String id) {
+        for (Room room : items) {
+            if (room.id.equals(id)) {
+                return room;
+            }
+        }
+        return null;
+    }
 
 }
