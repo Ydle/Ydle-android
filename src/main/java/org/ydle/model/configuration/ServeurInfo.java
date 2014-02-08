@@ -22,6 +22,13 @@ public class ServeurInfo implements Parcelable, Serializable {
 		this.host = host;
 	}
 
+    public ServeurInfo(String nom, String host,String applicationName,int port) {
+        this.nom = nom;
+        this.host = host;
+        this.port = port;
+        this.applicationName = applicationName;
+    }
+
 	@Override
 	public String toString() {
 		return nom;

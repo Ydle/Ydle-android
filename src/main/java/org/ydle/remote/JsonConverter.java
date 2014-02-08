@@ -21,11 +21,11 @@ public class JsonConverter {
 			room.description = getFacultatifString(item, "description");
 			room.name = getFacultatifString(item, "name");
 			room.id = getFacultatifString(item, "id");
-			room.active = getFacultatifBoolean(item, "active");
+			room.active = getFacultatifBoolean(item, "is_active");
 			room.typeIcon = TypeRoomIcon.fromLabel(getFacultatifString(item, "type"));
-			if (item.optJSONArray("capteurs") != null) {
+			if (item.optJSONArray("sensors") != null) {
 				room.sensor = new ArrayList<Sensor>();
-				JSONArray capteurs = item.getJSONArray("capteurs");
+				JSONArray capteurs = item.getJSONArray("sensors");
 				for (int a = 0; a < capteurs.length(); a++) {
 					JSONObject capteur = capteurs.getJSONObject(a);
 					Sensor sensor = convertSensor(capteur);
@@ -33,7 +33,7 @@ public class JsonConverter {
 				}
 
 			} else {
-				room.setSensorSize(getFacultatifInt(item, "capteurs"));
+				room.setSensorSize(getFacultatifInt(item, "sensors"));
 			}
 		}
 
@@ -47,7 +47,7 @@ public class JsonConverter {
 			sensor.name = getFacultatifString(item, "name");
 			sensor.unit = getFacultatifString(item, "unit");
 			sensor.type = SensorType.fromLabel(getFacultatifString(item, "name")).getValeur();
-			sensor.active = getFacultatifBoolean(item, "active");
+			sensor.active = getFacultatifBoolean(item, "is_active");
 			sensor.description = getFacultatifString(item, "description");
 			sensor.currentValeur = new SensorData(getFacultatifString(item,
 					"current"), new Date());
