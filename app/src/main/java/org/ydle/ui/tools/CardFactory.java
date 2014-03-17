@@ -3,6 +3,7 @@ package org.ydle.ui.tools;
 
 import android.content.Context;
 
+import org.ydle.R;
 import org.ydle.data.model.Room;
 import org.ydle.data.model.Sensor;
 import org.ydle.ui.rooms.RoomCard;
@@ -31,6 +32,7 @@ public class CardFactory {
 
         CardHeader header = new CardHeader(context);
         header.setOtherButtonVisible(true);
+        header.setOtherButtonDrawable(R.drawable.ic_edit);
         header.setTitle(room.getType().getName());
         card.addCardHeader(header);
         return card;
