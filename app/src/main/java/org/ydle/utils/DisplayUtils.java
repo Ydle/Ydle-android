@@ -32,7 +32,9 @@ public class DisplayUtils {
     }
 
     public static void dismissProgressDialog() {
-        mProgressDialog.dismiss();
+        if (mProgressDialog != null) {
+            mProgressDialog.dismiss();
+        }
     }
 
     public static void goToUrl(Context context, String url) {
