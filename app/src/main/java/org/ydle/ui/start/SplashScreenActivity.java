@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.TextView;
 
+import com.crashlytics.android.Crashlytics;
 import org.ydle.BuildConfig;
 import org.ydle.R;
 import org.ydle.config.Constants;
@@ -46,6 +47,8 @@ public class SplashScreenActivity extends YdleActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Crashlytics.start(this);
+
         setContentView(R.layout.splashscreen_activity);
 
         mVersionNumberTextView = (TextView) findViewById(R.id.splashscreen_version_number_textview);
