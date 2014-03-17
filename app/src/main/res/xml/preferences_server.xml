@@ -1,0 +1,35 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <EditTextPreference
+        android:defaultValue="Ydle"
+        android:inputType="textNoSuggestions"
+        android:key="PREFERENCE_SERVER_NAME"
+        android:summary="@string/preference_server_name_description"
+        android:title="@string/preference_server_name_title" />
+    <EditTextPreference
+        android:inputType="textWebEditText"
+        android:key="PREFERENCE_SERVER_ADDRESS"
+        android:summary="@string/preference_server_address_description"
+        android:title="@string/preference_server_address_title" >
+    </EditTextPreference>
+<!--
+    <EditTextPreference
+        android:defaultValue="80"
+        android:inputType="textNoSuggestions"
+        android:key="PREFERENCE_SERVER_PORT"
+        android:summary="@string/preference_server_port_description"
+        android:title="@string/preference_server_port_title" >
+    </EditTextPreference>
+    <EditTextPreference
+        android:inputType="textNoSuggestions"
+        android:key="PREFERENCE_SERVER_LOGIN"
+        android:summary="@string/preference_server_login_description"
+        android:title="@string/preference_server_login_title" />
+    <EditTextPreference
+        android:inputType="textNoSuggestions"
+        android:key="PREFERENCE_SERVER_PATH"
+        android:summary="@string/preference_server_path_description"
+        android:title="@string/preference_server_path_title" />
+-->
+
+</PreferenceScreen>

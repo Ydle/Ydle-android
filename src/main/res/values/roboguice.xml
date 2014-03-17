@@ -1,5 +1,0 @@
-<resources>
-    <string-array name="roboguice_modules">
-        <item>org.ydle.YdleModule</item>
-    </string-array>
-</resources>

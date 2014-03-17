@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ydle</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Annuler</string>
+    <string name="loading">Chargement</string>
+
+    <!-- SplashScreen -->
+    <string name="splashscreen_logo_content_description">Logo Ydle</string>
+
+    <!-- First Use -->
+    <string name="first_use_hello">Bienvenue dans l\'application Ydle, pour commencer veuillez entrer le nom et l\'adresse de votre serveur.</string>
+    <string name="first_use_name">Nom :</string>
+    <string name="first_use_host">Serveur :</string>
+    <string name="first_use_submit">Valider</string>
+    <string name="first_use_valid_server">Le serveur à bien été enregistré</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_item_rooms_title">Pièces</string>
+    <string name="dashboard_item_add_room_title">Ajouter une pièce</string>
+    <string name="dashboard_item_events_title">Evénements</string>
+    <string name="dashboard_item_status_title">Statut</string>
+    <string name="dashboard_item_yana_title">Yana</string>
+    <string name="dashboard_item_sarah_title">S.A.R.A.H</string>
+    <string name="dashboard_item_scenarios_title">Scénarios</string>
+    <string name="dashboard_item_logs_title">Logs</string>
+
+    <!-- Room -->
+    <string name="delete_card_delete_button_label">Supprimer</string>
+    <string name="delete_room_dialog_title">Supprimer la pièce</string>
+    <string name="delete_room_dialog_message">Voulez-vous vraiment suprimer la pièces ?</string>
+    <string name="delete_room_progressdialog">Suppression de la pièce en cours ...</string>
+    <string name="delete_room_success">La pièce a bien été supprimée</string>
+    <string name="delete_room_failure">Echec lors de la suppression de la pièce</string>
+
+    <!-- Add Room -->
+    <string name="add_room_title">Ajouter une pièce</string>
+    <string name="add_room_name_label">Nom :</string>
+    <string name="add_room_type_label">Type :</string>
+    <string name="add_room_description_label">Description :</string>
+    <string name="add_room_active_label">Active :</string>
+    <string name="add_room_validate_label">Valider</string>
+    <string name="add_room_error_no_name">Le nom est obligatoire</string>
+    <string name="add_room_dialog">Ajout de la pièce en cours ...</string>
+    <string name="add_room_success">La pièce a bien été ajoutée</string>
+    <string name="add_room_failure">Echec lors de l\'ajout de la pièce</string>
+
+    <!-- Errors -->
+    <string name="error_no_network">Pas de réseau</string>
+    <string name="error_invalid_server">Le serveur n\'est pas valide</string>
+
+    <!-- Preferences -->
+    <string name="activity_home_settings_title">Paramètres</string>
+    <string name="preference_server_category">Serveur Ydle</string>
+    <string name="preference_server_title">Configurer le serveur Ydle</string>
+    <string name="preference_extra_category">Extra</string>
+    <string name="preference_extra_plugins_title">Plugins</string>
+    <string name="preference_extra_charts_title">Graphiques</string>
+    <string name="preference_extra_charts_description">Activer les graphiques des données de capteurs (BETA)</string>
+    <string name="preference_extra_cache_title">Activer le cache</string>
+    <string name="preference_extra_cache_description">Activer le cache durant la session</string>
+    <string name="preference_news_description">Voir les changements de l\'application</string>
+    <string name="preference_news_title">Nouveautés</string>
+    <string name="preference_about_category">A Propos</string>
+    <string name="preference_about_description">Ydle</string>
+    <string name="preference_about_title">A Propos</string>
+
+    <string name="activity_server_settings_title">Configuration serveur</string>
+    <string name="preference_server_name_title">Nom du serveur Ydle</string>
+    <string name="preference_server_name_description">Entrez le nom du serveur</string>
+    <string name="preference_server_address_title">Adresse du serveur Ydle (interne)</string>
+    <string name="preference_server_address_description">Entrez l\'adresse du serveur Ydle (sans http://)</string>
+    <string name="preference_server_port_title">Port du serveur Ydle</string>
+    <string name="preference_server_port_description">Entrez le port du serveur Ydle</string>
+    <string name="preference_server_login_title">Clé Api Ydle</string>
+    <string name="preference_server_login_description">Entrez la clé Api du serveur Ydle</string>
+    <string name="preference_server_path_title">Path application</string>
+    <string name="preference_server_path_description">Entrez le path de l\'application</string>
+
+    <string name="activity_plugins_settings_title">Gestion des plugins</string>
+    <string name="preference_plugins_category">Plugins App</string>
+    <string name="preference_plugin_yana_title">Application Yana</string>
+    <string name="preference_plugin_yana_description">Activer la reconnaissance vocale Yana</string>
+    <string name="preference_plugin_sarah_title">Application S.A.R.A.H</string>
+    <string name="preference_plugin_sarah_description">Activer la reconnaissance vocale S.A.R.A.H</string>
+
+    <string name="activity_about_settings_title">A Propos</string>
+    <string name="preference_about_application_category">Application Android</string>
+    <string name="preference_about_application_version_title">Version :</string>
+    <string name="preference_about_application_version_description">0.1.0</string>
+    <string name="preference_about_application_developpers_title">Développeurs :</string>
+    <string name="preference_about_application_developpers_description">Guernion Sylvain</string><!-- - Dumoulin Jean-Baptiste</string>-->
+    <string name="preference_about_ydle_category">Ydle</string>
+    <string name="preference_about_ydle__title"> </string>
+    <string name="preference_about_ydle_description">Devenez le MacGyver de la domotique, et réalisez votre domotique maison, sans vous ruiner, et avec les moyens du board.\nAssembblez par étape tout un réseau domotique complet pour créer votre propre logement 2.0\n\nSite : www.ydle.fr</string>
+
+    <string name="preferences_saved">Paramètres enregistrés</string>
+
+    <string name="PREFERENCE_SERVER">PREFERENCE_SERVER</string>
+    <string name="PREFERENCE_PLUGINS">PREFERENCE_PLUGINS</string>
+    <string name="PREFERENCE_CACHE">PREFERENCE_CACHE</string>
+    <string name="PREFERENCE_CHARTS">PREFERENCE_CHARTS</string>
+    <string name="PREFERENCE_NEWS">PREFERENCE_NEWS</string>
+    <string name="PREFERENCE_ABOUT">PREFERENCE_ABOUT</string>
+
+    <string name="PREFERENCE_SERVER_NAME">PREFERENCE_SERVER_NAME</string>
+    <string name="PREFERENCE_SERVER_ADDRESS">PREFERENCE_SERVER_ADDRESS</string>
+    <string name="PREFERENCE_SERVER_PORT">PREFERENCE_SERVER_PORT</string>
+    <string name="PREFERENCE_SERVER_LOGIN">PREFERENCE_SERVER_LOGIN</string>
+    <string name="PREFERENCE_SERVER_PATH">PREFERENCE_SERVER_PATH</string>
+
+    <string name="PREFERENCE_YANA">PREFERENCE_YANA</string>
+    <string name="PREFERENCE_SARAH">PREFERENCE_SARAH</string>
+
+    <!-- About -->
+    <string name="about_application_title">Application Android</string>
+    <string name="about_version_title">Version :</string>
+    <string name="about_developpers_title">Développeurs :</string>
+    <string name="about_developpers_names">Guernion Sylvain\nDumoulin Jean-Baptiste</string>
+    <string name="about_ydle_title">Ydle</string>
+    <string name="about_ydle_description">Devenez le MacGyver de la domotique, et réalisez votre domotique maison, sans vous ruiner, et avec les moyens du bord.
+Assemblez par étape tout un réseau domotique complet pour créer votre propre logement 2.0</string>
+    <string name="about_ydle_link_title">Retrouvez nous sur</string>
+    <string name="about_ydle_link">www.ydle.fr</string>
+
+    <!-- Default ImageView content description -->
+    <string name="default_imageview_content_description">image</string>
+
+</resources>

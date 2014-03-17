@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/default_margin">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/about_application_title"
+        style="@style/about_activity.title" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_margin">
+
+        <TextView
+            android:id="@+id/about_version_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/about_version_title"
+            style="@style/about_activity.text" />
+
+        <TextView
+            android:id="@+id/about_version_number_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/about_version_title_textview"
+            android:layout_toRightOf="@id/about_version_title_textview"
+            android:layout_marginLeft="@dimen/space"
+            style="@style/about_activity.text" />
+
+        <TextView
+            android:id="@+id/about_developpers_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_version_title_textview"
+            android:text="@string/about_developpers_title"
+            style="@style/about_activity.text" />
+
+        <TextView
+            android:id="@+id/about_developpers_names_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_developpers_title_textview"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:text="@string/about_developpers_names"
+            style="@style/about_activity.text" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/about_ydle_title"
+        style="@style/about_activity.title" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_margin">
+
+        <TextView
+            android:id="@+id/about_ydle_description_textview"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_ydle_description"
+            style="@style/about_activity.text" />
+
+        <TextView
+            android:id="@+id/about_ydle_link_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_ydle_description_textview"
+            android:layout_marginTop="@dimen/default_margin"
+            android:text="@string/about_ydle_link_title"
+            style="@style/about_activity.text"/>
+
+        <TextView
+            android:id="@+id/about_ydle_link_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/about_ydle_link_title_textview"
+            android:layout_toRightOf="@id/about_ydle_link_title_textview"
+            android:layout_marginLeft="@dimen/space"
+            android:text="@string/about_ydle_link"
+            style="@style/about_activity.text"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

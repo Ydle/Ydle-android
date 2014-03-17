@@ -1,0 +1,19 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!-- About Activity -->
+    <style name="about_activity">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    <style name="about_activity.title">
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="about_activity.text">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+</resources>

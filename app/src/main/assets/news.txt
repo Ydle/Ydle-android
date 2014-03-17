@@ -1,0 +1,5 @@
+ Version 0.1.0
+ (beta, not working)
+  - Mise en place des écrans
+  - Mise en place de la configuration de l'application
+  - Communication avec le serveur (encours)

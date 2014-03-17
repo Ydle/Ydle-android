@@ -1,0 +1,32 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="@string/preference_server_category" >
+        <Preference
+            android:key="@string/PREFERENCE_SERVER"
+            android:title="@string/preference_server_title" />
+    </PreferenceCategory>
+ <!--   <PreferenceCategory android:title="@string/preference_extra_category" >
+        <Preference
+            android:key="@string/PREFERENCE_PLUGINS"
+            android:title="@string/preference_extra_plugins_title" />
+        <CheckBoxPreference
+            android:key="@string/PREFERENCE_CACHE"
+            android:summary="@string/preference_extra_cache_description"
+            android:title="@string/preference_extra_cache_title" />
+        <CheckBoxPreference
+            android:key="@string/PREFERENCE_CHARTS"
+            android:summary="@string/preference_extra_charts_description"
+            android:title="@string/preference_extra_charts_title" />
+    </PreferenceCategory>-->
+    <PreferenceCategory android:title="@string/preference_about_category" >
+        <Preference
+            android:key="@string/PREFERENCE_NEWS"
+            android:summary="@string/preference_news_description"
+            android:title="@string/preference_news_title" />
+        <Preference
+            android:key="@string/PREFERENCE_ABOUT"
+            android:summary="@string/preference_about_description"
+            android:title="@string/preference_about_title" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/card_status"
+            android:layout_width="6dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="16dp" />
+
+        <ImageView
+            android:id="@+id/card_icon"
+            android:layout_width="74dp"
+            android:layout_height="74dp"
+            android:layout_toLeftOf="@id/card_status"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:layout_marginRight="@dimen/default_margin"
+            android:layout_marginLeft="26dp" />
+
+        <TextView
+            android:id="@+id/card_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/card_icon"
+            android:layout_alignBottom="@+id/card_icon"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:layout_marginRight="@dimen/default_margin"
+            android:layout_centerVertical="true"
+            android:textSize="40sp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/card_layout_expand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/card_status"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="More information"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <com.astuetz.PagerSlidingTabStrip
+        android:id="@+id/rooms_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="48dp" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/rooms_viewpager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+    </android.support.v4.view.ViewPager>
+
+</RelativeLayout>
