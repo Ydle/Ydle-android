@@ -35,6 +35,7 @@ public class FirstUseActivity extends YdleActivity {
     public static void displayFirstUseSettingsActivity(final Activity from) {
         final Intent i = new Intent(from, FirstUseActivity.class);
         from.startActivity(i);
+        from.finish();
     }
 
     @Override
@@ -62,8 +63,8 @@ public class FirstUseActivity extends YdleActivity {
     private void manageResponse(boolean isValid) {
         DisplayUtils.dismissProgressDialog();
         if (isValid) {
-            YdlePreferences.setFirstUse(false);
             DisplayUtils.displayToast(FirstUseActivity.this, getString(R.string.first_use_valid_server));
+            mNetworkManager.deleteObserver(this);
             DashboardActivity.displayDashboardActivity(FirstUseActivity.this);
         } else {
             DisplayUtils.displayToast(FirstUseActivity.this, getString(R.string.error_invalid_server));

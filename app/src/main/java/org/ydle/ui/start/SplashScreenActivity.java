@@ -63,7 +63,9 @@ public class SplashScreenActivity extends YdleActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mNetworkManager.callGetAllRooms();
-        mNetworkManager.callGetAllRoomTypes();
+        if(!YdlePreferences.isFirstUse()) {
+            mNetworkManager.callGetAllRooms();
+            mNetworkManager.callGetAllRoomTypes();
+        }
     }
 }

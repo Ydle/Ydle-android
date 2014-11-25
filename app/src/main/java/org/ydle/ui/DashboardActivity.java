@@ -31,6 +31,7 @@ public class DashboardActivity extends YdleActivity {
     public static void displayDashboardActivity(final Activity from) {
         final Intent i = new Intent(from, DashboardActivity.class);
         from.startActivity(i);
+        from.finish();
     }
 
     @Override
