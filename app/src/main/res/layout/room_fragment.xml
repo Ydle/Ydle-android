@@ -11,9 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/default_margin"
-        android:paddingLeft="@dimen/default_margin"
-        android:paddingRight="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
         android:visibility="gone">
 
         <Button

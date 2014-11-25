@@ -79,6 +79,9 @@
     <string name="preference_server_path_title">Path application</string>
     <string name="preference_server_path_description">Entrez le path de l\'application</string>
 
+    <string name="preference_push_notification_category">Notifications</string>
+    <string name="preference_push_notification_title">Utiliser les notifications</string>
+
     <string name="activity_plugins_settings_title">Gestion des plugins</string>
     <string name="preference_plugins_category">Plugins App</string>
     <string name="preference_plugin_yana_title">Application Yana</string>
@@ -99,6 +102,7 @@
     <string name="preferences_saved">Paramètres enregistrés</string>
 
     <string name="PREFERENCE_SERVER">PREFERENCE_SERVER</string>
+    <string name="PREFERENCE_PUSH_NOTIFICATION">PREFERENCE_PUSH_NOTIFICATION</string>
     <string name="PREFERENCE_PLUGINS">PREFERENCE_PLUGINS</string>
     <string name="PREFERENCE_CACHE">PREFERENCE_CACHE</string>
     <string name="PREFERENCE_CHARTS">PREFERENCE_CHARTS</string>

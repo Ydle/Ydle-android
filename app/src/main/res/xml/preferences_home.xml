@@ -5,6 +5,11 @@
             android:key="@string/PREFERENCE_SERVER"
             android:title="@string/preference_server_title" />
     </PreferenceCategory>
+    <PreferenceCategory android:title="@string/preference_push_notification_category" >
+        <CheckBoxPreference
+            android:key="@string/PREFERENCE_PUSH_NOTIFICATION"
+            android:title="@string/preference_push_notification_title" />
+    </PreferenceCategory>
  <!--   <PreferenceCategory android:title="@string/preference_extra_category" >
         <Preference
             android:key="@string/PREFERENCE_PLUGINS"

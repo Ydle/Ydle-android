@@ -3,12 +3,12 @@
     <EditTextPreference
         android:defaultValue="Ydle"
         android:inputType="textNoSuggestions"
-        android:key="PREFERENCE_SERVER_NAME"
+        android:key="@string/PREFERENCE_SERVER_NAME"
         android:summary="@string/preference_server_name_description"
         android:title="@string/preference_server_name_title" />
     <EditTextPreference
         android:inputType="textWebEditText"
-        android:key="PREFERENCE_SERVER_ADDRESS"
+        android:key="@string/PREFERENCE_SERVER_ADDRESS"
         android:summary="@string/preference_server_address_description"
         android:title="@string/preference_server_address_title" >
     </EditTextPreference>

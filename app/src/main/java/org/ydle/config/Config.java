@@ -7,6 +7,8 @@ public class Config {
 
     private static final String LOG_TAG = Config.class.getSimpleName();
 
+    public static final String SENDER_ID = "1087106100438";
+
     /**
      * This method determinates is we use crashlytics bug reporting
      *

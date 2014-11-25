@@ -5,7 +5,6 @@ import com.android.volley.VolleyError;
 import org.ydle.data.model.Log;
 import org.ydle.data.model.Room;
 import org.ydle.data.model.RoomType;
-import org.ydle.data.model.Sensor;
 import org.ydle.data.model.YdleError;
 
 import java.util.ArrayList;
@@ -74,6 +73,16 @@ public class MemoryProvider {
         mRooms = null;
         mRoomsError = null;
         mRoomsVolleyError = null;
+    }
+
+    public void updateRoom(Room room) {
+        for (Room current : mRooms) {
+            if (current.getId() == room.getId()) {
+                mRooms.remove(current);
+                break;
+            }
+        }
+        mRooms.add(room);
     }
 
     /**

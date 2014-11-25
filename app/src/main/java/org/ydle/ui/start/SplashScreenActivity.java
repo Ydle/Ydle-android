@@ -6,13 +6,14 @@ import android.os.Message;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
+
 import org.ydle.BuildConfig;
 import org.ydle.R;
 import org.ydle.config.Constants;
 import org.ydle.data.preferences.YdlePreferences;
+import org.ydle.push_notification.GCMUtils;
 import org.ydle.ui.DashboardActivity;
 import org.ydle.ui.YdleActivity;
-import org.ydle.utils.AnimationUtils;
 
 /**
  * Created by Jean-Baptiste on 03/03/14.

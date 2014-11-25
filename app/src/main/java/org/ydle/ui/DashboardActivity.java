@@ -14,6 +14,7 @@ import org.ydle.config.Config;
 import org.ydle.data.memoryprovider.MemoryProvider;
 import org.ydle.data.preferences.YdlePreferences;
 import org.ydle.network.manager.NetworkManager;
+import org.ydle.push_notification.GCMUtils;
 import org.ydle.ui.adapter.DashboardAdapter;
 import org.ydle.ui.rooms.RoomsActivity;
 import org.ydle.utils.DeviceInfoUtils;
@@ -41,6 +42,8 @@ public class DashboardActivity extends YdleActivity {
             DisplayUtils.displayToast(DashboardActivity.this, "TODO: Bienvenue");
             YdlePreferences.setFirstUse(false);
         }
+
+        GCMUtils.register(this);
 
         mDashboardGridView = (GridView) findViewById(R.id.dashboard_gridview);
         int width = DeviceInfoUtils.getWidthScreenPx(this.getApplicationContext()) / 2 - 20;

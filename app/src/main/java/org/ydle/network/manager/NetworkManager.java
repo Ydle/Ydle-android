@@ -17,10 +17,12 @@ import org.ydle.network.listener.DefaultListener;
 import org.ydle.network.parser.LogsParser;
 import org.ydle.network.parser.RoomTypesParser;
 import org.ydle.network.parser.RoomsParser;
+import org.ydle.network.request.CheckServerRequest;
 import org.ydle.network.request.DeleteRoomRequest;
 import org.ydle.network.request.GetAllLogsRequest;
 import org.ydle.network.request.GetAllRoomTypesRequest;
 import org.ydle.network.request.GetAllRoomsRequest;
+import org.ydle.network.request.GetRoomRequest;
 import org.ydle.network.request.PostRoomRequest;
 import org.ydle.utils.NetworkUtils;
 
@@ -42,6 +44,8 @@ public class NetworkManager extends Observable {
     }
 
     public enum NetworkResult {
+        CheckServerSuccess,
+        CheckServerError,
         GetAllRoomsSuccess,
         GetAllRoomsError,
         GetRoomSuccess,
@@ -56,6 +60,35 @@ public class NetworkManager extends Observable {
         GetAllSensorTypesError,
         GetAllLogsSuccess,
         GetAllLogsError;
+    }
+
+    /**
+     * Call CheckServer
+     */
+    public boolean callCheckServer(String url) {
+        boolean result = true;
+        if (NetworkUtils.hasConnectivity(mContext)) {
+            mRequestQueue.add(new CheckServerRequest(
+                    url,
+                    new DefaultListener() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    super.onResponse(response);
+                    setChanged();
+                    notifyObservers(NetworkResult.CheckServerSuccess);
+                }
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    super.onErrorResponse(error);
+                    setChanged();
+                    notifyObservers(NetworkResult.CheckServerError);
+                }
+            }));
+        } else {
+            result = false;
+        }
+        return result;
     }
 
     /**
@@ -118,6 +151,38 @@ public class NetworkManager extends Observable {
                     notifyObservers(NetworkResult.GetAllRoomTypesError);
                 }
             }));
+        } else {
+            result = false;
+        }
+        return result;
+    }
+
+    /**
+     * Call GetRoom
+     */
+    public boolean callGetRoom(int id) {
+        boolean result = true;
+        if (NetworkUtils.hasConnectivity(mContext)) {
+            mRequestQueue.add(new GetRoomRequest(new DefaultListener() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    super.onResponse(response);
+                    try {
+                        MemoryProvider.getInstance().updateRoom(RoomsParser.parseARoom(response));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    setChanged();
+                    notifyObservers(NetworkResult.GetRoomSuccess);
+                }
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    super.onErrorResponse(error);
+                    setChanged();
+                    notifyObservers(NetworkResult.GetRoomError);
+                }
+            }, id));
         } else {
             result = false;
         }
